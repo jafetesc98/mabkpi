@@ -31,7 +31,7 @@ class AuthController extends Controller
         
         if (!\Auth::attempt([
             'name' => $request->name,
-            'password' => $request->password
+            'password' => strtoupper($request->password)
         ])) {
             throw new \Exception('Usuario y/o contraseña incorrecta.');
         }

@@ -28,9 +28,9 @@
 
                     <div class="intro-x mt-8">
                         <form id="login-form">
-                            <input id="name" type="text" class="intro-x login__input form-control py-3 px-4 block" placeholder="Usuario" >
+                            <input id="name" type="text" class="intro-x login__input form-control py-3 px-4 block" placeholder="Usuario" style="text-transform: uppercase;" >
                             <div id="error-email" class="login__input-error text-danger mt-2"></div>
-                            <input id="password" type="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Contraseña" >
+                            <input id="password" type="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Contraseña" style="text-transform: uppercase;">
                             <div id="error-password" class="login__input-error text-danger mt-2"></div>
                         </form>
                     </div>
