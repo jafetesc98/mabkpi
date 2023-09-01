@@ -34,11 +34,8 @@ header("Pragma: no-cache");
                     <?php if ( $a=="CAPAS" ): ?>
                     <img alt="Midone - HTML Admin Template" class="centro1" src="{{ asset('dist/images/capa.png') }}">
                     <?php endif; ?>
-                    <?php if ( $a=="COSTOS" ): ?>
+                    <?php if ( $a=="TOTALES" ): ?>
                     <img alt="Midone - HTML Admin Template" class="centro1" src="{{ asset('dist/images/presupuesto.png') }}">
-                    <?php endif; ?>
-                    <?php if ( $a=="INVENTARIO DE COSTOS" ): ?>
-                    <img alt="Midone - HTML Admin Template" class="centro1" src="{{ asset('dist/images/suministro.png') }}">
                     <?php endif; ?>
 
                     <p class="block font-medium mt-4 text-center truncate" name="nombre">{{ $a }}</p>

@@ -30,8 +30,8 @@ class PageController extends Controller
         $array = array('margen'=>"MARGEN MENOR A 4%", 
         'diferencia'=>"ULTIMAS ENTRADAS", 
         'capas'=>"CAPAS", 
-        'costos'=>"COSTOS",
-        'inventario'=>"INVENTARIO DE COSTOS");
+        'totales'=>"TOTALES",
+        );
 
         return view('pages/tablero')->with('array', $array);
     }

@@ -251,10 +251,7 @@
 @endsection
 
 <style>
-    body {
-	margin: 0;
-  overflow-Y: hidden; /*quitar el scroll*/
-}
+    
     tr.noSearch {background:White;font-size:0.8em;}
         
         tr.noSearch td {padding-top:10px;text-align:right;}

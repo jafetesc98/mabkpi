@@ -111,6 +111,8 @@
                         <tbody id="filas">
                             <?php
                             while ($datos = current($array)) {
+                                if($datos['Capa']==4){
+                                    echo '<tr>';
                                     echo '<td class="sammy-nowrap py-0">';echo $datos['Capas']; echo '</td>';
                                     echo '<td class="sammy-nowrap py-0">';echo $datos['Proveedor']; echo '</td>';
                                     
@@ -136,6 +138,35 @@
                                     echo '<td class="text-center py-0">';echo $datos['Alm']; echo '</td>';
                                     echo '<td class="text-center py-0">';echo $datos['Compra']; echo '</td>';
                                     echo '</tr>';
+                                }
+                                else{
+                                    echo '<tr style="visibility: collapse; display: none;">';
+                                    echo '<td class="sammy-nowrap py-0">';echo $datos['Capas']; echo '</td>';
+                                    echo '<td class="sammy-nowrap py-0">';echo $datos['Proveedor']; echo '</td>';
+                                    
+                                    echo '<td class="text-center py-0">';echo $datos['Num']; echo '</td>';
+                                    echo '<td class="sammy-nowrap py-0">';echo $datos['Comprador']; echo '</td>';
+                                    echo '<td class="text-center py-0">';echo $datos['Clas']; echo '</td>';
+                                    echo '<td class="text-center py-0">';echo $datos['Codigo']; echo '</td>';
+                                    echo '<td class="sammy-nowrap py-0">';echo $datos['Descripcion']; echo '</td>';
+                                    echo '<td class="text-center py-0">';echo $datos['Presentacion']; echo '</td>';
+                                    echo '<td class="text-center py-0">';echo round($datos['VtaMens']); echo '</td>';
+                                    echo '<td class="text-center py-0">';echo round($datos['VtaProm']); echo '</td>';
+                                    echo '<td class="text-center py-0">';echo round($datos['Existencia']); echo '</td>';
+                                    echo '<td class="text-center py-0">';echo round($datos['BackOrder']); echo '</td>';
+                                    echo '<td class="text-center py-0">';echo round($datos['VtaNeta$']); echo '</td>';
+                                    echo '<td class="text-center py-0">';echo round($datos['VtaProm$']); echo '</td>';
+                                    echo '<td class="text-center py-0">';echo round($datos['ValorInv$']); echo '</td>';
+                                    echo '<td class="text-center py-0">';echo round($datos['DiasInv']); echo '</td>';
+                                    echo '<td class="text-center py-0">';echo round($datos['Cto_Prom']); echo '</td>';
+                                    echo '<td class="text-center py-0">';echo round($datos['Cto_Catalogo']); echo '</td>';
+                                    echo '<td class="text-center py-0">';echo $datos['Capa']; echo '</td>';
+                                    echo '<td class="text-center py-0">';echo $datos['UltimaEnt']; echo '</td>';
+                                    echo '<td class="text-center py-0">';echo $datos['DiasTrans']; echo '</td>';
+                                    echo '<td class="text-center py-0">';echo $datos['Alm']; echo '</td>';
+                                    echo '<td class="text-center py-0">';echo $datos['Compra']; echo '</td>';
+                                    echo '</tr>';
+                                }
                                     next($array);
                                    
                                     }
@@ -354,14 +385,16 @@ async function buscar(value){
                     }
                 }
                 if (found) {
+                    tableReg.rows[i].style.display = '';
                     tableReg.rows[i].style.visibility = 'visible';
-                    //tableReg.rows[i].style.display = '';
+                    
                     
                 } else {
                     // si no ha encontrado ninguna coincidencia, esconde la
                     // fila de la tabla
+                    tableReg.rows[i].style.display = 'none';
                     tableReg.rows[i].style.visibility = 'collapse';
-                    //tableReg.rows[i].style.display = 'none';
+                    
                 }
 
             }
@@ -399,6 +432,7 @@ async function buscar(value){
     
 }
 
+
 </script>
   
 @endsection
@@ -406,10 +440,7 @@ async function buscar(value){
 
 
 <style>
-    body {
-	margin: 0;
-  overflow-Y: hidden; /*quitar el scroll*/
-}
+    
     tr.noSearch {background:White;font-size:0.8em;}
         
         tr.noSearch td {padding-top:10px;text-align:right;}

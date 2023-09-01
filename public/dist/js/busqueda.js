@@ -16,7 +16,7 @@ function doSearch()
 
             // Recorremos todas las filas con contenido de la tabla
 
-            for (let i = 1; i < tableReg.rows.length; i++) {
+            for (let i = 0; i < tableReg.rows.length; i++) {
 
                 // Si el td tiene la clase "noSearch" no se busca en su cntenido
 
@@ -51,16 +51,17 @@ function doSearch()
                 }
 
                 if (found) {
-                    tableReg.rows[i].style.visibility = 'visible';
-                    //tableReg.rows[i].style.display = '';
+                    tableReg.rows[i].style.display = '';
+                    //tableReg.rows[i].style.visibility = 'visible';
+                    
 
                 } else {
 
                     // si no ha encontrado ninguna coincidencia, esconde la
-
                     // fila de la tabla
-                    tableReg.rows[i].style.visibility = 'collapse';
-                    //tableReg.rows[i].style.display = 'none';
+                    tableReg.rows[i].style.display = 'none';
+                    //tableReg.rows[i].style.visibility = 'collapse';
+                    
 
                 }
 
