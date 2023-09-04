@@ -169,6 +169,7 @@ class PageController extends Controller
      */
     public function capas()
     {
+        $num=$_GET["num"];
          
         $resultado1 = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; Exec RCA_Capas");
         $array1 = json_decode(json_encode($resultado1), true);
@@ -180,9 +181,9 @@ class PageController extends Controller
         //$arreglo = $this->array_sort($array1, 'Proveedor', SORT_ASC); 
 
          foreach ($array1 as $k => $capa) {
-            //if($capa['Capa']==$num){
+            if($capa['Capa']==$num){
                 $groupCapas[$k] =$capa;
-            //}
+            }
             
             //$groupCapas[$capa['Capa']][$capa['Proveedor']][$k] =$capa;
         } 

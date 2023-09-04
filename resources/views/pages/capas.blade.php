@@ -113,7 +113,7 @@
                     
                         <tbody id="filas">
                         @foreach($array as $key=>$colu)
-                        <?php if ( $colu['Capa'] ==$num ): ?>
+                        
                         <tr >
                         <td class="sammy-nowrap py-0">{{ $colu['Capas'] }}</td>
                         <td class="sammy-nowrap py-0">{{ $colu['Proveedor']}}</td>
@@ -139,7 +139,7 @@
                         <td class="text-center py-0">{{ $colu['Alm'] }}</td>
                         <td class="text-center py-0">{{ $colu['Compra'] }}</td>
                         </tr>
-                        <?php endif; ?>
+                        
                     @endforeach 
                     <tr class="" id="">
                         <th></th>

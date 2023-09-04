@@ -92,7 +92,7 @@
         console.log(array)
         window.addEventListener("load", function(e){
             ocultaLoad();
-
+            separar()
         });
 
         function separar(){
