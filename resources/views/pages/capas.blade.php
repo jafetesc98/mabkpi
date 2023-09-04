@@ -14,6 +14,9 @@
 @endsection
 
 @section('subcontent')
+<?php
+    $num=$_GET["num"];
+?>
 <link rel="stylesheet" href="dist/css/cargando.css">
     <div class="card-header py-6 " style="text-align: center;">
         <h4 class="card-title"><b> REPORTE DE CAPAS</b></h4>
@@ -25,9 +28,9 @@
 
 <div class="tableFixHead1 box">
     <div class="row g-4 mx-2 px-5 py-3">
-        <form action="#">
+        <!-- <form action="#">
             <label for="lang"></label>
-            <!-- <select class="load" name="lenguajes" id="load" onchange="buscar(this.value)" estado="0" onclick="muestraLoad(this.estado)"> -->
+            <!-- <select class="load" name="lenguajes" id="load" onchange="buscar(this.value)" estado="0" onclick="muestraLoad(this.estado)"> 
                 <select class="load" name="lenguajes" id="load" onchange="buscar(this.value)" estado="0">
                 <option value="" disabled>Selecciona capa</option>
               <option value="1">CAPA 1</option>
@@ -36,22 +39,22 @@
               <option value="4">CAPA 4</option>
               <option value="5">CAPA 5</option>
             </select>
-      </form>       
+      </form>        -->
       <div class="col-auto">
         <label for="campo" class="col-form-label">Buscar: </label>
     </div>
-    <div class="input-group">
+    <!-- <div class="input-group">
         <input id="searchTerm" type="text" class="form-control">
         <span class="input-group-btn">
           <button id="" class="btn btn-primary" type="button" onclick="doSearch()" > 
             Buscar<span class="fa fa-eye-slash icon"></span>
           </button>
         </span>
-      </div>
-    <!-- <div class="col-auto">
+      </div> -->
+     <div class="col-auto">
         <input type="text" name="campo" id="searchTerm" class="form-control" onkeyup="doSearch()" >
-        <button id="show_password" class="btn btn-success" type="button" onclick=""> 
-    </div>    -->
+        
+    </div>  
      
     
 <div class=" box ">
@@ -109,69 +112,35 @@
                     </thead>
                     
                         <tbody id="filas">
-                            <?php
-                            while ($datos = current($array)) {
-                                if($datos['Capa']==4){
-                                    echo '<tr>';
-                                    echo '<td class="sammy-nowrap py-0">';echo $datos['Capas']; echo '</td>';
-                                    echo '<td class="sammy-nowrap py-0">';echo $datos['Proveedor']; echo '</td>';
-                                    
-                                    echo '<td class="text-center py-0">';echo $datos['Num']; echo '</td>';
-                                    echo '<td class="sammy-nowrap py-0">';echo $datos['Comprador']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['Clas']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['Codigo']; echo '</td>';
-                                    echo '<td class="sammy-nowrap py-0">';echo $datos['Descripcion']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['Presentacion']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['VtaMens']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['VtaProm']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['Existencia']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['BackOrder']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['VtaNeta$']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['VtaProm$']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['ValorInv$']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['DiasInv']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['Cto_Prom']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['Cto_Catalogo']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['Capa']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['UltimaEnt']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['DiasTrans']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['Alm']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['Compra']; echo '</td>';
-                                    echo '</tr>';
-                                }
-                                else{
-                                    echo '<tr style="visibility: collapse; display: none;">';
-                                    echo '<td class="sammy-nowrap py-0">';echo $datos['Capas']; echo '</td>';
-                                    echo '<td class="sammy-nowrap py-0">';echo $datos['Proveedor']; echo '</td>';
-                                    
-                                    echo '<td class="text-center py-0">';echo $datos['Num']; echo '</td>';
-                                    echo '<td class="sammy-nowrap py-0">';echo $datos['Comprador']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['Clas']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['Codigo']; echo '</td>';
-                                    echo '<td class="sammy-nowrap py-0">';echo $datos['Descripcion']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['Presentacion']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['VtaMens']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['VtaProm']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['Existencia']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['BackOrder']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['VtaNeta$']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['VtaProm$']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['ValorInv$']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['DiasInv']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['Cto_Prom']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo round($datos['Cto_Catalogo']); echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['Capa']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['UltimaEnt']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['DiasTrans']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['Alm']; echo '</td>';
-                                    echo '<td class="text-center py-0">';echo $datos['Compra']; echo '</td>';
-                                    echo '</tr>';
-                                }
-                                    next($array);
-                                   
-                                    }
-                                   
-                            ?>
+                        @foreach($array as $key=>$colu)
+                        <?php if ( $colu['Capa'] ==$num ): ?>
+                        <tr >
+                        <td class="sammy-nowrap py-0">{{ $colu['Capas'] }}</td>
+                        <td class="sammy-nowrap py-0">{{ $colu['Proveedor']}}</td>
+                        <td class="text-center py-0">{{ $colu['Num'] }}</td>
+                        <td class="sammy-nowrap py-0">{{ $colu['Comprador']}}</td>
+                        <td class="text-center py-0">{{ $colu['Clas'] }}</td>
+                        <td class="text-center py-0">{{ $colu['Codigo'] }}</td>
+                        <td class="sammy-nowrap py-0">{{ $colu['Descripcion'] }}</td>
+                        <td class="text-center py-0">{{ $colu['Presentacion'] }}</td>
+                        <td class="text-center py-0"><?php echo round( $colu['VtaMens'],2) ?></td>
+                        <td class="text-center py-0"><?php echo round( $colu['VtaProm'],2) ?></td>
+                        <td class="text-center py-0"><?php echo round( $colu['Existencia'],2) ?></td>
+                        <td class="text-center py-0"><?php echo round( $colu['BackOrder'],2) ?></td>
+                        <td class="text-center py-0"><?php echo round( $colu['VtaNeta$'],2) ?></td>
+                        <td class="text-center py-0"><?php echo round( $colu['VtaProm$'],2) ?></td>
+                        <td class="text-center py-0"><?php echo round( $colu['ValorInv$'],2) ?></td>
+                        <td class="text-center py-0"><?php echo round( $colu['DiasInv'],2) ?></td>
+                        <td class="text-center py-0"><?php echo round( $colu['Cto_Prom'],2) ?></td>
+                        <td class="text-center py-0"><?php echo round( $colu['Cto_Catalogo'],2) ?></td>
+                        <td class="text-center py-0">{{ $colu['Capa'] }}</td>
+                        <td class="text-center py-0">{{ $colu['UltimaEnt'] }}</td>
+                        <td class="text-center py-0">{{ $colu['DiasTrans'] }}</td>
+                        <td class="text-center py-0">{{ $colu['Alm'] }}</td>
+                        <td class="text-center py-0">{{ $colu['Compra'] }}</td>
+                        </tr>
+                        <?php endif; ?>
+                    @endforeach 
                     <tr class="" id="">
                         <th></th>
                         <th></th>
@@ -431,6 +400,7 @@ async function buscar(value){
         }
     
 }
+
 
 
 </script>

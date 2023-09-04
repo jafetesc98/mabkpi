@@ -17,15 +17,15 @@ if (document.getElementById('margen').contains(e.target)){
 if (document.getElementById('diferencia').contains(e.target)){
     cargando()
 } 
-if (document.getElementById('capas').contains(e.target)){
+if (document.getElementById('botonesCapas').contains(e.target)){
     cargando()
 } 
-if (document.getElementById('costos').contains(e.target)){
+
+if (document.getElementById('totales').contains(e.target)){
     cargando()
 } 
-if (document.getElementById('inventario').contains(e.target)){
-    cargando()
-} 
+
+ 
 });
 
 

@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function() {
         Route::get('margen', 'margen')->name('margen');
         Route::get('entradas', 'entradas')->name('entradas');
         Route::get('diferencia', 'diferencia')->name('diferencia');
+        Route::get('botonesCapas', 'botonesCapas')->name('botonesCapas');
+        //Route::get(, 'capas')->name('capas');
         Route::get('capas', 'capas')->name('capas');
         Route::get('/buscar', [App\Http\Controllers\PageController::class, 'buscar'])->name('buscar');
         Route::get('/buscaDif', [App\Http\Controllers\PageController::class, 'buscaDif'])->name('buscaDif');

@@ -38,13 +38,13 @@ class SideMenu
                 ],
                 'title' => 'Ultimas entradas'
             ],
-            'capas' => [
+            'botonesCapas' => [
                 'icon' => 'hard-drive',
-                'route_name' => 'capas',
+                'route_name' => 'botonesCapas',
                 'params' => [
                     'layout' => 'side-menu'
                 ],
-                'title' => 'Reporte de Capas'
+                'title' => 'Menu de Capas'
             ],
             /*
             'file-manager' => [
