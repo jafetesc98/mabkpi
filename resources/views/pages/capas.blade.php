@@ -117,22 +117,22 @@
                         <tr >
                         <td class="sammy-nowrap py-0">{{ $colu['Capas'] }}</td>
                         <td class="sammy-nowrap py-0">{{ $colu['Proveedor']}}</td>
-                        <td class="text-center py-0">{{ $colu['Num'] }}</td>
+                        <td id="num" class="text-center py-0">{{ $colu['Num'] }}</td>
                         <td class="sammy-nowrap py-0">{{ $colu['Comprador']}}</td>
                         <td class="text-center py-0">{{ $colu['Clas'] }}</td>
                         <td class="text-center py-0">{{ $colu['Codigo'] }}</td>
                         <td class="sammy-nowrap py-0">{{ $colu['Descripcion'] }}</td>
                         <td class="text-center py-0">{{ $colu['Presentacion'] }}</td>
-                        <td class="text-center py-0"><?php echo round( $colu['VtaMens'],2) ?></td>
-                        <td class="text-center py-0"><?php echo round( $colu['VtaProm'],2) ?></td>
-                        <td class="text-center py-0"><?php echo round( $colu['Existencia'],2) ?></td>
-                        <td class="text-center py-0"><?php echo round( $colu['BackOrder'],2) ?></td>
-                        <td class="text-center py-0"><?php echo round( $colu['VtaNeta$'],2) ?></td>
-                        <td class="text-center py-0"><?php echo round( $colu['VtaProm$'],2) ?></td>
-                        <td class="text-center py-0"><?php echo round( $colu['ValorInv$'],2) ?></td>
-                        <td class="text-center py-0"><?php echo round( $colu['DiasInv'],2) ?></td>
-                        <td class="text-center py-0"><?php echo round( $colu['Cto_Prom'],2) ?></td>
-                        <td class="text-center py-0"><?php echo round( $colu['Cto_Catalogo'],2) ?></td>
+                        <td id="VtaMens" class="text-center py-0"><?php echo round( $colu['VtaMens'],2) ?></td>
+                        <td id="VtaProm" class="text-center py-0"><?php echo round( $colu['VtaProm'],2) ?></td>
+                        <td id="Existencia" class="text-center py-0"><?php echo round( $colu['Existencia'],2) ?></td>
+                        <td id="BackOrder" class="text-center py-0"><?php echo round( $colu['BackOrder'],2) ?></td>
+                        <td id="VtaNeta" class="text-center py-0"><?php echo round( $colu['VtaNeta$'],2) ?></td>
+                        <td id="VtaProm1" class="text-center py-0"><?php echo round( $colu['VtaProm$'],2) ?></td>
+                        <td id="ValorInv" class="text-center py-0"><?php echo round( $colu['ValorInv$'],2) ?></td>
+                        <td id="DiasInv" class="text-center py-0"><?php echo round( $colu['DiasInv'],2) ?></td>
+                        <td id="Cto_prom" class="text-center py-0"><?php echo round( $colu['Cto_Prom'],2) ?></td>
+                        <td id="Cto_Cat" class="text-center py-0"><?php echo round( $colu['Cto_Catalogo'],2) ?></td>
                         <td class="text-center py-0">{{ $colu['Capa'] }}</td>
                         <td class="text-center py-0">{{ $colu['UltimaEnt'] }}</td>
                         <td class="text-center py-0">{{ $colu['DiasTrans'] }}</td>
@@ -192,13 +192,14 @@
 
 <script type="text/javascript">
                 var array = {{Js::from($array)}};
+                //console.log(array)
                 var contenedor = document.getElementById("contenedor_carga");
                 contenedor.style.visibility = 'visible';
                 contenedor.style.opacity = '1';
                 const th=document.getElementsByTagName("th");
                
         window.addEventListener("load", function(){
-            console.log(array.length)
+            console.log(array)
              for(let i=0; i<th.length; i++){
                 th[i].addEventListener("click",headerclicken);
             }  
@@ -213,9 +214,10 @@
             contenedor.style.opacity = '0';
             $('.load').attr("estado","0")
         }
+        
 
        
-        function sumaTotales() {
+         function sumaTotales() {
             var tNum=0;
             var tVtaMens=0;
             var tVtaProm=0;
@@ -257,7 +259,7 @@
             document.getElementById("tCto_Prom").innerHTML = separator(tCto_Prom.toFixed(2));
             document.getElementById("tCto_CaT").innerHTML = separator(tCto_CaT.toFixed(2));
 
-        }
+        } 
         
 
          function headerclicken(e){

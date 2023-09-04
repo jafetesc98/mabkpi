@@ -182,7 +182,7 @@ class PageController extends Controller
 
          foreach ($array1 as $k => $capa) {
             if($capa['Capa']==$num){
-                $groupCapas[$k] =$capa;
+                $groupCapas[] =$capa;
             }
             
             //$groupCapas[$capa['Capa']][$capa['Proveedor']][$k] =$capa;
