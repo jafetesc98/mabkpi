@@ -1,10 +1,12 @@
-        <!-- BEGIN: Simple Menu -->
+        <!-- BEGIN: Simple Menu aqui se modifico para el menu-->
+
         <nav class="side-nav side-nav--simple">
             <ul>
                 @foreach ($side_menu as $menuKey => $menu)
-                    @if ($menu == 'devider')
+                    <!-- @if ($menu == 'devider')
                         <li class="side-nav__devider my-6"></li>
-                    @else
+                    @else -->
+                    @if ($menu['params']['permiso']=="direccion" && Auth::user()->puesto =="DIRECCION")
                         <li>
                             <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}" class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
                                 <div class="side-menu__icon">
@@ -22,6 +24,7 @@
                             @if (isset($menu['sub_menu']))
                                 <ul class="{{ $first_level_active_index == $menuKey ? 'side-menu__sub-open' : '' }}">
                                     @foreach ($menu['sub_menu'] as $subMenuKey => $subMenu)
+                                    
                                         <li>
                                             <a href="{{ isset($subMenu['route_name']) ? route($subMenu['route_name'], $subMenu['params']) : 'javascript:;' }}" class="{{ $second_level_active_index == $subMenuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
                                                 <div class="side-menu__icon">
@@ -51,11 +54,30 @@
                                                 </ul>
                                             @endif
                                         </li>
+                                        
                                     @endforeach
                                 </ul>
                             @endif
                         </li>
-                    @endif
+                        @endif
+                         @if ($menu['params']['permiso']=="todos")
+                        <li>
+                            <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}" class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
+                                <div class="side-menu__icon">
+                                    <i data-lucide="{{ $menu['icon'] }}"></i>
+                                </div>
+                                <div class="side-menu__title">
+                                    {{ $menu['title'] }}
+                                    @if (isset($menu['sub_menu']))
+                                        <div class="side-menu__sub-icon {{ $first_level_active_index == $menuKey ? 'transform rotate-180' : '' }}">
+                                            <i data-lucide="chevron-down"></i>
+                                        </div>
+                                    @endif
+                                </div>
+                            </a>
+                        </li>
+                    @endif 
+                    <!-- @endif -->
                 @endforeach
             </ul>
         </nav>

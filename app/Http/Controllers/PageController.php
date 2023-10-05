@@ -31,10 +31,40 @@ class PageController extends Controller
         'diferencia'=>"ULTIMAS ENTRADAS", 
         'botonesCapas'=>"CAPAS", 
         'totales'=>"TOTALES",
+        'presupuesto'=>"PRESUPUESTO",
         );
 
         return view('pages/tablero')->with('array', $array);
     }
+
+    public function presupuesto()
+    {
+        $resultado = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; SELECT ROW_NUMBER()OVER(ORDER BY suc)[row], suc, rtrim(des)[des]
+        FROM comsuc WHERE Region <> '' 
+        AND suc NOT IN ('054', '062', '064', '073', '074', '076', '078', '079')");
+
+        $array = json_decode(json_encode($resultado), true); 
+
+        //return $resultado;
+        return view('pages/presupuestohdr')->with('array', $array);
+    }
+
+    public function presupuestoxsuc(Request $request)
+    {
+        $suc = $request->input("sucursal");
+        $fecha = $request->input("fecha");
+        $factor = $request->input("factor");
+
+        $anio=substr($fecha, 0, 4);
+        $mes=substr($fecha, 5, 7);
+
+        $resultado = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; Exec RCA_PrsupuestosOp '".$suc."', '" .$anio."','".$mes."','".$factor."'");
+        $array = json_decode(json_encode($resultado), true); 
+        
+        return view('pages/presupuestoxsuc')->with('array', $array);
+        //return $array;
+    }
+
 
     public function botonesCapas()
     {

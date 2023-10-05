@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function() {
         Route::get('capas', 'capas')->name('capas');
         Route::get('/buscar', [App\Http\Controllers\PageController::class, 'buscar'])->name('buscar');
         Route::get('/buscaDif', [App\Http\Controllers\PageController::class, 'buscaDif'])->name('buscaDif');
+        Route::get('/presupuesto', [App\Http\Controllers\PageController::class, 'presupuesto'])->name('presupuesto');
+        Route::get('/presupuestoxsuc', [App\Http\Controllers\PageController::class, 'presupuestoxsuc'])->name('presupuestoxsuc');
         /* Route::get('dashboard-overview-1-page', 'dashboardOverview1')->name('dashboard-overview-1');
         Route::get('dashboard-overview-2-page', 'dashboardOverview2')->name('dashboard-overview-2');
         Route::get('dashboard-overview-3-page', 'dashboardOverview3')->name('dashboard-overview-3');

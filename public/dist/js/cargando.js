@@ -25,6 +25,10 @@ if (document.getElementById('totales').contains(e.target)){
     cargando()
 } 
 
+if (document.getElementById('presupuesto').contains(e.target)){
+    cargando()
+} 
+
  
 });
 

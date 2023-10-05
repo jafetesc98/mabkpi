@@ -12,7 +12,7 @@
     @include('../layout/components/top-bar')
     
     <div class="flex overflow-hidden">
-        <!--menu lateral-->
+        <!--menu lateral -->
         @yield('menulateral')
         <!--menu lateral-->
         

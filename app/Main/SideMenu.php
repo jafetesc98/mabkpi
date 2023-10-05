@@ -17,7 +17,8 @@ class SideMenu
                 'icon' => 'home',
                 'route_name' => 'dashboard-overview-4',
                 'params' => [
-                    'layout' => 'side-menu'
+                    'layout' => 'side-menu',
+                    'permiso' => 'todos'
                 ],
                 'title' => 'Inicio'
             ],
@@ -26,7 +27,8 @@ class SideMenu
                 'icon' => 'percent',
                 'route_name' => 'margen',
                 'params' => [
-                    'layout' => 'side-menu'
+                    'layout' => 'side-menu',
+                    'permiso' => 'direccion'
                 ],
                 'title' => 'Margen menor a 4%'
             ],
@@ -34,7 +36,8 @@ class SideMenu
                 'icon' => 'download',
                 'route_name' => 'diferencia',
                 'params' => [
-                    'layout' => 'side-menu'
+                    'layout' => 'side-menu',
+                    'permiso' => 'direccion'
                 ],
                 'title' => 'Ultimas entradas'
             ],
@@ -42,9 +45,19 @@ class SideMenu
                 'icon' => 'hard-drive',
                 'route_name' => 'botonesCapas',
                 'params' => [
-                    'layout' => 'side-menu'
+                    'layout' => 'side-menu',
+                    'permiso' => 'direccion'
                 ],
                 'title' => 'Menu de Capas'
+            ],
+            'presupuesto' => [
+                'icon' => 'dollar-sign',
+                'route_name' => 'presupuesto',
+                'params' => [
+                    'layout' => 'side-menu',
+                    'permiso' => 'todos'
+                ],
+                'title' => 'Presupuesto'
             ],
             /*
             'file-manager' => [

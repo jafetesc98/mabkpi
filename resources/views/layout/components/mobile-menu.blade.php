@@ -1,4 +1,4 @@
-<!-- BEGIN: Mobile Menu -->
+<!-- BEGIN: Mobile Menu  aqui se van hacer cambios-->
 <div class="mobile-menu md:hidden">
     <div class="mobile-menu-bar">
         <a href="" class="flex mr-auto">
@@ -10,9 +10,10 @@
     </div>
     <ul class="border-t border-white/[0.08] py-5 hidden">
         @foreach ($side_menu as $menuKey => $menu)
-            @if ($menu == 'devider')
+           <!--  @if ($menu == 'devider')
                 <li class="menu__devider my-6"></li>
-            @else
+            @else -->
+            @if ($menu['params']['permiso']=="direccion" && Auth::user()->puesto =="DIRECCION")
                 <li>
                     <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}" class="{{ $first_level_active_index == $menuKey ? 'menu menu--active' : 'menu' }}">
                         <div class="menu__icon">
@@ -59,6 +60,22 @@
                         </ul>
                     @endif
                 </li>
+                @endif
+                @if ($menu['params']['permiso']=="todos")
+                <li>
+                    <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}" class="{{ $first_level_active_index == $menuKey ? 'menu menu--active' : 'menu' }}">
+                        <div class="menu__icon">
+                            <i data-lucide="{{ $menu['icon'] }}"></i>
+                        </div>
+                        <div class="menu__title">
+                            {{ $menu['title'] }}
+                            @if (isset($menu['sub_menu']))
+                                <i data-lucide="chevron-down" class="menu__sub-icon {{ $first_level_active_index == $menuKey ? 'transform rotate-180' : '' }}"></i>
+                            @endif
+                        </div>
+                    </a>
+                </li>
+                @endif 
             @endif
         @endforeach
     </ul>

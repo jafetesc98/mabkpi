@@ -7,7 +7,7 @@
 @section('content')
     @include('../layout/components/top-bar', ['class' => 'top-bar-boxed--simple-menu'])
     <div class="flex overflow-hidden">
-        <!-- BEGIN: Simple Menu -->
+        <!-- BEGIN: Simple Menu  -->
         <nav class="side-nav side-nav--simple">
             <ul>
                 @foreach ($side_menu as $menuKey => $menu)

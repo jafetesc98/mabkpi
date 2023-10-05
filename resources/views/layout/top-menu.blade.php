@@ -7,7 +7,7 @@
 @section('content')
     @include('../layout/components/mobile-menu')
     @include('../layout/components/top-bar', ['class' => 'top-bar-boxed--top-menu'])
-    <!-- BEGIN: Top Menu -->
+    <!-- BEGIN: Top Menu  -->
     <nav class="top-nav">
         <ul>
             @foreach ($top_menu as $menuKey => $menu)
