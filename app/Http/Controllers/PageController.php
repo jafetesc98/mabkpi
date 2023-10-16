@@ -30,7 +30,7 @@ class PageController extends Controller
         $array = array('margen'=>"MARGEN MENOR A 4%", 
         'diferencia'=>"ULTIMAS ENTRADAS", 
         'botonesCapas'=>"CAPAS", 
-        'totales'=>"TOTALES",
+        //'totales'=>"TOTALES",
         'presupuesto'=>"PRESUPUESTO",
         );
 
@@ -61,7 +61,7 @@ class PageController extends Controller
         $resultado = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; Exec RCA_PrsupuestosOp '".$suc."', '" .$anio."','".$mes."','".$factor."'");
         $array = json_decode(json_encode($resultado), true); 
         
-        return view('pages/presupuestoxsuc')->with('array', $array);
+        return view('pages/presupuestoxsuc')->with('array', $array)->with('suc',$suc);
         //return $array;
     }
 
@@ -203,9 +203,6 @@ class PageController extends Controller
          
         $resultado1 = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; Exec RCA_Capas");
         $array1 = json_decode(json_encode($resultado1), true);
-
-        
-
         $groupCapas=array();
 
         //$arreglo = $this->array_sort($array1, 'Proveedor', SORT_ASC); 
@@ -217,7 +214,6 @@ class PageController extends Controller
             
             //$groupCapas[$capa['Capa']][$capa['Proveedor']][$k] =$capa;
         } 
-
 
         //return $groupCapas;  
         return view('pages/capas')->with('array', $groupCapas);

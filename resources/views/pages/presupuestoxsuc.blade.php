@@ -1,7 +1,7 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Margen menor a 4% </title>
+    <title>Presupuesto de sucursales </title>
     <script src="dist/js/busqueda.js"></script>
 @endsection
 
@@ -15,11 +15,8 @@
 
 @section('subhead')
     <title>Dashboard </title>
-    <?php
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
-?>
+
+
 @endsection
 
 @section('subcontent')
@@ -92,20 +89,29 @@ header("Pragma: no-cache");
                         <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['Inc/Decr_Real'],2) ?></td>
                     </tr>
                 @endforeach 
-                
-
                 </tbody>
             </table>
         </div>
 </div>
 
+<div id="" class="container sm:px-10 py-6">
+        <div class="block xl:grid grid-cols-3 gap-4">
+        <div class=""></div>
+          
+        <div class=""  style="text-align: center;">
+        <button id="btnExportar" class="btn btn-success w-33">
+                <i class="fas fa-file-excel"></i> Exportar a Excel
+            </button>
+        </div>
+    </div>
 
 <script type="text/javascript">
-                var array = {{Js::from($array)}};
+                var suc = {{Js::from($suc)}};
                 
                 //console.log( array.length)
                 const th=document.getElementsByTagName("th");
         window.addEventListener("load", function(){
+           
             for(let i=0; i<th.length; i++){
                 th[i].addEventListener("click",headerclicken)
             }
@@ -122,11 +128,7 @@ header("Pragma: no-cache");
         function sorteableColumn(sortcolumn){
             const tableBody= document.getElementById("filas");
             const rows = Array.from(tableBody.rows);
-            //console.log(sortcolumn);
-
-                    //console.log(rows);
-                    //var sortedRows=rows.sort();
-                    
+            
                     var sortedRows=rows.sort(function(a, b) {
                         
                         try {
@@ -139,10 +141,7 @@ header("Pragma: no-cache");
                         
                         } catch (error) {
                         console.error(error);
-                        
                         }
-                      
-                        
                     }); 
 
                     if (lastCol==sortcolumn) {
@@ -151,15 +150,10 @@ header("Pragma: no-cache");
                     } else {
                         lastCol=sortcolumn;
                     }
-
-                    /* $.each(rows, function(indice, elemento) {
-                        $('tbody').append(elemento);
-                    }); */
                     tableBody.innerHTML="";
                     sortedRows.forEach(row =>{
                         tableBody.appendChild(row);
                     });
-  
             
         }
 
@@ -168,6 +162,51 @@ header("Pragma: no-cache");
     str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return str.join(".");
 }
+
+const $btnExportar = document.querySelector("#btnExportar"),
+        $datos = document.querySelector("#datos");
+
+    $btnExportar.addEventListener("click", function() {
+        tableToExcel($datos, 'Presupuesto de sucursales')
+    });
+
+    
+    var tableToExcel = (function() {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+            , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" ><head></head><body><table>{table}</table></body></html>'
+            , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+            , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+        return function(table, name) {
+            if (!table.nodeType) table = document.getElementById(table)
+            var ctx = {worksheet: name || 'Presupuesto', table: table.innerHTML}
+            //window.location.href = uri + base64(format(template, ctx))
+            const a = document.createElement('a');
+            const fecha =formatofecha()
+            //console.log()
+            a.download = 'presupuesto_suc_'+suc+"_"+fecha+'.xls';
+            a.href = uri + base64(format(template, ctx));
+            a.click();
+        }
+    })()
+
+    function formatofecha(){
+        let fecha = new Date();
+        let anio = fecha.getFullYear();
+        let mes = fecha.getMonth()+1;
+        let dia = fecha.getDate();
+
+        if(mes.toString().length==1){
+            mes = "0"+mes.toString();
+        }
+        if(dia.toString().length==1){
+            dia = "0"+dia.toString();
+        }
+        
+        const cadena = anio+"-"+mes+"-"+dia;
+        return cadena;
+    }
+
+
 
             </script>
 

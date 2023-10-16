@@ -1,7 +1,7 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Margen menor a 4% </title>
+    <title>Presupuesto de sucursales </title>
  
     <script src="dist/js/busqueda.js"></script>
 @endsection
@@ -16,11 +16,8 @@
 
 @section('subhead')
     <title>Dashboard </title>
-    <?php
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
-?>
+   
+    
 @endsection
 
 @section('subcontent')
@@ -40,7 +37,7 @@ header("Pragma: no-cache");
                     
 
                     <div class="intro-x mt-8">
-                        <form action="presupuestoxsuc"  method="GET" >
+                        <form action="presupuestoxsuc"  method="POST" >
                         @csrf
                             <select class="intro-x login__input form-control py-3 px-4 block" name="sucursal" id="sucursal" required>
                             <option value="" selected disabled>SELECCIONE UNA SUCURSAL</option>
@@ -51,7 +48,7 @@ header("Pragma: no-cache");
                             
                             <input id="fecha" name="fecha" type="month" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Fecha" style="text-transform: uppercase;" required>
 
-                            <input id="factor" name="factor" type="number" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Factor %" required>
+                            <input id="factor" name="factor" type="number" step="0.01" min="0" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Factor %" required>
                     </div>
                     
                     <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
@@ -70,22 +67,23 @@ header("Pragma: no-cache");
         const boton = document.querySelector("#buscar");
 
         boton.addEventListener("click", function(evento){
+            
             var suc = document.getElementById("sucursal");
              suc = suc.options[suc.selectedIndex].value;
             var fecha = document.getElementById("fecha").value;
             var factor = document.getElementById("factor").value;
-
-            if(suc == "" && fecha=="" && factor==""){
+            //console.log(validateDecimal(factor))
+            if(suc == "" && fecha=="" && factor=="" || suc == "" || fecha=="" || factor==""){
                 console.log("no muestra el load")
-            }else{
+                console.log(factor)
+            }else if(validateDecimal(factor)==true){
+                console.log(validateDecimal(factor))
                 cargando()  
             }
 
             //cargando()
         }); 
 
-        
-        
         async function cargando() {
             var contenedor = document.getElementById("contenedor");
             contenedor.style.visibility = 'hidden';
@@ -97,9 +95,18 @@ header("Pragma: no-cache");
             await helper.delay(1500)
 
         }
+
+    function validateDecimal(valor) {
+        var RE = /^\d*(\.\d{1})?\d{0,1}$/;
+        if (RE.test(valor)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
         
 </script>
-
 @endsection
 
 <style>

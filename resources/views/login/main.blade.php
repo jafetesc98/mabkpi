@@ -29,7 +29,7 @@
                     <div class="intro-x mt-8">
                         <form id="login-form">
                             <input id="name" type="text" class="intro-x login__input form-control py-3 px-4 block" placeholder="Usuario" style="text-transform: uppercase;" >
-                            <div id="error-email" class="login__input-error text-danger mt-2"></div>
+                            <div id="error-name" class="login__input-error text-danger mt-2"></div>
                             <input id="password" type="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Contraseña" style="text-transform: uppercase;">
                             <div id="error-password" class="login__input-error text-danger mt-2"></div>
                         </form>
@@ -80,11 +80,11 @@
                     if (err.response.data.message != 'Usuario y/o contraseña incorrecta.') {
                         for (const [key, val] of Object.entries(err.response.data.errors)) {
                             $(`#${key}`).addClass('border-danger')
-                            $(`#error-${key}`).html(val)
+                            $(`#error-${key}`).html("Ingrese una contraseña y/o usuario")
                         }
                     } else {
                         $(`#password`).addClass('border-danger')
-                        $(`#error-password`).html(err.response.data.message)
+                        $(`#error-password`).html("Ingrese una contraseña")
                     }
                 })
             }
