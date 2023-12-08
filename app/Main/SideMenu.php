@@ -59,6 +59,15 @@ class SideMenu
                 ],
                 'title' => 'Presupuesto'
             ],
+            'ventas' => [
+                'icon' => 'file-text',
+                'route_name' => 'ventas',
+                'params' => [
+                    'layout' => 'side-menu',
+                    'permiso' => 'todos'
+                ],
+                'title' => 'Ventas'
+            ],
             /*
             'file-manager' => [
                 'icon' => 'hard-drive',

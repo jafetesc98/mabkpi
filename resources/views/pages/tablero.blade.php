@@ -37,12 +37,27 @@ header("Pragma: no-cache");
                         <?php if ( $a=="PRESUPUESTO" ): ?>
                         <img alt="Midone - HTML Admin Template" class="centro1" src="{{ asset('dist/images/presup.png') }}">
                         <?php endif; ?>
+                        <?php if ( $a=="VENTAS X ART" ): ?>
+                        <img alt="Midone - HTML Admin Template" class="centro1" src="{{ asset('dist/images/diagrama.png') }}">
+                        <?php endif; ?>
 
                         <p class="block font-medium mt-4 text-center truncate" name="nombre">{{ $a }}</p>
             </div>  
             </a>
         </div> 
         <?php endif; ?>
+        <?php if ( Auth::user()->puesto !="DIRECCION" && $a=="VENTAS X ART" ): ?>
+        <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2">
+            <a href="{{$key}}"   >
+                <div id="{{$key}}" class="file box rounded-md relative zoom-in p-2">  
+                    <?php if ( $a=="VENTAS X ART" ): ?>
+                    <img alt="Midone - HTML Admin Template" class="centro1" src="{{ asset('dist/images/diagrama.png') }}">
+                    <?php endif; ?>
+                    <p class="block font-medium mt-4 text-center truncate" name="nombre">{{ $a }}</p>
+                </div>  
+            </a>
+        </div> 
+        <?php endif; ?>   
         <?php if ( Auth::user()->puesto !="DIRECCION" && $a=="PRESUPUESTO" ): ?>
         <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2">
             <a href="{{$key}}"   >
@@ -55,6 +70,7 @@ header("Pragma: no-cache");
             </a>
         </div> 
         <?php endif; ?>   
+
     @endforeach         
 </div>
 

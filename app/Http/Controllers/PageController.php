@@ -30,11 +30,42 @@ class PageController extends Controller
         $array = array('margen'=>"MARGEN MENOR A 4%", 
         'diferencia'=>"ULTIMAS ENTRADAS", 
         'botonesCapas'=>"CAPAS", 
-        //'totales'=>"TOTALES",
+        'ventas'=>"VENTAS X ART",
         'presupuesto'=>"PRESUPUESTO",
         );
 
         return view('pages/tablero')->with('array', $array);
+    }
+
+    public function prov()
+    {
+        $proveedor = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; SELECT proveedor, nom from cprprv order by proveedor asc");
+
+        $array = json_decode(json_encode($proveedor), true); 
+
+        $sucursales = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; SELECT ROW_NUMBER()OVER(ORDER BY suc)[row], suc, rtrim(des)[des]
+        FROM comsuc WHERE Region <> '' 
+        AND suc NOT IN ('054', '062', '064', '073', '074', '076', '078', '079')");
+
+        $array1 = json_decode(json_encode($sucursales), true); 
+
+        //return $resultado;
+        return view('pages/ventas')->with('array', $array)->with('array1',$array1);
+    }
+
+    public function buscaventasxart(Request $request)
+    {
+        $prov = $request->input("proveedor");
+        $fecha_ini = date('Ymd',strtotime($request->input("fecha_ini")));
+        $fecha_fin = date('Ymd',strtotime($request->input("fecha_fin")));
+        $suc = $request->input("suc");
+
+
+        $resultado = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; Exec RCA_ComparativoProv_web '".$prov."' ,'".$fecha_ini."', '".$fecha_fin."', '".$suc."'");
+        $array = json_decode(json_encode($resultado), true); 
+
+       //return $array;
+       return view('pages/ventasxart')->with('array', $array);
     }
 
     public function presupuesto()
