@@ -60,6 +60,10 @@ class PageController extends Controller
         $fecha_fin = date('Ymd',strtotime($request->input("fecha_fin")));
         $suc = $request->input("suc");
 
+        if($prov=="t"){
+            $prov="";
+        }
+
 
         $resultado = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; Exec RCA_ComparativoProv_web '".$prov."' ,'".$fecha_ini."', '".$fecha_fin."', '".$suc."'");
         $array = json_decode(json_encode($resultado), true); 

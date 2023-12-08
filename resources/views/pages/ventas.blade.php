@@ -41,7 +41,7 @@
                         @csrf
                             <select class="intro-x login__input form-control py-3 px-4 block" name="proveedor" id="proveedor" required>
                             <option value="" selected disabled>SELECCIONE UN PROVEEDOR</option>
-                            <option value="" >TODOS</option>
+                            <option value="t" >TODOS</option>
                             @foreach ($array as $proveedor)
                                 <option  value="{{ $proveedor['proveedor'] }}">{{ $proveedor['proveedor'] }} - {{ $proveedor['nom'] }}</option>
                             @endforeach
@@ -77,13 +77,15 @@
                 const boton = document.querySelector("#buscar");
 
                 boton.addEventListener("click", function(evento){
+                    var proveedor = document.getElementById("proveedor");
+                    proveedor = proveedor.options[proveedor.selectedIndex].value;
                     
                     var suc = document.getElementById("suc");
                     suc = suc.options[suc.selectedIndex].value;
                     var fecha_ini = document.getElementById("fecha_ini").value;
                     var fecha_fin = document.getElementById("fecha_fin").value;
                     //console.log(validateDecimal(factor))
-                    if(suc == "" && fecha_ini=="" && fecha_fin==""  || suc == "" || fecha_ini=="" || fecha_fin=="" ){
+                    if(suc == "" && fecha_ini=="" && fecha_fin=="" &&  proveedor=="" || suc == "" || fecha_ini=="" || fecha_fin=="" || proveedor=="" ){
                         console.log("no muestra el load")
                         //console.log(factor)
                     }else {

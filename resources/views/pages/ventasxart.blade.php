@@ -49,7 +49,7 @@
                     <th class="text-center py-0" >Cant</th>
                     <th class="text-center py-0">Proveedor</th>
                     <th class="text-center py-0">Articulo</th>
-                    <th class="text-center py-0">Descripción</th>
+                    <th class="text-center py-0">Descripcion</th>
                     <th class="text-center py-0">Suc</th>
                     <th class="text-center py-0">Exist</th>
                     <th class="text-center py-0">ExistCedis</th>
@@ -134,12 +134,22 @@
                         <td ></td><td ></td><td ></td><td ></td><td ></td><td ></td><td ></td><td ></td><td ></td><td ></td><td ></td><td >
                         <td ></td><td ></td><td ></td><td ></td><td ></td><td ></td><td ></td><td ></td><td ></td><td ></td></td><td ></td>
                     </tr>
-
-
                 </tbody>
             </table>
         </div>
 </div>
+
+
+<div id="" class="container sm:px-10 py-6">
+        <div class="block xl:grid grid-cols-3 gap-4">
+        <div class=""></div>
+          
+        <div class=""  style="text-align: center;">
+        <button id="btnExportar" class="btn btn-success w-33">
+                <i class="fas fa-file-excel"></i> Exportar a Excel
+            </button>
+        </div>
+    </div>
 
 <script type="text/javascript">
                 var array = {{Js::from($array)}};
@@ -269,7 +279,51 @@
     return str.join(".");
 }
 
-            </script>
+
+const $btnExportar = document.querySelector("#btnExportar"),
+        $datos = document.querySelector("#datos");
+
+    $btnExportar.addEventListener("click", function() {
+        tableToExcel($datos, 'REPORTE DE VENTAS POR ARTICULO Y PROVEEDOR COMPARATIVO')
+    });
+
+    
+    var tableToExcel = (function() {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+            , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" ><head></head><body><table>{table}</table></body></html>'
+            , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+            , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+        return function(table, name) {
+            if (!table.nodeType) table = document.getElementById(table)
+            var ctx = {worksheet: name || 'VentasxArticulo', table: table.innerHTML}
+            //window.location.href = uri + base64(format(template, ctx))
+            const a = document.createElement('a');
+            const fecha =formatofecha()
+            //console.log()
+            a.download = 'Ventas_X_Art'+"_"+fecha+'.xls';
+            a.href = uri + base64(format(template, ctx));
+            a.click();
+        }
+    })()
+
+    function formatofecha(){
+        let fecha = new Date();
+        let anio = fecha.getFullYear();
+        let mes = fecha.getMonth()+1;
+        let dia = fecha.getDate();
+
+        if(mes.toString().length==1){
+            mes = "0"+mes.toString();
+        }
+        if(dia.toString().length==1){
+            dia = "0"+dia.toString();
+        }
+        
+        const cadena = anio+"-"+mes+"-"+dia;
+        return cadena;
+    }
+
+</script>
         
 @endsection
 
