@@ -54,6 +54,7 @@
 
                             <select class="intro-x login__input form-control py-3 px-4 block mt-4" name="suc" id="suc" required>
                             <option value="" selected disabled>SELECCIONE UNA SUCURSAL</option>
+                            <option value="t" >TODAS</option>
                             @foreach ($array1 as $sucursal)
                                 <option  value="{{ $sucursal['suc'] }}">{{ $sucursal['suc'] }} - {{ $sucursal['des'] }}</option>
                             @endforeach

@@ -15,6 +15,10 @@
 @endsection
 
 @section('subcontent')
+<link rel="stylesheet" href="dist/css/cargando.css">
+<div id="contenedor_carga">
+        <div id="carga"></div>
+</div>
 
         <div class="card-header py-6 " style="text-align: center;">
         <h4 class="card-title"><b> REPORTE DE VENTAS POR ARTICULO Y PROVEEDOR COMPARATIVO</b></h4>
@@ -70,7 +74,7 @@
                     <th class="text-center py-0">Margen</th>
                 </tr>
                 <tr class="totales" id="totales">
-                        <td id="tcant" class="text-center py-0" style="background-color: #d6d6d6;">totalcant</td>
+                        <td id="tcant" class="text-center py-0" style="background-color: #d6d6d6;"></td>
                         <td style="background-color: #d6d6d6;"></td>
                         <td style="background-color: #d6d6d6;"></td>
                         <td style="background-color: #d6d6d6;"></td>
@@ -152,16 +156,32 @@
     </div>
 
 <script type="text/javascript">
+
+                var contenedor = document.getElementById("contenedor_carga");
+                contenedor.style.visibility = 'visible';
+                contenedor.style.opacity = '1';
+
+
                 var array = {{Js::from($array)}};
                 
                 //console.log( array.length)
                 const th=document.getElementsByTagName("th");
         window.addEventListener("load", function(){
+            console.log("inicia el load")
             for(let i=0; i<th.length; i++){
                 th[i].addEventListener("click",headerclicken)
             }
-            sumaTotales()
+            ocultaLoad();
+            sumaTotales();
+
         });
+
+        function ocultaLoad(){
+            var contenedor = document.getElementById("contenedor_carga");
+            contenedor.style.visibility = 'hidden';
+            contenedor.style.opacity = '0';
+            $('.load').attr("estado","0")
+        }
 
         function sumaTotales(){
             var tcant=0;
