@@ -68,7 +68,16 @@ class SideMenu
                 ],
                 'title' => 'Ventas'
             ],
-            /*
+            'avance' => [
+                'icon' => 'signal',
+                'route_name' => 'avance',
+                'params' => [
+                    'layout' => 'side-menu',
+                    'permiso' => 'direccion'
+                ],
+                'title' => 'Avance X sucursal'
+            ],
+            /*icon-signal
             'file-manager' => [
                 'icon' => 'hard-drive',
                 'route_name' => 'file-manager',

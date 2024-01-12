@@ -32,6 +32,7 @@ class PageController extends Controller
         'botonesCapas'=>"CAPAS", 
         'ventas'=>"VENTAS X ART",
         'presupuesto'=>"PRESUPUESTO",
+        'avance' =>"AVANCE X SUCURSAL",
         );
 
         return view('pages/tablero')->with('array', $array);
@@ -97,6 +98,35 @@ class PageController extends Controller
         $array = json_decode(json_encode($resultado), true); 
         
         return view('pages/presupuestoxsuc')->with('array', $array)->with('suc',$suc);
+        //return $array;
+    }
+
+    public function avancehdr(){
+        $zona = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; SELECT * FROM mabzonas");
+        $fechas = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; SELECT * FROM rcafechas");
+
+        $array = json_decode(json_encode($zona), true); 
+        $array1 = json_decode(json_encode($fechas), true); 
+
+        return view('pages/avancexsuchdr')->with('array', $array)->with('array1',$array1);
+    }
+
+    public function avancexsuc(Request $request)
+    {
+        $zonaR = $request->input("zona");
+        $fecha = $request->input("fecha");
+        
+        $zona=str_pad($zonaR, 30);
+        $resultado = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; Exec RCA_AvanceXSucursal2 '".$fecha."', '" .$zona."'");
+        $array = json_decode(json_encode($resultado), true); 
+
+        $datos = array(
+        'periodo'=>$array[0]['Periodo'],
+        'zona'=>$zona, 
+        );
+        $array1 = json_decode(json_encode($datos), true); 
+        //return $array1;
+        return view('pages/avancexsucdet')->with('array', $array)->with('array1', $array1);
         //return $array;
     }
 

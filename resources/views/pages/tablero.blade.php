@@ -40,6 +40,9 @@ header("Pragma: no-cache");
                         <?php if ( $a=="VENTAS X ART" ): ?>
                         <img alt="Midone - HTML Admin Template" class="centro1" src="{{ asset('dist/images/diagrama.png') }}">
                         <?php endif; ?>
+                        <?php if ( $a=="AVANCE X SUCURSAL" ): ?>
+                        <img alt="Midone - HTML Admin Template" class="centro1" src="{{ asset('dist/images/avance.png') }}">
+                        <?php endif; ?>
 
                         <p class="block font-medium mt-4 text-center truncate" name="nombre">{{ $a }}</p>
             </div>  

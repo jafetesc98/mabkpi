@@ -46,6 +46,9 @@ Route::middleware('auth')->group(function() {
         Route::post('/presupuestoxsuc', [App\Http\Controllers\PageController::class, 'presupuestoxsuc'])->name('presupuestoxsuc');
         Route::post('/ventasxart', [App\Http\Controllers\PageController::class, 'buscaventasxart'])->name('ventasxart');
 
+        Route::get('/avance', [App\Http\Controllers\PageController::class, 'avancehdr'])->name('avance');
+        Route::post('/avancexsuc', [App\Http\Controllers\PageController::class, 'avancexsuc'])->name('avancexsuc');
+
         //Route::get('/ventas', [App\Http\Controllers\PageController::class, 'ventas'])->name('ventas');
        
     });
