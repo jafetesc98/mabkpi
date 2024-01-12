@@ -1,7 +1,7 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Margen menor a 4% </title>
+    <title>AVANCE DE VENTAS POR SUCURSAL </title>
  
     <script src="dist/js/busqueda.js"></script>
 @endsection
