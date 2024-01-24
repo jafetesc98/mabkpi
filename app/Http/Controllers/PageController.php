@@ -64,7 +64,9 @@ class PageController extends Controller
         if($prov=="t"){
             $prov="";
         }
-
+        if($suc=="t"){
+            $suc="";
+        }
 
         $resultado = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; Exec RCA_ComparativoProv_web '".$prov."' ,'".$fecha_ini."', '".$fecha_fin."', '".$suc."'");
         $array = json_decode(json_encode($resultado), true); 

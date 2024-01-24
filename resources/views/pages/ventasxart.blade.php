@@ -51,12 +51,15 @@
                 <thead class="">
                 <tr>
                     <th class="text-center py-0" >Cant</th>
+                    <th class="text-center py-0" >Comprador</th>
                     <th class="text-center py-0">Proveedor</th>
                     <th class="text-center py-0">Articulo</th>
                     <th class="text-center py-0">Descripcion</th>
                     <th class="text-center py-0">Suc</th>
                     <th class="text-center py-0">Exist</th>
-                    <th class="text-center py-0">ExistCedis</th>
+                    <th class="text-center py-0">ExistCedis001</th>
+                    <th class="text-center py-0">ExistCedis013</th>
+                    <th class="text-center py-0">ExistCedis024</th>
                     <th class="text-center py-0">Venta_VtaANT</th>
                     <th class="text-center py-0">Venta_VtaACT</th>
                     <th class="text-center py-0">Venta_AutANT</th>
@@ -80,7 +83,10 @@
                         <td style="background-color: #d6d6d6;"></td>
                         <td style="background-color: #d6d6d6;"></td>
                         <td style="background-color: #d6d6d6;"></td>
-                        <td id="ExistCedis" class="text-center py-0" style="background-color: #d6d6d6;"></td>
+                        <td id="Exist" class="text-center py-0" style="background-color: #d6d6d6;"></td>
+                        <td id="ExistCedis001" class="text-center py-0" style="background-color: #d6d6d6;"></td>
+                        <td id="ExistCedis013" class="text-center py-0" style="background-color: #d6d6d6;"></td>
+                        <td id="ExistCedis024" class="text-center py-0" style="background-color: #d6d6d6;"></td>
                         <td id="Venta_VtaANT" class="text-center py-0" style="background-color: #d6d6d6;"></td>
                         <td id="Venta_VtaACT" class="text-center py-0" style="background-color: #d6d6d6;"></td>
                         <td id="Venta_AutANT" class="text-center py-0" style="background-color: #d6d6d6;"></td>
@@ -102,12 +108,15 @@
                 @foreach($array as $key=>$res)
                     <tr >
                         <td class="text-center p-0 pt-1 pl-0">{{ $res['Cant']}}</td>
+                        <td class="text-center p-0 pt-1 pl-0">{{ $res['Comprador']}}</td>
                         <td class="sammy-nowrap-1 p-0 pt-1 pl-0">{{ $res['Proveedor']}}</td>
                         <td class="text-center p-0 pt-1 pl-0">{{ $res['Articulo'] }}</td>
                         <td class="sammy-nowrap-1 p-0 pt-1 pl-0">{{ $res['Descripcion'] }}</td>
                         <td class="text-center p-0 pt-1 pl-0">{{ $res['Suc'] }}</td>
                         <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['Exist'],2) ?></td>
-                        <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['ExistCedis'],2) ?></td>
+                        <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['ExistCedis001'],2) ?></td>
+                        <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['ExistCedis013'],2) ?></td>
+                        <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['ExistCedis024'],2) ?></td>
                         <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['Venta_VtaANT'],2) ?></td>
                         <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['Venta_VtaACT'],2) ?></td>
                         <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['Venta_AutANT'],2) ?></td>
@@ -186,7 +195,10 @@
         function sumaTotales(){
             var tcant=0;
 
-            var ExistCedis=0;
+            var Exist=0;
+            var ExistCedis001=0;
+            var ExistCedis013=0;
+            var ExistCedis024=0;
             var Venta_VtaANT=0;
             var Venta_VtaACT=0;
             var Venta_AutANT=0;
@@ -205,7 +217,10 @@
             for (let i = 0; i < array.length; i++) {
               //console.log(array[i]['Cant']);
                  tcant +=(Number(array[i]['Cant'])) ;
-                 ExistCedis +=(Number(array[i]['ExistCedis'])) ;
+                 Exist +=(Number(array[i]['Exist'])) ;
+                 ExistCedis001 +=(Number(array[i]['ExistCedis001'])) ;
+                 ExistCedis013 +=(Number(array[i]['ExistCedis013'])) ;
+                 ExistCedis024 +=(Number(array[i]['ExistCedis024'])) ;
                  Venta_VtaANT +=(Number(array[i]['Venta_VtaANT'])) ;
                  Venta_VtaACT +=(Number(array[i]['Venta_VtaACT'])) ;
                  Venta_AutANT +=(Number(array[i]['Venta_AutANT'])) ;
@@ -224,7 +239,10 @@
             }
             //console.log(totFac);
             document.getElementById("tcant").innerHTML = separator(tcant);
-            document.getElementById("ExistCedis").innerHTML = separator(ExistCedis.toFixed(2));
+            document.getElementById("Exist").innerHTML = separator(Exist.toFixed(2));
+            document.getElementById("ExistCedis001").innerHTML = separator(ExistCedis001.toFixed(2));
+            document.getElementById("ExistCedis013").innerHTML = separator(ExistCedis013.toFixed(2));
+            document.getElementById("ExistCedis024").innerHTML = separator(ExistCedis024.toFixed(2));
             document.getElementById("Venta_VtaANT").innerHTML = separator(Venta_VtaANT.toFixed(2));
             document.getElementById("Venta_VtaACT").innerHTML = separator(Venta_VtaACT.toFixed(2));
             document.getElementById("Venta_AutANT").innerHTML = separator(Venta_AutANT.toFixed(2));
