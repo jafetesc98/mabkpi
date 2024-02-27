@@ -67,12 +67,25 @@ class PageController extends Controller
         if($suc=="t"){
             $suc="";
         }
+        
 
         $resultado = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; Exec RCA_ComparativoProv_web '".$prov."' ,'".$fecha_ini."', '".$fecha_fin."', '".$suc."'");
         $array = json_decode(json_encode($resultado), true); 
 
+        if($prov==""){
+            $prov="Todos";
+        }
+        if($suc==""){
+            $suc="Todas";
+        }
+        $array1=array(
+            'f_ini'=> $fecha_ini, 
+            'f_fin'=> $fecha_fin,
+            'prov'=> $prov,
+            'suc'=> $suc, 
+           );
        //return $array;
-       return view('pages/ventasxart')->with('array', $array);
+       return view('pages/ventasxart')->with('array', $array)->with('array1',$array1);
     }
 
     public function presupuesto()

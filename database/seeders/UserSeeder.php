@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
 
         
             $resultado1 = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; select LTRIM(RTRIM(nombre)) nombre, LTRIM(RTRIM(nom_cto))nom_cto, 
-            LTRIM(RTRIM(pwd))pwd,LTRIM(RTRIM(nombre_lar))nombre_lar , LTRIM(RTRIM(puesto))puesto, LTRIM(RTRIM(cia_ventas))cia_ventas from tcausr where puesto != 'BAJA'");
+            LTRIM(RTRIM(pwd))pwd,LTRIM(RTRIM(nombre_lar))nombre_lar , LTRIM(RTRIM(puesto))puesto, LTRIM(RTRIM(cia_ventas))cia_ventas from tcausr  where nombre in ('yulianasm','cosme','jcarlos','quimi','pedrocs','berthap','carlosto','edgarj','lauraa','joseaa','ejafet') or puesto='direccion'");
 
             for( $i=0; $i<count($resultado1); $i++){
 

@@ -21,7 +21,12 @@
 </div>
 
         <div class="card-header py-6 " style="text-align: center;">
-        <h4 class="card-title"><b> REPORTE DE VENTAS POR ARTICULO Y PROVEEDOR COMPARATIVO</b></h4>
+        <h1 class="card-title"><b> REPORTE DE VENTAS POR ARTICULO Y PROVEEDOR COMPARATIVO</b></h1>
+        </div>
+
+        <div class="card-header py-2 " >
+        <h6 class="card-title"><b>Proveedor: {{$array1['prov']. "   "}} Fecha inicio: {{$array1['f_ini']."    "}} Fecha fin:  {{$array1['f_fin']. "    "}} Sucursal: {{$array1['suc']}}</b></h6>
+        
         </div>
         
 <div class="tableFixHead1 box">
@@ -46,6 +51,7 @@
         
 <br>
 
+
         <div class=" box ">
             <table class="table" id="datos"  style="font-size:70% ">
                 <thead class="">
@@ -55,8 +61,10 @@
                     <th class="text-center py-0">Proveedor</th>
                     <th class="text-center py-0">Articulo</th>
                     <th class="text-center py-0">Descripcion</th>
-                    <th class="text-center py-0">Suc</th>
-                    <th class="text-center py-0">Exist</th>
+                    
+                    <th class="text-center py-0">ExistC</th>
+                    <th class="text-center py-0">ExistM</th>
+                    <th class="text-center py-0">ExistTotal</th>
                     <th class="text-center py-0">ExistCedis001</th>
                     <th class="text-center py-0">ExistCedis013</th>
                     <th class="text-center py-0">ExistCedis024</th>
@@ -82,7 +90,8 @@
                         <td style="background-color: #d6d6d6;"></td>
                         <td style="background-color: #d6d6d6;"></td>
                         <td style="background-color: #d6d6d6;"></td>
-                        <td style="background-color: #d6d6d6;"></td>
+                        <td id="ExistC" class="text-center py-0" style="background-color: #d6d6d6;"></td>
+                        <td id="ExistM" class="text-center py-0" style="background-color: #d6d6d6;"></td>
                         <td id="Exist" class="text-center py-0" style="background-color: #d6d6d6;"></td>
                         <td id="ExistCedis001" class="text-center py-0" style="background-color: #d6d6d6;"></td>
                         <td id="ExistCedis013" class="text-center py-0" style="background-color: #d6d6d6;"></td>
@@ -112,8 +121,10 @@
                         <td class="sammy-nowrap-1 p-0 pt-1 pl-0">{{ $res['Proveedor']}}</td>
                         <td class="text-center p-0 pt-1 pl-0">{{ $res['Articulo'] }}</td>
                         <td class="sammy-nowrap-1 p-0 pt-1 pl-0">{{ $res['Descripcion'] }}</td>
-                        <td class="text-center p-0 pt-1 pl-0">{{ $res['Suc'] }}</td>
-                        <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['Exist'],2) ?></td>
+                        
+                        <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['ExistC'],2) ?></td>
+                        <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['ExistM'],2) ?></td>
+                        <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['ExistTotal'],2) ?></td>
                         <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['ExistCedis001'],2) ?></td>
                         <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['ExistCedis013'],2) ?></td>
                         <td class="text-center p-0 pt-1 pl-0"><?php echo round( $res['ExistCedis024'],2) ?></td>
@@ -195,6 +206,8 @@
         function sumaTotales(){
             var tcant=0;
 
+            var ExistC=0;
+            var ExistM=0;
             var Exist=0;
             var ExistCedis001=0;
             var ExistCedis013=0;
@@ -217,7 +230,9 @@
             for (let i = 0; i < array.length; i++) {
               //console.log(array[i]['Cant']);
                  tcant +=(Number(array[i]['Cant'])) ;
-                 Exist +=(Number(array[i]['Exist'])) ;
+                 ExistC +=(Number(array[i]['ExistC'])) ;
+                 ExistM +=(Number(array[i]['ExistM'])) ;
+                 Exist +=(Number(array[i]['ExistTotal'])) ;
                  ExistCedis001 +=(Number(array[i]['ExistCedis001'])) ;
                  ExistCedis013 +=(Number(array[i]['ExistCedis013'])) ;
                  ExistCedis024 +=(Number(array[i]['ExistCedis024'])) ;
@@ -239,6 +254,8 @@
             }
             //console.log(totFac);
             document.getElementById("tcant").innerHTML = separator(tcant);
+            document.getElementById("ExistC").innerHTML = separator(ExistC.toFixed(2));
+            document.getElementById("ExistM").innerHTML = separator(ExistM.toFixed(2));
             document.getElementById("Exist").innerHTML = separator(Exist.toFixed(2));
             document.getElementById("ExistCedis001").innerHTML = separator(ExistCedis001.toFixed(2));
             document.getElementById("ExistCedis013").innerHTML = separator(ExistCedis013.toFixed(2));
