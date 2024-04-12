@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\ColorSchemeController;
+use App\Http\Controllers\FormatosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +49,24 @@ Route::middleware('auth')->group(function() {
 
         Route::get('/avance', [App\Http\Controllers\PageController::class, 'avancehdr'])->name('avance');
         Route::post('/avancexsuc', [App\Http\Controllers\PageController::class, 'avancexsuc'])->name('avancexsuc');
+        Route::get('/evaluacion', [App\Http\Controllers\PageController::class, 'evaluacion'])->name('evaluacion');
+        Route::post('/preguntas', [App\Http\Controllers\PageController::class, 'preguntas'])->name('preguntas');
+        Route::post('/resultados', [App\Http\Controllers\PageController::class, 'resultados'])->name('resultados');
+        Route::get('/error', [App\Http\Controllers\PageController::class, 'error'])->name('error');
+        Route::get('/resultadosevaluacion', [App\Http\Controllers\PageController::class, 'resultadosevaluacion'])->name('resultadosevaluacion');
+        Route::post('/muestraresultados', [App\Http\Controllers\PageController::class, 'muestraresultados'])->name('muestraresultados');
+        Route::post('/resultadosglobales', [App\Http\Controllers\PageController::class, 'resultadosglobales'])->name('resultadosglobales');
+        Route::get('/abrirPdf', [App\Http\Controllers\FormatosController::class, 'abrirPdf'])->name('abrirPdf');
+        Route::get('/configuracion', [App\Http\Controllers\PageController::class, 'configuracion'])->name('configuracion');
+        Route::get('/editarpreg', [App\Http\Controllers\PageController::class, 'editarpreg'])->name('editarpreg');
+        Route::post('/acturalizapreg', [App\Http\Controllers\PageController::class, 'acturalizapreg'])->name('acturalizapreg');
+        Route::get('/verpregunta', [App\Http\Controllers\PageController::class, 'verpregunta'])->name('verpregunta');
+        Route::post('/guardapregunta', [App\Http\Controllers\PageController::class, 'guardapregunta'])->name('guardapregunta');
+        Route::get('/eliminapreg', [App\Http\Controllers\PageController::class, 'eliminapreg'])->name('eliminapreg');
+        Route::get('/verconfiguracion', [App\Http\Controllers\PageController::class, 'verconfiguracion'])->name('verconfiguracion');
+        Route::get('/asignasup', [App\Http\Controllers\PageController::class, 'asignasup'])->name('asignasup');
 
-        //Route::get('/ventas', [App\Http\Controllers\PageController::class, 'ventas'])->name('ventas');
+        Route::post('/actualizasup', [App\Http\Controllers\PageController::class, 'actualizasup'])->name('actualizasup');
        
     });
 });

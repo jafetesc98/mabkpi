@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
 
         
             $resultado1 = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; select LTRIM(RTRIM(nombre)) nombre, LTRIM(RTRIM(nom_cto))nom_cto, 
-            LTRIM(RTRIM(pwd))pwd,LTRIM(RTRIM(nombre_lar))nombre_lar , LTRIM(RTRIM(puesto))puesto, LTRIM(RTRIM(cia_ventas))cia_ventas from tcausr  where nombre in ('yulianasm','cosme','jcarlos','quimi','pedrocs','berthap','carlosto','edgarj','lauraa','joseaa','ejafet') or puesto='direccion'");
+            LTRIM(RTRIM(pwd))pwd,LTRIM(RTRIM(nombre_lar))nombre_lar , LTRIM(RTRIM(puesto))puesto, LTRIM(RTRIM(cia_ventas))cia_ventas from tcausr  where nombre in ('yulianasm','cosme','jcarlos','quimi','pedrocs','berthap','carlosto','edgarj','lauraa','joseaa','ejafet','enriqued','gregoria') or puesto='direccion'");
 
             for( $i=0; $i<count($resultado1); $i++){
 
@@ -48,16 +48,17 @@ class UserSeeder extends Seeder
             }
         
 
-        /* DB::table('users')->insert([
-            'name' => 'OLGA',
-            'nom_cto'=> 'OLG',
-            'password' => Hash::make('LIGOHOY'),
-            'nombre_lar' => 'OLGA LIDIA',
-            'puesto' =>'DIRECCION',
+         /*DB::table('users')->insert([
+            'name' => 'ENRIQUED',
+            'nom_cto'=> 'DAV',
+            'password' => Hash::make('MINI24SORI'),
+            'nombre_lar' => 'ENRIQUE DAVID SORIANO HERNANDEZ',
+            'puesto' =>'SOPERACION',
             'email' => '',
             'cia_ventas' =>'OFC',
             'active' => 1
         ]);
+        
         
         DB::table('users')->insert([
             'name' => 'ADMIN',

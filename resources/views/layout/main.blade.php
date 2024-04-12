@@ -1,7 +1,7 @@
 @extends('../layout/base')
 
 @section('body')
-    <body class="py-5 md:py-0">
+    <body class="todo py-5 md:py-0">
         @yield('content')
         @include('../layout/components/dark-mode-switcher')
         @include('../layout/components/main-color-switcher')

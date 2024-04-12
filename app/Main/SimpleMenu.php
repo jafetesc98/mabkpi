@@ -60,6 +60,24 @@ class SimpleMenu
             'title' => 'Presupuesto',
             'permiso' => 'todos'
         ],
+        'evaluacion' => [
+            'icon' => 'edit',
+            'route_name' => 'evaluacion',
+            'params' => [
+                'layout' => 'side-menu',
+                'permiso' => 'soperacion'
+            ],
+            'title' => 'Evaluacion'
+        ],
+        'revision' => [
+            'icon' => 'list',
+            'route_name' => 'resultadosevaluacion',
+            'params' => [
+                'layout' => 'side-menu',
+                'permiso' => 'operacion'
+            ],
+            'title' => 'RESULTADOS DE EVALUACION'
+        ],
     ];
     }
             
