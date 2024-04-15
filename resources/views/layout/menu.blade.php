@@ -8,7 +8,7 @@
                     @else -->
                     @if ($menu['params']['permiso']=="direccion" && Auth::user()->puesto =="DIRECCION")
                         <li>
-                            <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}" class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
+                            <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}&nombre= {{Auth::user()->nombre_lar}}" class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
                                 <div class="side-menu__icon">
                                     <i data-lucide="{{ $menu['icon'] }}"></i>
                                 </div>
@@ -25,7 +25,7 @@
                         @endif
                         @if ($menu['params']['permiso']=="todos" )
                         <li>
-                            <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}" class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
+                            <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']): 'javascript:;' }}" class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
                                 <div class="side-menu__icon">
                                     <i data-lucide="{{ $menu['icon'] }}"></i>
                                 </div>
@@ -43,7 +43,7 @@
                         <?php if (  Auth::user()->puesto =="SUBOPERACI" || Auth::user()->puesto =="DIRECCION" || Auth::user()->puesto =="SOPERACION"): ?>
                          @if ($menu['params']['permiso']=="soperacion" )
                         <li>
-                            <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}" class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
+                            <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}&nombre= {{Auth::user()->nombre_lar}}" class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
                                 <div class="side-menu__icon">
                                     <i data-lucide="{{ $menu['icon'] }}"></i>
                                 </div>
@@ -63,7 +63,7 @@
                     <?php if (  Auth::user()->puesto =="SUBOPERACI" || Auth::user()->puesto =="OPERACION" ): ?>
                     @if ($menu['params']['permiso']=="operacion")
                         <li>
-                            <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}" class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
+                            <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']) : 'javascript:;' }}&nombre= {{Auth::user()->nombre_lar}}" class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
                                 <div class="side-menu__icon">
                                     <i data-lucide="{{ $menu['icon'] }}"></i>
                                 </div>
