@@ -10,6 +10,7 @@ use App\Models\Preguntas;
 use App\Models\Preghdr;
 use App\Models\Pregdet;
 use App\Models\Supervisor;
+use App\Models\Comentarios;
 
 class PageController extends Controller
 {
@@ -433,6 +434,7 @@ public function evaluacion(Request $request)
         $nombre = $request->input("usuario");
         $suc = $request->input("suc");
         $id=0;
+        $comentarios=$request->input("comentarios");
         //return $puesto;
         $preguntas = Preguntas::where('status',1)
         ->select('id','desPreg','tipo')->get()->toArray();
@@ -485,6 +487,27 @@ public function evaluacion(Request $request)
                 'error'     =>  'Ocurrió un error al guardar, intentelo nuevamente',
             ), 421);
         }
+
+        //insertando cabecera
+
+        if($comentarios != ""){
+            $coment = new Comentarios;
+            $coment->id_cabecera = $preghdr->id;
+            $coment->comentario = strtoupper($comentarios);
+            
+            try{
+                $coment->save();
+             }catch(Throwable $e){
+                 DB::rollBack();
+                 return response()->json(array(
+                     'code'      =>  421,
+                     'message'   =>  'Ocurrió un error al guardar, intentelo nuevamente',
+                     'error'     =>  'Ocurrió un error al guardar, intentelo nuevamente',
+                 ), 421);
+             }
+        }
+        
+
        
         //insertando detalle 
         $id=$preghdr->id;
@@ -847,9 +870,10 @@ public function evaluacion(Request $request)
             
             //return $dis11ev0;
 
+            $fechas= array('f_ini'=>$mes,'f_fin'=>$mes3);
 
             return view('pages/resultadosglobales')->with("array",$resfinal)->with('dis1',$dis1)->with('dis2',$dis2)->with('dis3',$dis3)->with('dis4',$dis4)->with('dis5',$dis5)
-            ->with('dis6',$dis6)->with('dis7',$dis7)->with('dis8',$dis8)->with('dis9',$dis9)->with('dis10',$dis10)->with('jefesup',$dis11ev0);
+            ->with('dis6',$dis6)->with('dis7',$dis7)->with('dis8',$dis8)->with('dis9',$dis9)->with('dis10',$dis10)->with('jefesup',$dis11ev0)->with('fechas',$fechas);
 
         }else{
         //return $request;
@@ -1180,10 +1204,10 @@ public function evaluacion(Request $request)
                 array_push($array3, $datos);
             }           
          }
-
+         $fechas= array('f_ini'=>$mes,'f_fin'=>$mes3);
         //return $array3;
-        //return $super;
-        return view('pages/muestraresultados')->with("array",$super)->with("array1",$array)->with("array2",$array2)->with("array3",$array3);
+        //return $fechas;
+        return view('pages/muestraresultados')->with("array",$super)->with("array1",$array)->with("array2",$array2)->with("array3",$array3)->with('fechas',$fechas);
         }
     }
     public function calificaciones($distrito, $datos, $evaluacion){

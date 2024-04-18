@@ -383,8 +383,21 @@
                     <tr style="border: 0px;">
                         <td scope="col" align="center" colspan="9" ><b>Tienda critica </b>
                         (Nulo involucramiento por parte del gerente de tienda, se tienen que tomar medidas disciplinarias y accionar inmediatamente en tienda para revertir el mal resultado)</td>
-                        <td scope="col" align="center" colspan="1" >80% a 89%</td>
+                        <td scope="col" align="center" colspan="1" >MENOR A 80% </td>
                     </tr>
+                    <?php if (count($comentarios)!=0 ): ?>
+                    <tr>
+                        <td style="border: 0; font-size:3px" colspan="10" class="saltos">
+                            <br>
+                        </td>
+                    </tr>
+                    <tr style="border: 0px;">
+                        <th scope="col" align="center" colspan="10" style="background-color: #ccc">COMENTARIOS</th>
+                    </tr>
+                    <tr style="border: 0px;">
+                        <td scope="col" align="center" colspan="10" ><b>{{$comentarios[0]['comentario']}} </b>
+                    </tr>
+                    <?php endif; ?>      
                     <tr>
                         <td style="border: 0; font-size:3px" colspan="10" class="saltos">
                             <br><br><br><br><br><br><br><br><br><br><br><br><br>

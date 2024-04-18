@@ -10,17 +10,26 @@
                 <div class="grid grid-cols-12 gap-6">
                     <div class="col-span-12 xxl:col-span-9 grid grid-cols-12 gap-6">
                         <!-- BEGIN: Mensaje -->
-                        <div class="col-span-12 mt-8">
-                            <div class="intro-y flex items-center h-10">
+                        <div class="col-span-12 mt-8 flex">
+                           
+                            <div class="intro-y flex items-center col-span-6 ">
                                 <h2 class="text-lg font-medium truncate mr-5"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
                                     RESULTADOS GLOBALES
                                 </font></font></h2>
+                                </div>
+                                <div class="intro-y flex items-center col-span-6 md:ml-auto">
+                               
+                                </div>
+                                <div class="intro-y flex items-center col-span-6 ">
+                                <a href="pdfglobal?f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank""><button class="btn btn-danger mb-2">
+                                Exportar PDF
+                                </button></a>
                             </div>
                         </div>
                         <!-- END: Mensaje -->
 
                         <!-- BEGIN: Weekly Top Seller -->
-                        <div class="col-span-12 mt-6">
+                        <div class="col-span-12 mt-2">
                             <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
                                 @foreach($array as $key=>$distritos)
                                 <table class="table table-report sm:mt-2">
@@ -29,61 +38,61 @@
                                             <?php if ( $key=="dis1" ): ?> 
                                             <th class="whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> DISTRITO 1</font></font></th>
                                             @foreach ($dis1 as $suc)
-                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</font></font></th>
+                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="imprimepdf?distrito={{$suc['ID']}}&suc={{$suc['Suc']}}&f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</a></font></font></th>
                                             @endforeach
                                             <?php endif; ?>   
                                             <?php if ( $key=="dis2" ): ?> 
                                             <th class="whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> DISTRITO 2</font></font></th>
                                             @foreach ($dis2 as $suc)
-                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</font></font></th>
+                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="imprimepdf?distrito={{$suc['ID']}}&suc={{$suc['Suc']}}&f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</a></font></font></th>
                                             @endforeach
                                             <?php endif; ?>   
                                             <?php if ( $key=="dis3" ): ?> 
                                             <th class="whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> DISTRITO 3</font></font></th>
                                             @foreach ($dis3 as $suc)
-                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</font></font></th>
+                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="imprimepdf?distrito={{$suc['ID']}}&suc={{$suc['Suc']}}&f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</a></font></font></th>
                                             @endforeach
                                             <?php endif; ?>   
                                             <?php if ( $key=="dis4" ): ?> 
                                             <th class="whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> DISTRITO 4</font></font></th>
                                             @foreach ($dis4 as $suc)
-                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</font></font></th>
+                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="imprimepdf?distrito={{$suc['ID']}}&suc={{$suc['Suc']}}&f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</a></font></font></th>
                                             @endforeach
                                             <?php endif; ?>   
                                             <?php if ( $key=="dis5" ): ?> 
                                             <th class="whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> DISTRITO 5</font></font></th>
                                             @foreach ($dis5 as $suc)
-                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</font></font></th>
+                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="imprimepdf?distrito={{$suc['ID']}}&suc={{$suc['Suc']}}&f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</a></font></font></th>
                                             @endforeach
                                             <?php endif; ?>   
                                             <?php if ( $key=="dis6" ): ?> 
                                             <th class="whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> DISTRITO 6</font></font></th>
                                             @foreach ($dis6 as $suc)
-                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</font></font></th>
+                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="imprimepdf?distrito={{$suc['ID']}}&suc={{$suc['Suc']}}&f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</a></font></font></th>
                                             @endforeach
                                             <?php endif; ?>   
                                             <?php if ( $key=="dis7" ): ?> 
                                             <th class="whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> DISTRITO 7</font></font></th>
                                             @foreach ($dis7 as $suc)
-                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</font></font></th>
+                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="imprimepdf?distrito={{$suc['ID']}}&suc={{$suc['Suc']}}&f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</a></font></font></th>
                                             @endforeach
                                             <?php endif; ?>   
                                             <?php if ( $key=="dis8" ): ?> 
                                             <th class="whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> DISTRITO 8</font></font></th>
                                             @foreach ($dis8 as $suc)
-                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</font></font></th>
+                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="imprimepdf?distrito={{$suc['ID']}}&suc={{$suc['Suc']}}&f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</a></font></font></th>
                                             @endforeach
                                             <?php endif; ?>   
                                             <?php if ( $key=="dis9" ): ?> 
                                             <th class="whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> DISTRITO 9</font></font></th>
                                             @foreach ($dis9 as $suc)
-                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</font></font></th>
+                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="imprimepdf?distrito={{$suc['ID']}}&suc={{$suc['Suc']}}&f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</a></font></font></th>
                                             @endforeach
                                             <?php endif; ?>   
                                             <?php if ( $key=="dis10" ): ?> 
                                             <th class="whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> DISTRITO 10</font></font></th>
                                             @foreach ($dis10 as $suc)
-                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</font></font></th>
+                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="imprimepdf?distrito={{$suc['ID']}}&suc={{$suc['Suc']}}&f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</a></font></font></th>
                                             @endforeach
                                             <?php endif; ?>   
 

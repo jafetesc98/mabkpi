@@ -266,6 +266,17 @@
                     @endforeach
                 </div>
         </div>
+<!-- comentarios -->
+        <div class="intro-y box mt-5">
+                <div class="flex items-center p-5 border-b border-gray-200">
+                    <h2 class="font-medium text-base mr-auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    Comentarios
+                    </font></font></h2>
+                </div>
+                <div class="p-5">
+                <textarea id="comentarios" name="comentarios" class="form-control" rows="5" maxlength="999" style="text-transform: uppercase; resize:none;" ></textarea>
+                </div>
+        </div>
     </div>
 
 </div> 

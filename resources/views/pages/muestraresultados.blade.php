@@ -27,7 +27,7 @@
                                         <tr>
                                             <th class="whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></th>
                                             @foreach ($array as $suc)
-                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</font></font></th>
+                                                <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="imprimepdf?distrito={{$suc['ID']}}&suc={{$suc['Suc']}}&f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank">{{$suc['Suc']}} <br> {{$suc['NomSuc']}}</a></font></font></th>
                                             @endforeach
                                             <th class="text-center whitespace-no-wrap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PROMEDIO</font></font></th>
                                            

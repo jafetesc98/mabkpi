@@ -67,6 +67,9 @@ Route::middleware('auth')->group(function() {
         Route::get('/asignasup', [App\Http\Controllers\PageController::class, 'asignasup'])->name('asignasup');
 
         Route::post('/actualizasup', [App\Http\Controllers\PageController::class, 'actualizasup'])->name('actualizasup');
+
+        Route::get('/imprimepdf', [App\Http\Controllers\FormatosController::class, 'imprimepdf'])->name('imprimepdf');
+        Route::get('/pdfglobal', [App\Http\Controllers\FormatosController::class, 'pdfglobal'])->name('pdfglobal');
        
     });
 });
