@@ -42,7 +42,8 @@ Route::middleware('auth')->group(function() {
         Route::get('/buscaDif', [App\Http\Controllers\PageController::class, 'buscaDif'])->name('buscaDif');
 
         Route::get('/ventas', [App\Http\Controllers\PageController::class, 'prov'])->name('ventas');
-        
+        Route::get('/comisioneshdr', [App\Http\Controllers\PageController::class, 'comisioneshdr'])->name('comisioneshdr');
+        Route::post('/comisionesdet', [App\Http\Controllers\PageController::class, 'comisionesdet'])->name('comisionesdet');
         Route::get('/presupuesto', [App\Http\Controllers\PageController::class, 'presupuesto'])->name('presupuesto');
         Route::post('/presupuestoxsuc', [App\Http\Controllers\PageController::class, 'presupuestoxsuc'])->name('presupuestoxsuc');
         Route::post('/ventasxart', [App\Http\Controllers\PageController::class, 'buscaventasxart'])->name('ventasxart');

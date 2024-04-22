@@ -30,9 +30,12 @@ class UserSeeder extends Seeder
         ]);*/
 
         
-            $resultado1 = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; select LTRIM(RTRIM(nombre)) nombre, LTRIM(RTRIM(nom_cto))nom_cto, 
-            LTRIM(RTRIM(pwd))pwd,LTRIM(RTRIM(nombre_lar))nombre_lar , LTRIM(RTRIM(puesto))puesto, LTRIM(RTRIM(cia_ventas))cia_ventas from tcausr  where nombre in ('yulianasm','cosme','jcarlos','quimi','pedrocs','berthap','carlosto','edgarj','lauraa','joseaa','ejafet','enriqued','gregoria') or puesto='direccion'");
+            //$resultado1 = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; select LTRIM(RTRIM(nombre)) nombre, LTRIM(RTRIM(nom_cto))nom_cto, 
+            //LTRIM(RTRIM(pwd))pwd,LTRIM(RTRIM(nombre_lar))nombre_lar , LTRIM(RTRIM(puesto))puesto, LTRIM(RTRIM(cia_ventas))cia_ventas from tcausr  where nombre in ('yulianasm','cosme','jcarlos','quimi','pedrocs','berthap','carlosto','edgarj','lauraa','joseaa','ejafet','enriqued','gregoria') or puesto='direccion'");
 
+            $resultado1 = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; select LTRIM(RTRIM(nombre)) nombre, LTRIM(RTRIM(nom_cto))nom_cto, 
+            LTRIM(RTRIM(pwd))pwd,LTRIM(RTRIM(nombre_lar))nombre_lar , LTRIM(RTRIM(puesto))puesto, LTRIM(RTRIM(cia_ventas))cia_ventas from tcausr  where nombre like '%vtaruta%' and nom_cto not in ('b22','b23','omm','v13','v21') and nombre_lar !='BAJA'");
+            
             for( $i=0; $i<count($resultado1); $i++){
 
                 DB::table('users')->insert([

@@ -44,11 +44,11 @@
                 
                     <div class="form-group pt-4" style="width: 170px; margin: auto; justify-content: center;" >
                             <label class="ml-8">
-                                SI
+                                10%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="1" required>
                             </label>
                             <label class="mx-6">
-                                NO
+                                5%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="0" required>
                             </label>
                     </div>
@@ -75,11 +75,11 @@
                 
                     <div class="form-group pt-4" style="width: 170px; margin: auto; justify-content: center;" >
                             <label class="ml-8">
-                                SI
+                                10%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="1" required>
                             </label>
                             <label class="mx-6">
-                                NO
+                                5%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="0" required>
                             </label>
                     </div>
@@ -106,11 +106,11 @@
                 
                     <div class="form-group pt-4" style="width: 170px; margin: auto; justify-content: center;" >
                             <label class="ml-8">
-                                SI
+                                10%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="1" required>
                             </label>
                             <label class="mx-6">
-                                NO
+                                5%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="0" required>
                             </label>
                     </div>
@@ -135,11 +135,11 @@
                 
                     <div class="form-group pt-4" style="width: 170px; margin: auto; justify-content: center;" > 
                             <label class="ml-8">
-                                SI
+                                10%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="1" required>
                             </label>
                             <label class="mx-6">
-                                NO
+                                5%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="0" required>
                             </label>
                     </div>
@@ -169,11 +169,11 @@
                 
                     <div class="form-group pt-4" style="width: 170px; margin: auto; justify-content: center;" >
                             <label class="ml-8">
-                                SI
+                                10%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="1" required>
                             </label>
                             <label class="mx-6">
-                                NO
+                                5%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="0" required>
                             </label>
                     </div>
@@ -197,11 +197,11 @@
                 
                     <div class="form-group pt-4" style="width: 170px; margin: auto; justify-content: center;" >
                             <label class="ml-8">
-                                SI
+                                10%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="1" required>
                             </label>
                             <label class="mx-6">
-                                NO
+                                5%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="0" required>
                             </label>
                     </div>
@@ -225,11 +225,11 @@
                 
                     <div class="form-group pt-4" style="width: 170px; margin: auto; justify-content: center;" >
                             <label class="ml-8">
-                                SI
+                                10%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="1" required>
                             </label>
                             <label class="mx-6">
-                                NO
+                                5%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="0" required>
                             </label>
                     </div>
@@ -253,11 +253,11 @@
                 
                     <div class="form-group pt-4" style="width: 170px; margin: auto; justify-content: center;" >
                             <label class="ml-8">
-                                SI
+                                10%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="1" required>
                             </label>
                             <label class="mx-6">
-                                NO
+                                5%
                             <input type="radio" name="pregunta{{ $preg['id'] }}" value="0" required>
                             </label>
                     </div>

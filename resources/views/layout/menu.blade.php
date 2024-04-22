@@ -23,6 +23,7 @@
                             </a>
                         </li>
                         @endif
+                        <?php if (  Auth::user()->puesto !="VENTAS" ): ?>
                         @if ($menu['params']['permiso']=="todos" )
                         <li>
                             <a href="{{ isset($menu['route_name']) ? route($menu['route_name'], $menu['params']): 'javascript:;' }}" class="{{ $first_level_active_index == $menuKey ? 'side-menu side-menu--active' : 'side-menu' }}">
@@ -40,6 +41,8 @@
                             </a>
                         </li>
                         @endif
+                        <?php endif; ?>
+
                         <?php if (  Auth::user()->puesto =="SUBOPERACI" || Auth::user()->puesto =="DIRECCION" || Auth::user()->puesto =="SOPERACION"): ?>
                          @if ($menu['params']['permiso']=="soperacion" )
                         <li>

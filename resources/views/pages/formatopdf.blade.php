@@ -86,9 +86,9 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$resultados[$i]['desPreg'] .'</td>';
                                     if($resultados[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10% </td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5% </td>';
                                     }
                                     
                                     if($i==0){
@@ -119,9 +119,9 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$resultados[$i]['desPreg'] .'</td>';
                                     if($resultados[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10% </td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5% </td>';
                                     }
                                     if($i==$ventas){
                                         echo '<td align="center" rowspan="'.$analisis+1 .'" colspan="1" style="font-size:9px"> '.$array['ANALISIS FINANCIERO'].'%</td>';
@@ -151,9 +151,9 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$resultados[$i]['desPreg'] .'</td>';
                                     if($resultados[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
                                     if($i==$ventas+$analisis){
                                         echo '<td align="center" rowspan="'.$rh+1 .'" colspan="1" style="font-size:9px"> '.$array['RH'].'%</td>';
@@ -184,9 +184,9 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$resultados[$i]['desPreg'] .'</td>';
                                     if($resultados[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
                                     if($i==$ventas+$analisis+$rh){
                                         echo '<td align="center" rowspan="'.$experiencia+1 .'" colspan="1" style="font-size:9px"> '.$array['EXPERIENCIA'].'%</td>';
@@ -218,9 +218,9 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$resultados[$i]['desPreg'] .'</td>';
                                     if($resultados[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
                                     if($i==$ventas+$analisis+$rh+$experiencia){
                                         echo '<td align="center" rowspan="'.$estandares+1 .'" colspan="1" style="font-size:9px"> '.$array['ESTANDARES DE MERCADERIA'].'%</td>';
@@ -251,9 +251,9 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$resultados[$i]['desPreg'] .'</td>';
                                     if($resultados[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
                                     if($i==$ventas+$analisis+$rh+$experiencia+$estandares){
                                         echo '<td align="center" rowspan="'.$limpieza+1 .'" colspan="1" style="font-size:9px"> '.$array['LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'].'%</td>';
@@ -284,9 +284,9 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$resultados[$i]['desPreg'] .'</td>';
                                     if($resultados[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
                                     if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza){
                                         echo '<td align="center" rowspan="'.$perecederos+1 .'" colspan="1" style="font-size:9px"> '.$array['PERECEDEROS'].'%</td>';
@@ -317,9 +317,9 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$resultados[$i]['desPreg'] .'</td>';
                                     if($resultados[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
                                     if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza+$perecederos){
                                         echo '<td align="center" rowspan="'.$contabilidad+1 .'" colspan="1" style="font-size:9px"> '.$array['CONTABILIDAD'].'%</td>';

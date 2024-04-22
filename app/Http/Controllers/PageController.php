@@ -42,6 +42,7 @@ class PageController extends Controller
         'avance' =>"AVANCE X SUCURSAL",
         'evaluacion' =>"EVALUACION A SUCURSALES",
         'resultadosevaluacion' =>"RESULTADOS DE EVALUACION",
+        'comisioneshdr' =>"COMISIONES",
         );
 
         return view('pages/tablero')->with('array', $array);
@@ -308,6 +309,26 @@ class PageController extends Controller
         return view('pages/capas')->with('array', $groupCapas);
     }
 
+    public function comisioneshdr()
+    {
+        
+        return view('pages/comisioneshdr');
+    }
+
+    public function comisionesdet(Request $request)
+    {
+        $f_ini = date('Ymd',strtotime($request->input("f_ini")));
+        $f_fin=date('Ymd',strtotime($request->input("f_fin")));
+        $factor=$request->input("factor");
+        $nombre=$request->input("user");
+
+        $resultado = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; Exec JEM_Comisiones_web '".$f_ini."', '" .$f_fin."','".$factor."','".$nombre."'");
+        $array = json_decode(json_encode($resultado), true); 
+
+
+        //return $resultado;
+        return view('pages/comisionesdet')->with('array', $array);
+    }
 
 function array_sort($array, $on, $order=SORT_ASC)
 {
