@@ -41,8 +41,8 @@
                     <th class="text-center ">Ind</th>
                     <th class="text-center sammy-nowrap">Base 1%</th>
                     <th class="text-center ">PorcVta</th>
-                    <th class="text-center ">PagoVta</th>
-                    <!--<th class="text-center "> - </th>
+                    <!--<th class="text-center ">PagoVta</th>
+                    <th class="text-center "> - </th>
                     <th class="text-center ">SaldoVencido</th>
                     <th class="text-center ">PorcCartera</th>
                     <th class="text-center ">PagoCartera</th> -->
@@ -50,14 +50,14 @@
                     <th class="text-center ">CuotaMgn</th>
                     <th class="text-center ">Margen</th>
                     <th class="text-center ">PorcMgn</th>
-                    <th class="text-center ">PagoMgn</th>
+                    <!--<th class="text-center ">PagoMgn</th>-->
                     <th class="text-center "> __ </th>
                     <th class="text-center ">CliTotal</th>
                     <th class="text-center ">CliLogro</th>
                     <th class="text-center ">PorcCli</th>
-                    <th class="text-center ">PagoCli</th>
+                    <!--<th class="text-center ">PagoCli</th>
                     <th class="text-center "> ,, </th>
-                    <th class="text-center ">TotalPago</th>
+                    <th class="text-center ">TotalPago</th>-->
                 </tr>
                     
                 </thead>
@@ -74,8 +74,8 @@
                             <td class=" text-center p-0 pt-1 pl-0">{{$res['Ind']}}</td>
                             <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['Base 1%'],2),2) ?></td>
                             <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['PorcVta'],2),2) ?></td>
-                            <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['PagoVta'],2),2) ?></td>
-                            <!--<td class=" text-center p-0 pt-1 pl-0">{{$res[' - ']}}</td>
+                            <!--<td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['PagoVta'],2),2) ?></td>
+                            <td class=" text-center p-0 pt-1 pl-0">{{$res[' - ']}}</td>
                             <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['SaldoVencido'],2),2) ?></td>
                             <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['PorcCartera'],2),2) ?></td>
                             <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['PagoCartera'],2),2) ?></td> -->
@@ -83,14 +83,14 @@
                             <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['CuotaMgn'],2),2) ?></td>
                             <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['Margen'],2),2) ?></td>
                             <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['PorcMgn'],2),2) ?></td>
-                            <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['PagoMgn'],2),2) ?></td>
+                            <!--<td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['PagoMgn'],2),2) ?></td>-->
                             <td class=" text-center p-0 pt-1 pl-0">{{ $res[' __ '] }}</td>
                             <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['CliTotal'],2),2) ?></td>
                             <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['CliLogro'],2),2) ?></td>
                             <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['PorcCli'],2),2) ?></td>
-                            <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['PagoCli'],2),2) ?></td>
+                            <!--<td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['PagoCli'],2),2) ?></td>
                             <td class=" text-center p-0 pt-1 pl-0">{{ $res[' ,, '] }}</td>
-                            <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['TotalPago'],2),2) ?></td>
+                            <td class=" text-center p-0 pt-1 pl-0"><?php echo number_format(round( $res['TotalPago'],2),2) ?></td>-->
                         </tr>
                     @endforeach 
                             <tr class='noSearch hide'>

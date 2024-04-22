@@ -317,14 +317,20 @@ class PageController extends Controller
 
     public function comisionesdet(Request $request)
     {
+
         $f_ini = date('Ymd',strtotime($request->input("f_ini")));
         $f_fin=date('Ymd',strtotime($request->input("f_fin")));
         $factor=$request->input("factor");
         $nombre=$request->input("user");
 
-        $resultado = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; Exec JEM_Comisiones_web '".$f_ini."', '" .$f_fin."','".$factor."','".$nombre."'");
-        $array = json_decode(json_encode($resultado), true); 
-
+        $resultado=null;
+        if($nombre == "LUIS ENRIQUE RAMIREZ SAAVEDRA"){
+            $resultado = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; Exec RCA_Comisiones '".$f_ini."', '" .$f_fin."','".$factor."'");
+            $array = json_decode(json_encode($resultado), true); 
+        }else{
+            $resultado = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; Exec JEM_Comisiones_web '".$f_ini."', '" .$f_fin."','".$factor."','".$nombre."'");
+            $array = json_decode(json_encode($resultado), true); 
+        }
 
         //return $resultado;
         return view('pages/comisionesdet')->with('array', $array);
