@@ -381,7 +381,7 @@ public function evaluacion(Request $request)
             $fecha3 = date("Ym")."01";
             $fecha4 = date("Ym")."05"; //aqui va hasta el 5 de cada mes 
 
-        $busqueda2 = DB::select("SET NOCOUNT ON; select Suc,NomSuc from JEM_distritos a where Supervisor='".$nombre."' and Suc not in(select Suc from ResultPreghdr 
+        $busqueda2 = DB::select("SET NOCOUNT ON; select Suc,NomSuc from distritos a where Supervisor='".$nombre."' and Suc not in(select Suc from ResultPreghdr 
         where id_supervisor=a.ID and f_alt>='".$fecha3. "' and f_alt<='".$fecha4."'  and evaluacion=0) order by Suc asc");
 
         $array2 = json_decode(json_encode($busqueda2), true); 
@@ -404,12 +404,12 @@ public function evaluacion(Request $request)
         $fecha3 = date("Ym")."01";
         $fecha4 = date("Ym")."05"; //aqui va hasta el 5 de cada mes 
 
-        $busqueda1 = DB::select("SET NOCOUNT ON; select Suc,NomSuc from JEM_distritos a where Supervisor='".$nombre."' and Suc not in(select Suc from ResultPreghdr 
+        $busqueda1 = DB::select("SET NOCOUNT ON; select Suc,NomSuc from distritos a where Supervisor='".$nombre."' and Suc not in(select Suc from ResultPreghdr 
         where id_supervisor=a.ID and f_alt>='".$fecha1. "' and f_alt<='".$fecha2."'  and evaluacion=1)");
 
         $array = json_decode(json_encode($busqueda1), true); 
 
-        $busqueda2 = DB::select("SET NOCOUNT ON; select Suc,NomSuc from JEM_distritos a where Supervisor='".$nombre."' and Suc not in(select Suc from ResultPreghdr 
+        $busqueda2 = DB::select("SET NOCOUNT ON; select Suc,NomSuc from distritos a where Supervisor='".$nombre."' and Suc not in(select Suc from ResultPreghdr 
         where id_supervisor=a.ID and f_alt>='".$fecha3. "' and f_alt<='".$fecha4."'  and evaluacion=2)");
 
         $array2 = json_decode(json_encode($busqueda2), true); 
@@ -474,8 +474,8 @@ public function evaluacion(Request $request)
 
         $validar = Preghdr::where('ResultPreghdr.suc',$suc )
         ->where('ResultPreghdr.f_alt', date("Ymd"))
-        ->where ('JEM_distritos.Supervisor',$nombre)
-        ->join('JEM_distritos','ResultPreghdr.id_supervisor','=','JEM_distritos.ID')
+        ->where ('distritos.Supervisor',$nombre)
+        ->join('distritos','ResultPreghdr.id_supervisor','=','distritos.ID')
         ->select('ResultPreghdr.ID')
         ->get()->toArray();
 
@@ -775,6 +775,7 @@ public function evaluacion(Request $request)
     {
         $sup = Distritos::where('ID','!=','11')
         ->where('ID','!=','12')
+        ->where('ID','!=','0')
         ->select('Supervisor','ID')->distinct()->orderBy('ID','ASC')->get()->toArray();
         //return $sup;
         return view('pages/resultadosevaluacion')->with("array",$sup);

@@ -1,7 +1,7 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Presupuesto de sucursales </title>
+    <title>Comisiones</title>
  
     <script src="dist/js/busqueda.js"></script>
 @endsection
@@ -15,7 +15,7 @@
 @endsection
 
 @section('subhead')
-    <title>Dashboard </title>
+    <title>Comisiones </title>
    
     
 @endsection
@@ -33,18 +33,18 @@
         <div class="">
             <!-- BEGIN: Login Form -->
                 <div class="my-auto mx-auto  bg-white dark:bg-darkmode-600  px-5 sm:px-8 py-8  rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
-                    <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-center">PRESUPUESTO DE SUCURSALES</h2>
+                    <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-center">COMISIONES POR VENDEDOR</h2>
                     
 
                     <div class="intro-x mt-8">
                         <form action="comisionesdet"  method="POST" >
                         @csrf
-
-                            <input id="f_ini" name="f_ini" type="date" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Fecha" style="text-transform: uppercase;" required>
-                            
-                            <input id="f_fin" name="f_fin" type="date" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Fecha" style="text-transform: uppercase;" required>
-
-                            <input id="factor" name="factor" type="number" step="0.01" min="0" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Factor %" required>
+                            <label for="" class="mt-4">Fecha inicio:</label>
+                            <input id="f_ini" name="f_ini" type="date" class="intro-x login__input form-control py-3 px-4 block " placeholder="Fecha" style="text-transform: uppercase;" required>
+                            <label for="" class="mt-4 md:block pagination">Fecha fin:</label>
+                            <input id="f_fin" name="f_fin" type="date" class="intro-x login__input form-control py-3 px-4 block " placeholder="Fecha" style="text-transform: uppercase;" required>
+                            <label for="" class="mt-4 md:block pagination">Factor %:</label>
+                            <input id="factor" name="factor" type="number" step="0.01" min="0" class="intro-x login__input form-control py-3 px-4 block" placeholder="Factor %" required>
                     </div>
                     
                     <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
