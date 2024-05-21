@@ -1526,7 +1526,7 @@ public function evaluacion(Request $request)
         $sup = Supervisor::where('id','!=',11)
         ->where('id','!=',12)->select('id','nombre')->get()->toArray();
         $dis = Distritos::where('ID','!=',11)
-        ->where('ID','!=',12)->select('ID','Supervisor','id_supervisor')->distinct()->get()->toArray();
+        ->where('ID','!=',12)->where('id','!=',0)->select('ID','Supervisor','id_supervisor')->distinct()->get()->toArray();
 
         //return $dis;
         return view('pages/asignasup')->with('supervisor',$sup)->with('distritos',$dis);

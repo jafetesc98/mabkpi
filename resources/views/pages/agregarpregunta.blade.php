@@ -56,7 +56,7 @@
                     </div>
                     <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
                         <input type="text" name="user" id="user"  value="{{Auth::user()->nom_cto }}" style="display: none;">
-                        <button onclick="return confirma()" name="iniciar" id="iniciar" type="submit" class="btn btn-primary py-3 px-4 w-full  xl:mr-3 align-top"  tittle="INICIAR">ACTUALIZAR</button>
+                        <button onclick="return confirma()" name="iniciar" id="iniciar" type="submit" class="btn btn-primary py-3 px-4 w-full  xl:mr-3 align-top"  tittle="INICIAR">AGREGAR</button>
                     </div>
                     </form>
                 </div>

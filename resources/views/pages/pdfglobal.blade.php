@@ -1361,7 +1361,7 @@
                                         
                                     </tbody>
                                 </table>
-                                    <?php if ( $key=="dis5" ): ?> 
+                                    <?php if ( $key=="dis4" ): ?> 
                                         <div class="page-break"></div>
                                         <br><br><br>
                                     <?php endif; ?>

@@ -417,8 +417,8 @@ class FormatosController extends Controller
             ->select('Suc','NomSuc','Supervisor','ID')->distinct()->get()->toArray();
             $array6 = array();
 
-            $dis7 = Distritos::where('ID',7)
-            ->select('Suc','NomSuc','Supervisor','ID')->distinct()->get()->toArray();
+            /* $dis7 = Distritos::where('ID',7)
+            ->select('Suc','NomSuc','Supervisor','ID')->distinct()->get()->toArray(); */
 
             $dis8 = Distritos::where('ID',8)
             ->select('Suc','NomSuc','Supervisor','ID')->distinct()->get()->toArray();
@@ -453,8 +453,8 @@ class FormatosController extends Controller
             $dis6ev1 = $this->calificacionesglobales($dis6,$todo,1);
             $dis6ev2 = $this->calificacionesglobales($dis6,$todo,2);
 
-            $dis7ev1 = $this->calificacionesglobales($dis7,$todo,1);
-            $dis7ev2 = $this->calificacionesglobales($dis7,$todo,2);
+            /* $dis7ev1 = $this->calificacionesglobales($dis7,$todo,1);
+            $dis7ev2 = $this->calificacionesglobales($dis7,$todo,2); */
 
             $dis8ev1 = $this->calificacionesglobales($dis8,$todo,1);
             $dis8ev2 = $this->calificacionesglobales($dis8,$todo,2);
@@ -473,13 +473,13 @@ class FormatosController extends Controller
             $distrito4=  array('evaluacion1'=>$dis4ev1, 'evaluacion2' => $dis4ev2);
             $distrito5=  array('evaluacion1'=>$dis5ev1, 'evaluacion2' => $dis5ev2);
             $distrito6=  array('evaluacion1'=>$dis6ev1, 'evaluacion2' => $dis6ev2);
-            $distrito7=  array('evaluacion1'=>$dis7ev1, 'evaluacion2' => $dis7ev2);
+           /*  $distrito7=  array('evaluacion1'=>$dis7ev1, 'evaluacion2' => $dis7ev2); */
             $distrito8=  array('evaluacion1'=>$dis8ev1, 'evaluacion2' => $dis8ev2);
             $distrito9=  array('evaluacion1'=>$dis9ev1, 'evaluacion2' => $dis9ev2);
             $distrito10=  array('evaluacion1'=>$dis10ev1, 'evaluacion2' => $dis10ev2);
 
             $resfinal= array('dis1'=>$distrito1,'dis2'=>$distrito2,'dis3'=>$distrito3,'dis4'=>$distrito4,'dis5'=>$distrito5,'dis6'=>$distrito6,
-            'dis7'=>$distrito7,'dis8'=>$distrito8,'dis9'=>$distrito9,'dis10'=>$distrito10);
+            /* 'dis7'=>$distrito7, */'dis8'=>$distrito8,'dis9'=>$distrito9,'dis10'=>$distrito10);
             
             $d1e1=0;
             for($i=0; $i<count($distrito4['evaluacion1']); $i++){
@@ -495,14 +495,14 @@ class FormatosController extends Controller
 
             $fechas= array('f_ini'=>$mes,'f_fin'=>$mes3);
 
-            $pdf = \PDF::loadView('pages/pdfglobal', ['array'=>$resfinal,'dis1'=>$dis1,'dis2'=>$dis2,'dis3'=>$dis3,'dis4'=>$dis4,'dis5'=>$dis5,'dis6'=>$dis6,'dis7'=>$dis7,'dis8'=>$dis8,'dis9'=>$dis9,'dis10'=>$dis10,'jefesup'=>$dis11ev0,'fechas',$fechas]);
+            $pdf = \PDF::loadView('pages/pdfglobal', ['array'=>$resfinal,'dis1'=>$dis1,'dis2'=>$dis2,'dis3'=>$dis3,'dis4'=>$dis4,'dis5'=>$dis5,'dis6'=>$dis6,/* 'dis7'=>$dis7, */'dis8'=>$dis8,'dis9'=>$dis9,'dis10'=>$dis10,'jefesup'=>$dis11ev0,'fechas',$fechas]);
 
             return $pdf->stream('formato.pdf');
  
-             return view('pages/pdfglobal' , ['array'=>$resfinal,'dis1'=>$dis1,'dis2'=>$dis2,'dis3'=>$dis3,'dis4'=>$dis4,'dis5'=>$dis5,'dis6'=>$dis6,'dis7'=>$dis7,'dis8'=>$dis8,'dis9'=>$dis9,'dis10'=>$dis10,'jefesup'=>$dis11ev0,'fechas',$fechas]);
+             return view('pages/pdfglobal' , ['array'=>$resfinal,'dis1'=>$dis1,'dis2'=>$dis2,'dis3'=>$dis3,'dis4'=>$dis4,'dis5'=>$dis5,'dis6'=>$dis6,/* 'dis7'=>$dis7, */'dis8'=>$dis8,'dis9'=>$dis9,'dis10'=>$dis10,'jefesup'=>$dis11ev0,'fechas',$fechas]);
 
             return view('pages/resultadosglobales')->with("array",$resfinal)->with('dis1',$dis1)->with('dis2',$dis2)->with('dis3',$dis3)->with('dis4',$dis4)->with('dis5',$dis5)
-            ->with('dis6',$dis6)->with('dis7',$dis7)->with('dis8',$dis8)->with('dis9',$dis9)->with('dis10',$dis10)->with('jefesup',$dis11ev0)->with('fechas',$fechas);
+            ->with('dis6',$dis6)/* ->with('dis7',$dis7) */->with('dis8',$dis8)->with('dis9',$dis9)->with('dis10',$dis10)->with('jefesup',$dis11ev0)->with('fechas',$fechas);
     }
 
 }
