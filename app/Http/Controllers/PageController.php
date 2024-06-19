@@ -1535,6 +1535,7 @@ public function evaluacion(Request $request)
     public function actualizasup(Request $request){
         
         for($i=1; $i<=10;$i++){
+            //se agregacondicion para el distrito 7
             if($i==7){
                 $i=$i+1;
             }
