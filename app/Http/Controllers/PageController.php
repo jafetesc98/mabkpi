@@ -1535,6 +1535,9 @@ public function evaluacion(Request $request)
     public function actualizasup(Request $request){
         
         for($i=1; $i<=10;$i++){
+            if($i==7){
+                $i=$i+1;
+            }
             $sup = Supervisor::where('id',$request['d'.+$i])->select('id','nombre')->get()->toArray();
             
             $distritos = Distritos::where('id',$i)->get()->toArray();
