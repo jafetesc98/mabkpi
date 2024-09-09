@@ -84,8 +84,8 @@
                             
                             <?php 
                             for($i=0; $i<count($files); $i++){
-                                 if($files[$i]!="public/dist/doc\."){
-                                    if($files[$i]!="public/dist/doc\.."){
+                                 if($files[$i]!="public/dist/doc/."){
+                                    if($files[$i]!="public/dist/doc/.."){
                                 echo '<div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">';
                                 echo '<div class="file box rounded-md px-5 pt-8 pb-5 px-3 sm:px-5 relative zoom-in">';
                                    
