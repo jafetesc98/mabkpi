@@ -83,16 +83,23 @@
                         <div class="intro-y grid grid-cols-12 gap-3 sm:gap-6 mt-5">
                             
                             <?php 
-                            for($i=2; $i<count($files); $i++){
+                            for($i=0; $i<count($files); $i++){
+                                 if($files[$i]!="public/dist/doc\."){
+                                    if($files[$i]!="public/dist/doc\.."){
                                 echo '<div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">';
                                 echo '<div class="file box rounded-md px-5 pt-8 pb-5 px-3 sm:px-5 relative zoom-in">';
-                                    
+                                   
                                     echo '<a href="'.$files[$i].'" target="_blank" class="w-3/5 file__icon file__icon--file mx-auto">';
                                         echo '<div class="file__icon__file-name">'. strtoupper(substr($files[$i], -3)).'</div>';
                                     echo '</a>';
+                                    
                                     echo '<a href="'.$files[$i].'" class="block font-medium mt-4 text-center truncate">'.trim($files[$i], "public/dist/doc\\").'</a>';
+                                    
+                                    
                                 echo '</div>';
                                 echo '</div>';
+                                    }
+                                }
                             }
                                                
                             ?>
