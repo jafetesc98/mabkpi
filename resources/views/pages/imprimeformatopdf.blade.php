@@ -50,28 +50,28 @@
                             if ( $evaluacion1[$i]['tipo']=='VENTAS'){
                                 $ventas+=1;
                                 $tventas+=$evaluacion1[$i]['calificacion'];
-                            }if ( $evaluacion1[$i]['tipo']=='ANALISIS FINANCIERO'){
-                                $analisis+=1;
-                                $tanalisis+=$evaluacion1[$i]['calificacion'];
-                            } if ( $evaluacion1[$i]['tipo']=='RH'){
+                            }if ( $evaluacion1[$i]['tipo']=='RH'){
                                 $rh+=1;
                                 $trh+=$evaluacion1[$i]['calificacion'];
-                            }if ( $evaluacion1[$i]['tipo']=='EXPERIENCIA'){
+                            } if ( $evaluacion1[$i]['tipo']=='PERECEDEROS'){
+                                $perecederos+=1;
+                                $tperecederos+=$evaluacion1[$i]['calificacion'];
+                            }if ( $evaluacion1[$i]['tipo']=='LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'){
+                                $limpieza+=1;
+                                $tlimpieza+=$evaluacion1[$i]['calificacion'];
+                            } if ( $evaluacion1[$i]['tipo']=='EXPERIENCIA'){
                                 $experiencia+=1;
                                 $texperiencia+=$evaluacion1[$i]['calificacion'];
                             } if ( $evaluacion1[$i]['tipo']=='ESTANDARES DE MERCADERIA'){
                                 $estandares+=1;
                                 $testandares+=$evaluacion1[$i]['calificacion'];
-                            }if ( $evaluacion1[$i]['tipo']=='LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'){
-                                $limpieza+=1;
-                                $tlimpieza+=$evaluacion1[$i]['calificacion'];
-                            } if ( $evaluacion1[$i]['tipo']=='PERECEDEROS'){
-                                $perecederos+=1;
-                                $tperecederos+=$evaluacion1[$i]['calificacion'];
                             }if ( $evaluacion1[$i]['tipo']=='CONTABILIDAD'){
                                 $contabilidad+=1;
                                 $tcontabilidad+=$evaluacion1[$i]['calificacion'];
-                            } 
+                            } if ( $evaluacion1[$i]['tipo']=='ANALISIS FINANCIERO'){
+                                $analisis+=1;
+                                $tanalisis+=$evaluacion1[$i]['calificacion'];
+                            }
                         }
                         for($i=0; $i<count($evaluacion1); $i++){
                             if ( $evaluacion1[$i]['tipo']=='VENTAS'){
@@ -107,41 +107,9 @@
                                         echo '</tr>';
                                     }
     
-                            }if ( $evaluacion1[$i]['tipo']=='ANALISIS FINANCIERO'){
-                                //$analisis+=1;
-                                if($i==$ventas){
-                                    echo '<tr>';
-                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">ANALISIS FINANCIERO</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
-                                    echo '</tr>';
-                                    }
-                                    echo '<tr>';
-                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion1[$i]['desPreg'] .'</td>';
-                                    if($evaluacion1[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
-                                    }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
-                                    }
-                                    if($i==$ventas){
-                                        echo '<td align="center" rowspan="'.$analisis+1 .'" colspan="1" style="font-size:9px"> '.$total1['ANALISIS FINANCIERO'].'%</td>';
-                                        
-                                    }
-                                    echo '</tr>';
-                                    if($i==($ventas+$analisis)-1){
-                                        echo '<tr>';
-                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
-                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'.$tanalisis.'%</th>';
-                                        echo '</tr>';
-                                        echo '<tr>';
-                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
-                                        echo       '<br>';
-                                        echo    '</td>';
-                                        echo '</tr>';
-                                    }
-                            } if ( $evaluacion1[$i]['tipo']=='RH'){
+                            }if ( $evaluacion1[$i]['tipo']=='RH'){
                                 //$rh+=1;
-                                if($i==$ventas+$analisis){
+                                if($i==$ventas){
                                     echo '<tr>';
                                     echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">RH</th>';
                                     echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
@@ -155,13 +123,13 @@
                                     }else{
                                         echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
-                                    if($i==$ventas+$analisis){
+                                    if($i==$ventas){
                                         echo '<td align="center" rowspan="'.$rh+1 .'" colspan="1" style="font-size:9px"> '.$total1['RH'].'%</td>';
                                         
                                     }
                                     
                                     echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh)-1){
+                                    if($i==($ventas+$rh)-1){
                                         echo '<tr>';
                                         echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
                                         echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $trh .'%</th>';
@@ -172,109 +140,10 @@
                                         echo    '</td>';
                                         echo '</tr>';
                                     }
-                            }if ( $evaluacion1[$i]['tipo']=='EXPERIENCIA'){
-                                //$experiencia+=1;
-                                if($i==$ventas+$analisis+$rh){
-                                    echo '<tr>';
-                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">EXPERIENCIA</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
-                                    echo '</tr>';
-                                    }
-                                    echo '<tr>';
-                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion1[$i]['desPreg'] .'</td>';
-                                    if($evaluacion1[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
-                                    }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
-                                    }
-                                    if($i==$ventas+$analisis+$rh){
-                                        echo '<td align="center" rowspan="'.$experiencia+1 .'" colspan="1" style="font-size:9px"> '.$total1['EXPERIENCIA'].'%</td>';
-                                        
-                                    }
-                                    
-                                    echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia)-1){
-                                        echo '<tr>';
-                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
-                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $texperiencia .'%</th>';
-                                        echo '</tr>';
-                                        echo '<tr>';
-                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
-                                        echo       '<br>';
-                                        echo    '</td>';
-                                        echo '</tr>';
-                                    }
-                                    
-                            } if ( $evaluacion1[$i]['tipo']=='ESTANDARES DE MERCADERIA'){
-                                //$estandares+=1;
-                                if($i==$ventas+$analisis+$rh+$experiencia){
-                                    echo '<tr>';
-                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">ESTANDARES DE MERCADERIA</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
-                                    echo '</tr>';
-                                    }
-                                    echo '<tr>';
-                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion1[$i]['desPreg'] .'</td>';
-                                    if($evaluacion1[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
-                                    }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
-                                    }
-                                    if($i==$ventas+$analisis+$rh+$experiencia){
-                                        echo '<td align="center" rowspan="'.$estandares+1 .'" colspan="1" style="font-size:9px"> '.$total1['ESTANDARES DE MERCADERIA'].'%</td>';
-                                        
-                                    }
-                                    
-                                    echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia+$estandares)-1){
-                                        echo '<tr>';
-                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
-                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $testandares .'%</th>';
-                                        echo '</tr>';
-                                        echo '<tr>';
-                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
-                                        echo       '<br>';
-                                        echo    '</td>';
-                                        echo '</tr>';
-                                    }
-                            }if ( $evaluacion1[$i]['tipo']=='LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'){
-                                //$evaluacion1+=1;
-                                if($i==$ventas+$analisis+$rh+$experiencia+$estandares){
-                                    echo '<tr>';
-                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
-                                    echo '</tr>';
-                                    }
-                                    echo '<tr>';
-                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion1[$i]['desPreg'] .'</td>';
-                                    if($evaluacion1[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
-                                    }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
-                                    }
-                                    if($i==$ventas+$analisis+$rh+$experiencia+$estandares){
-                                        echo '<td align="center" rowspan="'.$limpieza+1 .'" colspan="1" style="font-size:9px"> '.$total1['LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'].'%</td>';
-                                        
-                                    }
-                                    echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia+$estandares+$limpieza)-1){
-                                        echo '<tr>';
-                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
-                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tlimpieza .'%</th>';
-                                        echo '</tr>';
-                                        echo '<tr>';
-                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
-                                        echo       '<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
-                                        echo    '</td>';
-                                        echo '</tr>';
-                                       
-                                    }
                             } if ( $evaluacion1[$i]['tipo']=='PERECEDEROS'){
-                                //$perecederos+=1;
-                                if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza){
+                        
+                                //$perecederos+=1;s
+                                if($i==$ventas+$rh){
                                     echo '<tr>';
                                     echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">PERECEDEROS</th>';
                                     echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
@@ -288,13 +157,13 @@
                                     }else{
                                         echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
-                                    if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza){
+                                    if($i==$ventas+$rh){
                                         echo '<td align="center" rowspan="'.$perecederos+1 .'" colspan="1" style="font-size:9px"> '.$total1['PERECEDEROS'].'%</td>';
                                         
                                     }
                                     
                                     echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia+$estandares+$limpieza+$perecederos)-1){
+                                    if($i==($ventas+$rh+$perecederos)-1){
                                         echo '<tr>';
                                         echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
                                         echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tperecederos .'%</th>';
@@ -305,9 +174,109 @@
                                         echo    '</td>';
                                         echo '</tr>';
                                     }
+                            }if ( $evaluacion1[$i]['tipo']=='LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'){
+                                //$evaluacion1+=1;
+                                if($i==$ventas+$rh+$perecederos){
+                                    echo '<tr>';
+                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
+                                    echo '</tr>';
+                                    }
+                                    echo '<tr>';
+                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion1[$i]['desPreg'] .'</td>';
+                                    if($evaluacion1[$i]['calificacion']==10){
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
+                                    }else{
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
+                                    }
+                                    if($i==$ventas+$rh+$perecederos){
+                                        echo '<td align="center" rowspan="'.$limpieza+1 .'" colspan="1" style="font-size:9px"> '.$total1['LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'].'%</td>';
+                                        
+                                    }
+                                    echo '</tr>';
+                                    if($i==($ventas+$rh+$perecederos+$limpieza)-1){
+                                        echo '<tr>';
+                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
+                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tlimpieza .'%</th>';
+                                        echo '</tr>';
+                                        echo '<tr>';
+                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                        echo       '<br>';
+                                        echo    '</td>';
+                                        echo '</tr>';
+                                       
+                                    }
+                            }if ( $evaluacion1[$i]['tipo']=='EXPERIENCIA'){
+                                //$experiencia+=1;
+                                if($i==$ventas+$rh+$perecederos+$limpieza){
+                                    echo '<tr>';
+                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">EXPERIENCIA</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
+                                    echo '</tr>';
+                                    }
+                                    echo '<tr>';
+                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion1[$i]['desPreg'] .'</td>';
+                                    if($evaluacion1[$i]['calificacion']==10){
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
+                                    }else{
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
+                                    }
+                                    if($i==$ventas+$rh+$perecederos+$limpieza){
+                                        echo '<td align="center" rowspan="'.$experiencia+1 .'" colspan="1" style="font-size:9px"> '.$total1['EXPERIENCIA'].'%</td>';
+                                        
+                                    }
+                                    
+                                    echo '</tr>';
+                                    if($i==($ventas+$rh+$perecederos+$limpieza+$experiencia)-1){
+                                        echo '<tr>';
+                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
+                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $texperiencia .'%</th>';
+                                        echo '</tr>';
+                                        echo '<tr>';
+                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                        echo       '<br>';
+                                        echo    '</td>';
+                                        echo '</tr>';
+                                    }
+                                    
+                            }if ( $evaluacion1[$i]['tipo']=='ESTANDARES DE MERCADERIA'){
+                                //$estandares+=1;
+                                if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia){
+                                    echo '<tr>';
+                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">ESTANDARES DE MERCADERIA</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
+                                    echo '</tr>';
+                                    }
+                                    echo '<tr>';
+                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion1[$i]['desPreg'] .'</td>';
+                                    if($evaluacion1[$i]['calificacion']==10){
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
+                                    }else{
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
+                                    }
+                                    if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia){
+                                        echo '<td align="center" rowspan="'.$estandares+1 .'" colspan="1" style="font-size:9px"> '.$total1['ESTANDARES DE MERCADERIA'].'%</td>';
+                                        
+                                    }
+                                    
+                                    echo '</tr>';
+                                    if($i==($ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares)-1){
+                                        echo '<tr>';
+                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
+                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $testandares .'%</th>';
+                                        echo '</tr>';
+                                        echo '<tr>';
+                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                        echo       '<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
+                                        echo    '</td>';
+                                        echo '</tr>';
+                                    }
                             }if ( $evaluacion1[$i]['tipo']=='CONTABILIDAD'){
                                 //$contabilidad+=1;
-                                if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza+$perecederos){
+                                if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares){
                                     echo '<tr>';
                                     echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">CONTABILIDAD</th>';
                                     echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
@@ -321,28 +290,67 @@
                                     }else{
                                         echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
-                                    if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza+$perecederos){
+                                    if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares){
                                         echo '<td align="center" rowspan="'.$contabilidad+1 .'" colspan="1" style="font-size:9px"> '.$total1['CONTABILIDAD'].'%</td>';
                                         
                                     }
                                     
                                     echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia+$estandares+$limpieza+$perecederos+$contabilidad)-1){
-                                        echo '<tr>';
+                                    if($i==($ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares+$contabilidad)-1){
+                                         echo '<tr>';
                                         echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
                                         echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tcontabilidad .'%</th>';
                                         echo '</tr>';
+                                        echo '<tr>';
+                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                        echo       '<br>';
+                                        echo    '</td>';
+                                        echo '</tr>';
                                        
                                     }
-                            } 
+                            }if ( $evaluacion1[$i]['tipo']=='ANALISIS FINANCIERO'){
+                                //$analisis+=1;
+                                if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares+$contabilidad){
+                                    echo '<tr>';
+                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">ANALISIS FINANCIERO</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
+                                    echo '</tr>';
+                                    }
+                                    echo '<tr>';
+                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion1[$i]['desPreg'] .'</td>';
+                                    if($evaluacion1[$i]['calificacion']==10){
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
+                                    }else{
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
+                                    }
+                                    if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares+$contabilidad){
+                                        echo '<td align="center"'. $i .' rowspan="'.$analisis+1 .'" colspan="1" style="font-size:9px"> '.$total1['ANALISIS FINANCIERO'].'%</td>';
+                                        
+                                    }
+                                    echo '</tr>';
+                                    if($i==($ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares+$contabilidad+$analisis)-1){
+                                        echo '<tr>';
+                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
+                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'.$tanalisis.'%</th>';
+                                        echo '</tr>';
+                                        echo '<tr>';
+                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                        echo       '<br>';
+                                        echo    '</td>';
+                                        echo '</tr>';
+                                    }
+                            }   
+                           
+                    
                                         
                         }
                     ?>
-                    <tr>
-                        <td style="border: 0; font-size:3px" colspan="10" class="saltos">
-                            <br>
-                        </td>
-                    </tr>
+                     <!-- <tr>
+                                <td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                    <br>
+                                </td>
+                            </tr> -->
                     <tr style="border: 0px;">
                         <td colspan="8"  align="center" id="1" >
                         <b><h2>CALIFICACION FINAL</h2></b>
@@ -467,28 +475,28 @@
                             if ( $evaluacion2[$i]['tipo']=='VENTAS'){
                                 $ventas+=1;
                                 $tventas+=$evaluacion2[$i]['calificacion'];
-                            }if ( $evaluacion2[$i]['tipo']=='ANALISIS FINANCIERO'){
-                                $analisis+=1;
-                                $tanalisis+=$evaluacion2[$i]['calificacion'];
-                            } if ( $evaluacion2[$i]['tipo']=='RH'){
+                            }if ( $evaluacion2[$i]['tipo']=='RH'){
                                 $rh+=1;
                                 $trh+=$evaluacion2[$i]['calificacion'];
-                            }if ( $evaluacion2[$i]['tipo']=='EXPERIENCIA'){
+                            } if ( $evaluacion2[$i]['tipo']=='PERECEDEROS'){
+                                $perecederos+=1;
+                                $tperecederos+=$evaluacion2[$i]['calificacion'];
+                            }if ( $evaluacion2[$i]['tipo']=='LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'){
+                                $limpieza+=1;
+                                $tlimpieza+=$evaluacion2[$i]['calificacion'];
+                            } if ( $evaluacion2[$i]['tipo']=='EXPERIENCIA'){
                                 $experiencia+=1;
                                 $texperiencia+=$evaluacion2[$i]['calificacion'];
                             } if ( $evaluacion2[$i]['tipo']=='ESTANDARES DE MERCADERIA'){
                                 $estandares+=1;
                                 $testandares+=$evaluacion2[$i]['calificacion'];
-                            }if ( $evaluacion2[$i]['tipo']=='LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'){
-                                $limpieza+=1;
-                                $tlimpieza+=$evaluacion2[$i]['calificacion'];
-                            } if ( $evaluacion2[$i]['tipo']=='PERECEDEROS'){
-                                $perecederos+=1;
-                                $tperecederos+=$evaluacion2[$i]['calificacion'];
                             }if ( $evaluacion2[$i]['tipo']=='CONTABILIDAD'){
                                 $contabilidad+=1;
                                 $tcontabilidad+=$evaluacion2[$i]['calificacion'];
-                            } 
+                            } if ( $evaluacion2[$i]['tipo']=='ANALISIS FINANCIERO'){
+                                $analisis+=1;
+                                $tanalisis+=$evaluacion2[$i]['calificacion'];
+                            }
                         }
                         for($i=0; $i<count($evaluacion2); $i++){
                             if ( $evaluacion2[$i]['tipo']=='VENTAS'){
@@ -503,13 +511,13 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion2[$i]['desPreg'] .'</td>';
                                     if($evaluacion2[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
                                     
                                     if($i==0){
-                                        echo '<td align="center" rowspan="'. $ventas+1 .'" colspan="1" style="font-size:9px"> '.$total2['VENTAS'].'%</td>';
+                                        echo '<td align="center" rowspan="'. $ventas+1 .'" colspan="1" style="font-size:9px"> '.$total1['VENTAS'].'%</td>';
                                     }
                                     echo '</tr>';
                                     if($i==$ventas-1){
@@ -524,41 +532,9 @@
                                         echo '</tr>';
                                     }
     
-                            }if ( $evaluacion2[$i]['tipo']=='ANALISIS FINANCIERO'){
-                                //$analisis+=1;
-                                if($i==$ventas){
-                                    echo '<tr>';
-                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">ANALISIS FINANCIERO</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
-                                    echo '</tr>';
-                                    }
-                                    echo '<tr>';
-                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion2[$i]['desPreg'] .'</td>';
-                                    if($evaluacion2[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
-                                    }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
-                                    }
-                                    if($i==$ventas){
-                                        echo '<td align="center" rowspan="'.$analisis+1 .'" colspan="1" style="font-size:9px"> '.$total2['ANALISIS FINANCIERO'].'%</td>';
-                                        
-                                    }
-                                    echo '</tr>';
-                                    if($i==($ventas+$analisis)-1){
-                                        echo '<tr>';
-                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
-                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'.$tanalisis.'%</th>';
-                                        echo '</tr>';
-                                        echo '<tr>';
-                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
-                                        echo       '<br>';
-                                        echo    '</td>';
-                                        echo '</tr>';
-                                    }
-                            } if ( $evaluacion2[$i]['tipo']=='RH'){
+                            }if ( $evaluacion2[$i]['tipo']=='RH'){
                                 //$rh+=1;
-                                if($i==$ventas+$analisis){
+                                if($i==$ventas){
                                     echo '<tr>';
                                     echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">RH</th>';
                                     echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
@@ -568,17 +544,17 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion2[$i]['desPreg'] .'</td>';
                                     if($evaluacion2[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
-                                    if($i==$ventas+$analisis){
-                                        echo '<td align="center" rowspan="'.$rh+1 .'" colspan="1" style="font-size:9px"> '.$total2['RH'].'%</td>';
+                                    if($i==$ventas){
+                                        echo '<td align="center" rowspan="'.$rh+1 .'" colspan="1" style="font-size:9px"> '.$total1['RH'].'%</td>';
                                         
                                     }
                                     
                                     echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh)-1){
+                                    if($i==($ventas+$rh)-1){
                                         echo '<tr>';
                                         echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
                                         echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $trh .'%</th>';
@@ -589,9 +565,76 @@
                                         echo    '</td>';
                                         echo '</tr>';
                                     }
+                            } if ( $evaluacion2[$i]['tipo']=='PERECEDEROS'){
+                        
+                                //$perecederos+=1;s
+                                if($i==$ventas+$rh){
+                                    echo '<tr>';
+                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">PERECEDEROS</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
+                                    echo '</tr>';
+                                    }
+                                    echo '<tr>';
+                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion2[$i]['desPreg'] .'</td>';
+                                    if($evaluacion2[$i]['calificacion']==10){
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
+                                    }else{
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
+                                    }
+                                    if($i==$ventas+$rh){
+                                        echo '<td align="center" rowspan="'.$perecederos+1 .'" colspan="1" style="font-size:9px"> '.$total1['PERECEDEROS'].'%</td>';
+                                        
+                                    }
+                                    
+                                    echo '</tr>';
+                                    if($i==($ventas+$rh+$perecederos)-1){
+                                        echo '<tr>';
+                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
+                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tperecederos .'%</th>';
+                                        echo '</tr>';
+                                        echo '<tr>';
+                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                        echo       '<br>';
+                                        echo    '</td>';
+                                        echo '</tr>';
+                                    }
+                            }if ( $evaluacion2[$i]['tipo']=='LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'){
+                                //$evaluacion1+=1;
+                                if($i==$ventas+$rh+$perecederos){
+                                    echo '<tr>';
+                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
+                                    echo '</tr>';
+                                    }
+                                    echo '<tr>';
+                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion2[$i]['desPreg'] .'</td>';
+                                    if($evaluacion2[$i]['calificacion']==10){
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
+                                    }else{
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
+                                    }
+                                    if($i==$ventas+$rh+$perecederos){
+                                        echo '<td align="center" rowspan="'.$limpieza+1 .'" colspan="1" style="font-size:9px"> '.$total1['LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'].'%</td>';
+                                        
+                                    }
+                                    echo '</tr>';
+                                    if($i==($ventas+$rh+$perecederos+$limpieza)-1){
+                                        echo '<tr>';
+                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
+                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tlimpieza .'%</th>';
+                                        echo '</tr>';
+                                        echo '<tr>';
+                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                        echo       '<br>';
+                                        echo    '</td>';
+                                        echo '</tr>';
+                                       
+                                    }
                             }if ( $evaluacion2[$i]['tipo']=='EXPERIENCIA'){
                                 //$experiencia+=1;
-                                if($i==$ventas+$analisis+$rh){
+                                if($i==$ventas+$rh+$perecederos+$limpieza){
                                     echo '<tr>';
                                     echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">EXPERIENCIA</th>';
                                     echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
@@ -601,17 +644,17 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion2[$i]['desPreg'] .'</td>';
                                     if($evaluacion2[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
-                                    if($i==$ventas+$analisis+$rh){
-                                        echo '<td align="center" rowspan="'.$experiencia+1 .'" colspan="1" style="font-size:9px"> '.$total2['EXPERIENCIA'].'%</td>';
+                                    if($i==$ventas+$rh+$perecederos+$limpieza){
+                                        echo '<td align="center" rowspan="'.$experiencia+1 .'" colspan="1" style="font-size:9px"> '.$total1['EXPERIENCIA'].'%</td>';
                                         
                                     }
                                     
                                     echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia)-1){
+                                    if($i==($ventas+$rh+$perecederos+$limpieza+$experiencia)-1){
                                         echo '<tr>';
                                         echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
                                         echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $texperiencia .'%</th>';
@@ -623,9 +666,9 @@
                                         echo '</tr>';
                                     }
                                     
-                            } if ( $evaluacion2[$i]['tipo']=='ESTANDARES DE MERCADERIA'){
+                            }if ( $evaluacion2[$i]['tipo']=='ESTANDARES DE MERCADERIA'){
                                 //$estandares+=1;
-                                if($i==$ventas+$analisis+$rh+$experiencia){
+                                if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia){
                                     echo '<tr>';
                                     echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">ESTANDARES DE MERCADERIA</th>';
                                     echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
@@ -635,96 +678,30 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion2[$i]['desPreg'] .'</td>';
                                     if($evaluacion2[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
-                                    if($i==$ventas+$analisis+$rh+$experiencia){
-                                        echo '<td align="center" rowspan="'.$estandares+1 .'" colspan="1" style="font-size:9px"> '.$total2['ESTANDARES DE MERCADERIA'].'%</td>';
+                                    if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia){
+                                        echo '<td align="center" rowspan="'.$estandares+1 .'" colspan="1" style="font-size:9px"> '.$total1['ESTANDARES DE MERCADERIA'].'%</td>';
                                         
                                     }
                                     
                                     echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia+$estandares)-1){
+                                    if($i==($ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares)-1){
                                         echo '<tr>';
                                         echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
                                         echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $testandares .'%</th>';
                                         echo '</tr>';
                                         echo '<tr>';
                                         echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
-                                        echo       '<br>';
-                                        echo    '</td>';
-                                        echo '</tr>';
-                                    }
-                            }if ( $evaluacion2[$i]['tipo']=='LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'){
-                                //$evaluacion1+=1;
-                                if($i==$ventas+$analisis+$rh+$experiencia+$estandares){
-                                    echo '<tr>';
-                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
-                                    echo '</tr>';
-                                    }
-                                    echo '<tr>';
-                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion2[$i]['desPreg'] .'</td>';
-                                    if($evaluacion2[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
-                                    }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
-                                    }
-                                    if($i==$ventas+$analisis+$rh+$experiencia+$estandares){
-                                        echo '<td align="center" rowspan="'.$limpieza+1 .'" colspan="1" style="font-size:9px"> '.$total2['LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'].'%</td>';
-                                        
-                                    }
-                                    echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia+$estandares+$limpieza)-1){
-                                        echo '<tr>';
-                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
-                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tlimpieza .'%</th>';
-                                        echo '</tr>';
-                                        echo '<tr>';
-                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
                                         echo       '<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
-                                        echo    '</td>';
-                                        echo '</tr>';
-                                       
-                                    }
-                            } if ( $evaluacion2[$i]['tipo']=='PERECEDEROS'){
-                                //$perecederos+=1;
-                                if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza){
-                                    echo '<tr>';
-                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">PERECEDEROS</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
-                                    echo '</tr>';
-                                    }
-                                    echo '<tr>';
-                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion2[$i]['desPreg'] .'</td>';
-                                    if($evaluacion2[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
-                                    }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
-                                    }
-                                    if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza){
-                                        echo '<td align="center" rowspan="'.$perecederos+1 .'" colspan="1" style="font-size:9px"> '.$total2['PERECEDEROS'].'%</td>';
-                                        
-                                    }
-                                    
-                                    echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia+$estandares+$limpieza+$perecederos)-1){
-                                        echo '<tr>';
-                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
-                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tperecederos .'%</th>';
-                                        echo '</tr>';
-                                        echo '<tr>';
-                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
-                                        echo       '<br>';
                                         echo    '</td>';
                                         echo '</tr>';
                                     }
                             }if ( $evaluacion2[$i]['tipo']=='CONTABILIDAD'){
                                 //$contabilidad+=1;
-                                if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza+$perecederos){
+                                if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares){
                                     echo '<tr>';
                                     echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">CONTABILIDAD</th>';
                                     echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
@@ -734,24 +711,61 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion2[$i]['desPreg'] .'</td>';
                                     if($evaluacion2[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
-                                    if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza+$perecederos){
-                                        echo '<td align="center" rowspan="'.$contabilidad+1 .'" colspan="1" style="font-size:9px"> '.$total2['CONTABILIDAD'].'%</td>';
+                                    if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares){
+                                        echo '<td align="center" rowspan="'.$contabilidad+1 .'" colspan="1" style="font-size:9px"> '.$total1['CONTABILIDAD'].'%</td>';
                                         
                                     }
                                     
                                     echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia+$estandares+$limpieza+$perecederos+$contabilidad)-1){
-                                        echo '<tr>';
+                                    if($i==($ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares+$contabilidad)-1){
+                                         echo '<tr>';
                                         echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
                                         echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tcontabilidad .'%</th>';
                                         echo '</tr>';
+                                        echo '<tr>';
+                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                        echo       '<br>';
+                                        echo    '</td>';
+                                        echo '</tr>';
                                        
                                     }
-                            } 
+                            }if ( $evaluacion2[$i]['tipo']=='ANALISIS FINANCIERO'){
+                                //$analisis+=1;
+                                if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares+$contabilidad){
+                                    echo '<tr>';
+                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">ANALISIS FINANCIERO</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
+                                    echo '</tr>';
+                                    }
+                                    echo '<tr>';
+                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion2[$i]['desPreg'] .'</td>';
+                                    if($evaluacion2[$i]['calificacion']==10){
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
+                                    }else{
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
+                                    }
+                                    if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares+$contabilidad){
+                                        echo '<td align="center"'. $i .' rowspan="'.$analisis+1 .'" colspan="1" style="font-size:9px"> '.$total1['ANALISIS FINANCIERO'].'%</td>';
+                                        
+                                    }
+                                    echo '</tr>';
+                                    if($i==($ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares+$contabilidad+$analisis)-1){
+                                        echo '<tr>';
+                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
+                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'.$tanalisis.'%</th>';
+                                        echo '</tr>';
+                                        echo '<tr>';
+                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                        echo       '<br>';
+                                        echo    '</td>';
+                                        echo '</tr>';
+                                    }
+                            }   
                                         
                         }
                     ?>
@@ -883,28 +897,28 @@
                             if ( $evaluacion3[$i]['tipo']=='VENTAS'){
                                 $ventas+=1;
                                 $tventas+=$evaluacion3[$i]['calificacion'];
-                            }if ( $evaluacion3[$i]['tipo']=='ANALISIS FINANCIERO'){
-                                $analisis+=1;
-                                $tanalisis+=$evaluacion3[$i]['calificacion'];
-                            } if ( $evaluacion3[$i]['tipo']=='RH'){
+                            }if ( $evaluacion3[$i]['tipo']=='RH'){
                                 $rh+=1;
                                 $trh+=$evaluacion3[$i]['calificacion'];
-                            }if ( $evaluacion3[$i]['tipo']=='EXPERIENCIA'){
+                            } if ( $evaluacion3[$i]['tipo']=='PERECEDEROS'){
+                                $perecederos+=1;
+                                $tperecederos+=$evaluacion3[$i]['calificacion'];
+                            }if ( $evaluacion3[$i]['tipo']=='LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'){
+                                $limpieza+=1;
+                                $tlimpieza+=$evaluacion3[$i]['calificacion'];
+                            } if ( $evaluacion3[$i]['tipo']=='EXPERIENCIA'){
                                 $experiencia+=1;
                                 $texperiencia+=$evaluacion3[$i]['calificacion'];
                             } if ( $evaluacion3[$i]['tipo']=='ESTANDARES DE MERCADERIA'){
                                 $estandares+=1;
                                 $testandares+=$evaluacion3[$i]['calificacion'];
-                            }if ( $evaluacion3[$i]['tipo']=='LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'){
-                                $limpieza+=1;
-                                $tlimpieza+=$evaluacion3[$i]['calificacion'];
-                            } if ( $evaluacion3[$i]['tipo']=='PERECEDEROS'){
-                                $perecederos+=1;
-                                $tperecederos+=$evaluacion3[$i]['calificacion'];
                             }if ( $evaluacion3[$i]['tipo']=='CONTABILIDAD'){
                                 $contabilidad+=1;
                                 $tcontabilidad+=$evaluacion3[$i]['calificacion'];
-                            } 
+                            } if ( $evaluacion3[$i]['tipo']=='ANALISIS FINANCIERO'){
+                                $analisis+=1;
+                                $tanalisis+=$evaluacion3[$i]['calificacion'];
+                            }
                         }
                         for($i=0; $i<count($evaluacion3); $i++){
                             if ( $evaluacion3[$i]['tipo']=='VENTAS'){
@@ -919,13 +933,13 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion3[$i]['desPreg'] .'</td>';
                                     if($evaluacion3[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
                                     
                                     if($i==0){
-                                        echo '<td align="center" rowspan="'. $ventas+1 .'" colspan="1" style="font-size:9px"> '.$total3['VENTAS'].'%</td>';
+                                        echo '<td align="center" rowspan="'. $ventas+1 .'" colspan="1" style="font-size:9px"> '.$total1['VENTAS'].'%</td>';
                                     }
                                     echo '</tr>';
                                     if($i==$ventas-1){
@@ -940,41 +954,9 @@
                                         echo '</tr>';
                                     }
     
-                            }if ( $evaluacion3[$i]['tipo']=='ANALISIS FINANCIERO'){
-                                //$analisis+=1;
-                                if($i==$ventas){
-                                    echo '<tr>';
-                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">ANALISIS FINANCIERO</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
-                                    echo '</tr>';
-                                    }
-                                    echo '<tr>';
-                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion3[$i]['desPreg'] .'</td>';
-                                    if($evaluacion3[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
-                                    }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
-                                    }
-                                    if($i==$ventas){
-                                        echo '<td align="center" rowspan="'.$analisis+1 .'" colspan="1" style="font-size:9px"> '.$total3['ANALISIS FINANCIERO'].'%</td>';
-                                        
-                                    }
-                                    echo '</tr>';
-                                    if($i==($ventas+$analisis)-1){
-                                        echo '<tr>';
-                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
-                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'.$tanalisis.'%</th>';
-                                        echo '</tr>';
-                                        echo '<tr>';
-                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
-                                        echo       '<br>';
-                                        echo    '</td>';
-                                        echo '</tr>';
-                                    }
-                            } if ( $evaluacion3[$i]['tipo']=='RH'){
+                            }if ( $evaluacion3[$i]['tipo']=='RH'){
                                 //$rh+=1;
-                                if($i==$ventas+$analisis){
+                                if($i==$ventas){
                                     echo '<tr>';
                                     echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">RH</th>';
                                     echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
@@ -984,17 +966,17 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion3[$i]['desPreg'] .'</td>';
                                     if($evaluacion3[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
-                                    if($i==$ventas+$analisis){
-                                        echo '<td align="center" rowspan="'.$rh+1 .'" colspan="1" style="font-size:9px"> '.$total3['RH'].'%</td>';
+                                    if($i==$ventas){
+                                        echo '<td align="center" rowspan="'.$rh+1 .'" colspan="1" style="font-size:9px"> '.$total1['RH'].'%</td>';
                                         
                                     }
                                     
                                     echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh)-1){
+                                    if($i==($ventas+$rh)-1){
                                         echo '<tr>';
                                         echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
                                         echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $trh .'%</th>';
@@ -1005,9 +987,76 @@
                                         echo    '</td>';
                                         echo '</tr>';
                                     }
+                            } if ( $evaluacion3[$i]['tipo']=='PERECEDEROS'){
+                        
+                                //$perecederos+=1;s
+                                if($i==$ventas+$rh){
+                                    echo '<tr>';
+                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">PERECEDEROS</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
+                                    echo '</tr>';
+                                    }
+                                    echo '<tr>';
+                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion3[$i]['desPreg'] .'</td>';
+                                    if($evaluacion3[$i]['calificacion']==10){
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
+                                    }else{
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
+                                    }
+                                    if($i==$ventas+$rh){
+                                        echo '<td align="center" rowspan="'.$perecederos+1 .'" colspan="1" style="font-size:9px"> '.$total1['PERECEDEROS'].'%</td>';
+                                        
+                                    }
+                                    
+                                    echo '</tr>';
+                                    if($i==($ventas+$rh+$perecederos)-1){
+                                        echo '<tr>';
+                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
+                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tperecederos .'%</th>';
+                                        echo '</tr>';
+                                        echo '<tr>';
+                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                        echo       '<br>';
+                                        echo    '</td>';
+                                        echo '</tr>';
+                                    }
+                            }if ( $evaluacion3[$i]['tipo']=='LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'){
+                                //$evaluacion1+=1;
+                                if($i==$ventas+$rh+$perecederos){
+                                    echo '<tr>';
+                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
+                                    echo '</tr>';
+                                    }
+                                    echo '<tr>';
+                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion3[$i]['desPreg'] .'</td>';
+                                    if($evaluacion3[$i]['calificacion']==10){
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
+                                    }else{
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
+                                    }
+                                    if($i==$ventas+$rh+$perecederos){
+                                        echo '<td align="center" rowspan="'.$limpieza+1 .'" colspan="1" style="font-size:9px"> '.$total1['LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'].'%</td>';
+                                        
+                                    }
+                                    echo '</tr>';
+                                    if($i==($ventas+$rh+$perecederos+$limpieza)-1){
+                                        echo '<tr>';
+                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
+                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tlimpieza .'%</th>';
+                                        echo '</tr>';
+                                        echo '<tr>';
+                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                        echo       '<br>';
+                                        echo    '</td>';
+                                        echo '</tr>';
+                                       
+                                    }
                             }if ( $evaluacion3[$i]['tipo']=='EXPERIENCIA'){
                                 //$experiencia+=1;
-                                if($i==$ventas+$analisis+$rh){
+                                if($i==$ventas+$rh+$perecederos+$limpieza){
                                     echo '<tr>';
                                     echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">EXPERIENCIA</th>';
                                     echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
@@ -1017,17 +1066,17 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion3[$i]['desPreg'] .'</td>';
                                     if($evaluacion3[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
-                                    if($i==$ventas+$analisis+$rh){
-                                        echo '<td align="center" rowspan="'.$experiencia+1 .'" colspan="1" style="font-size:9px"> '.$total3['EXPERIENCIA'].'%</td>';
+                                    if($i==$ventas+$rh+$perecederos+$limpieza){
+                                        echo '<td align="center" rowspan="'.$experiencia+1 .'" colspan="1" style="font-size:9px"> '.$total1['EXPERIENCIA'].'%</td>';
                                         
                                     }
                                     
                                     echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia)-1){
+                                    if($i==($ventas+$rh+$perecederos+$limpieza+$experiencia)-1){
                                         echo '<tr>';
                                         echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
                                         echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $texperiencia .'%</th>';
@@ -1039,9 +1088,9 @@
                                         echo '</tr>';
                                     }
                                     
-                            } if ( $evaluacion3[$i]['tipo']=='ESTANDARES DE MERCADERIA'){
+                            }if ( $evaluacion3[$i]['tipo']=='ESTANDARES DE MERCADERIA'){
                                 //$estandares+=1;
-                                if($i==$ventas+$analisis+$rh+$experiencia){
+                                if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia){
                                     echo '<tr>';
                                     echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">ESTANDARES DE MERCADERIA</th>';
                                     echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
@@ -1051,96 +1100,30 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion3[$i]['desPreg'] .'</td>';
                                     if($evaluacion3[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
-                                    if($i==$ventas+$analisis+$rh+$experiencia){
-                                        echo '<td align="center" rowspan="'.$estandares+1 .'" colspan="1" style="font-size:9px"> '.$total3['ESTANDARES DE MERCADERIA'].'%</td>';
+                                    if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia){
+                                        echo '<td align="center" rowspan="'.$estandares+1 .'" colspan="1" style="font-size:9px"> '.$total1['ESTANDARES DE MERCADERIA'].'%</td>';
                                         
                                     }
                                     
                                     echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia+$estandares)-1){
+                                    if($i==($ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares)-1){
                                         echo '<tr>';
                                         echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
                                         echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $testandares .'%</th>';
                                         echo '</tr>';
                                         echo '<tr>';
                                         echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
-                                        echo       '<br>';
-                                        echo    '</td>';
-                                        echo '</tr>';
-                                    }
-                            }if ( $evaluacion3[$i]['tipo']=='LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'){
-                                //$evaluacion1+=1;
-                                if($i==$ventas+$analisis+$rh+$experiencia+$estandares){
-                                    echo '<tr>';
-                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
-                                    echo '</tr>';
-                                    }
-                                    echo '<tr>';
-                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion3[$i]['desPreg'] .'</td>';
-                                    if($evaluacion3[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
-                                    }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
-                                    }
-                                    if($i==$ventas+$analisis+$rh+$experiencia+$estandares){
-                                        echo '<td align="center" rowspan="'.$limpieza+1 .'" colspan="1" style="font-size:9px"> '.$total3['LIMPIEZA Y MANTENIMIENTO DE LA UNIDAD (INTERIOR Y EXTERIOR)'].'%</td>';
-                                        
-                                    }
-                                    echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia+$estandares+$limpieza)-1){
-                                        echo '<tr>';
-                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
-                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tlimpieza .'%</th>';
-                                        echo '</tr>';
-                                        echo '<tr>';
-                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
                                         echo       '<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
-                                        echo    '</td>';
-                                        echo '</tr>';
-                                       
-                                    }
-                            } if ( $evaluacion3[$i]['tipo']=='PERECEDEROS'){
-                                //$perecederos+=1;
-                                if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza){
-                                    echo '<tr>';
-                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">PERECEDEROS</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
-                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
-                                    echo '</tr>';
-                                    }
-                                    echo '<tr>';
-                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion3[$i]['desPreg'] .'</td>';
-                                    if($evaluacion3[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
-                                    }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
-                                    }
-                                    if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza){
-                                        echo '<td align="center" rowspan="'.$perecederos+1 .'" colspan="1" style="font-size:9px"> '.$total3['PERECEDEROS'].'%</td>';
-                                        
-                                    }
-                                    
-                                    echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia+$estandares+$limpieza+$perecederos)-1){
-                                        echo '<tr>';
-                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
-                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tperecederos .'%</th>';
-                                        echo '</tr>';
-                                        echo '<tr>';
-                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
-                                        echo       '<br>';
                                         echo    '</td>';
                                         echo '</tr>';
                                     }
                             }if ( $evaluacion3[$i]['tipo']=='CONTABILIDAD'){
                                 //$contabilidad+=1;
-                                if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza+$perecederos){
+                                if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares){
                                     echo '<tr>';
                                     echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">CONTABILIDAD</th>';
                                     echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
@@ -1150,24 +1133,61 @@
                                     echo '<tr>';
                                     echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion3[$i]['desPreg'] .'</td>';
                                     if($evaluacion3[$i]['calificacion']==10){
-                                        echo  '<td scope="col" align="center" colspan="1" >SI </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
                                     }else{
-                                        echo  '<td scope="col" align="center" colspan="1" >NO </td>';
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
                                     }
-                                    if($i==$ventas+$analisis+$rh+$experiencia+$estandares+$limpieza+$perecederos){
-                                        echo '<td align="center" rowspan="'.$contabilidad+1 .'" colspan="1" style="font-size:9px"> '.$total3['CONTABILIDAD'].'%</td>';
+                                    if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares){
+                                        echo '<td align="center" rowspan="'.$contabilidad+1 .'" colspan="1" style="font-size:9px"> '.$total1['CONTABILIDAD'].'%</td>';
                                         
                                     }
                                     
                                     echo '</tr>';
-                                    if($i==($ventas+$analisis+$rh+$experiencia+$estandares+$limpieza+$perecederos+$contabilidad)-1){
-                                        echo '<tr>';
+                                    if($i==($ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares+$contabilidad)-1){
+                                         echo '<tr>';
                                         echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
                                         echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'. $tcontabilidad .'%</th>';
                                         echo '</tr>';
+                                        echo '<tr>';
+                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                        echo       '<br>';
+                                        echo    '</td>';
+                                        echo '</tr>';
                                        
                                     }
-                            } 
+                            }if ( $evaluacion3[$i]['tipo']=='ANALISIS FINANCIERO'){
+                                //$analisis+=1;
+                                if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares+$contabilidad){
+                                    echo '<tr>';
+                                    echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">ANALISIS FINANCIERO</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">Calificaión</th>';
+                                    echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">%</th>';
+                                    echo '</tr>';
+                                    }
+                                    echo '<tr>';
+                                    echo  '<td scope="col" align="center" colspan="8" >'.$evaluacion3[$i]['desPreg'] .'</td>';
+                                    if($evaluacion3[$i]['calificacion']==10){
+                                        echo  '<td scope="col" align="center" colspan="1" >10%</td>';
+                                    }else{
+                                        echo  '<td scope="col" align="center" colspan="1" >5%</td>';
+                                    }
+                                    if($i==$ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares+$contabilidad){
+                                        echo '<td align="center"'. $i .' rowspan="'.$analisis+1 .'" colspan="1" style="font-size:9px"> '.$total1['ANALISIS FINANCIERO'].'%</td>';
+                                        
+                                    }
+                                    echo '</tr>';
+                                    if($i==($ventas+$rh+$perecederos+$limpieza+$experiencia+$estandares+$contabilidad+$analisis)-1){
+                                        echo '<tr>';
+                                        echo '<th scope="col" align="center" colspan="8" style="background-color: #ccc">TOTAL</th>';
+                                        echo '<th scope="col" align="center" colspan="1" style="background-color: #ccc">'.$tanalisis.'%</th>';
+                                        echo '</tr>';
+                                        echo '<tr>';
+                                        echo    '<td style="border: 0; font-size:3px" colspan="10" class="saltos">';
+                                        echo       '<br>';
+                                        echo    '</td>';
+                                        echo '</tr>';
+                                    }
+                            }
                                         
                         }
                     ?>

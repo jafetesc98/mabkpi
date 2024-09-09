@@ -116,7 +116,7 @@
                                         </tr>  
 
                                         <tr>
-                                            <td  colspan="10" class="text-center">
+                                            <td  colspan="{{count($array)+2}}" class="text-center">
                                             <h2 class="text-lg font-medium truncate mr-5"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" id="total">
                                                 
                                             </font></font></h2>

@@ -139,7 +139,7 @@ class FormatosController extends Controller
          ->join('ResultPregdet','ResultPregdet.id_cabecera','=','ResultPreghdr.ID')
          ->join('preguntas','ResultPregdet.id_pregunta','=','preguntas.id')
          ->select('ResultPreghdr.ID','ResultPreghdr.suc','ResultPreghdr.id_supervisor','ResultPreghdr.evaluacion','ResultPregdet.id_pregunta','preguntas.desPreg','ResultPregdet.respuesta','ResultPregdet.calificacion','preguntas.tipo')
-         ->get()->toArray();
+         ->orderBy('preguntas.tipo','desc')->get()->toArray();
 
          $resultado2 = Preghdr::where('ResultPreghdr.id_supervisor',$dis)
          ->where('ResultPreghdr.f_alt', '>=',$f_fin.'01')
@@ -149,7 +149,7 @@ class FormatosController extends Controller
          ->join('ResultPregdet','ResultPregdet.id_cabecera','=','ResultPreghdr.ID')
          ->join('preguntas','ResultPregdet.id_pregunta','=','preguntas.id')
          ->select('ResultPreghdr.ID','ResultPreghdr.suc','ResultPreghdr.id_supervisor','ResultPreghdr.evaluacion','ResultPregdet.id_pregunta','preguntas.desPreg','ResultPregdet.respuesta','ResultPregdet.calificacion','preguntas.tipo')
-         ->get()->toArray();
+         ->orderBy('preguntas.tipo','desc')->get()->toArray();
 
          $resultado3 = Preghdr::where('ResultPreghdr.suc', $suc)
          ->where('ResultPreghdr.f_alt', '>=',$f_fin.'01')
@@ -158,7 +158,7 @@ class FormatosController extends Controller
          ->join('ResultPregdet','ResultPregdet.id_cabecera','=','ResultPreghdr.ID')
          ->join('preguntas','ResultPregdet.id_pregunta','=','preguntas.id')
          ->select('ResultPreghdr.ID','ResultPreghdr.suc','ResultPreghdr.id_supervisor','ResultPreghdr.evaluacion','ResultPregdet.id_pregunta','preguntas.desPreg','ResultPregdet.respuesta','ResultPregdet.calificacion','preguntas.tipo')
-         ->get()->toArray();
+        ->orderBy('preguntas.tipo','desc')->get()->toArray();
 
          $comentarios1=null;
          $comentarios2=null;
@@ -200,7 +200,7 @@ class FormatosController extends Controller
         
         $pdf = \PDF::loadView('pages/imprimeformatopdf', ['suc'=>$suc,'evaluacion1'=>$resultado1,'evaluacion2'=>$resultado2,'evaluacion3'=>$resultado3,'total1'=>$total1,'total2'=>$total2,'total3'=>$total3,'comentarios1'=>$comentarios1,'comentarios2'=>$comentarios2,'comentarios3'=>$comentarios3]);
 
-           return $pdf->stream('formato.pdf');
+          return $pdf->stream('formato.pdf');
 
             return view('pages/imprimeformatopdf' , ['suc'=>$suc,'evaluacion1'=>$resultado1,'evaluacion2'=>$resultado2,'evaluacion3'=>$resultado3,'total1'=>$total1,'total2'=>$total2,'total3'=>$total3,'comentarios1'=>$comentarios1,'comentarios2'=>$comentarios2,'comentarios3'=>$comentarios3]);
 
