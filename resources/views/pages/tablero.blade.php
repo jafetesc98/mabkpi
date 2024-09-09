@@ -21,7 +21,7 @@ header("Pragma: no-cache");
 <div  class="p-10" class="carga" id="carga">
 <div  class="intro-y grid grid-cols-12 gap-6 sm:gap-3 ">
     @foreach($array as $key=>$a)
-    <?php if (Auth::user()->puesto =="DIRECCION"  && $a!="RESULTADOS DE EVALUACION"  && Auth::user()->puesto !="VENTAS" && $a!="COMISIONES"): ?>
+    <?php if (Auth::user()->puesto =="DIRECCION"  && $a!="RESULTADOS DE EVALUACION"  && Auth::user()->puesto !="VENTAS" && $a!="COMISIONES" && $a!="DOCUMENTOS"): ?>
         <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2" >
             <a href="{{$key}}?puesto={{ Auth::user()->puesto }}&nombre={{ Auth::user()->nombre_lar }}"   >
             <div id="{{$key}}?puesto={{ Auth::user()->puesto }} " class="file box rounded-md relative zoom-in p-2">
@@ -58,7 +58,7 @@ header("Pragma: no-cache");
             </a>
         </div> 
         <?php endif; ?>
-        <?php if ( Auth::user()->puesto !="DIRECCION" && $a=="VENTAS X ART" && Auth::user()->puesto !="VENTAS"): ?>
+        <?php if ( Auth::user()->puesto !="DIRECCION" && $a=="VENTAS X ART" && Auth::user()->puesto !="VENTAS" && Auth::user()->puesto !="GTEOPE"): ?>
         <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2">
             <a href="{{$key}}"   >
                 <div id="{{$key}}" class="file box rounded-md relative zoom-in p-2">  
@@ -71,7 +71,7 @@ header("Pragma: no-cache");
             </a>
         </div> 
         <?php endif; ?>   
-        <?php if ( Auth::user()->puesto !="DIRECCION" && $a=="PRESUPUESTO" && Auth::user()->puesto !="VENTAS"): ?>
+        <?php if ( Auth::user()->puesto !="DIRECCION" && $a=="PRESUPUESTO" && Auth::user()->puesto !="VENTAS" && Auth::user()->puesto !="GTEOPE"): ?>
         <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2">
             <a href="{{$key}}"   >
                 <div id="{{$key}}" class="file box rounded-md relative zoom-in p-2">  
@@ -125,6 +125,19 @@ header("Pragma: no-cache");
                 <div id="{{$key}}" class="file box rounded-md relative zoom-in p-2">  
                     <?php if ( $a=="COMISIONES" ): ?>
                         <img alt="Midone - HTML Admin Template" class="centro1" src="{{ asset('dist/images/comision.png') }}">
+                        <p class="block font-medium mt-4 text-center truncate" name="nombre">{{ $a }}</p>
+                        <?php endif; ?>
+                </div>  
+            </a>
+        </div> 
+        <?php endif; ?>    
+
+        <?php if ($a=="DOCUMENTOS" ): ?>
+        <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2">
+            <a href="{{$key}}" >
+                <div id="{{$key}}" class="file box rounded-md relative zoom-in p-2">  
+                    <?php if ( $a=="DOCUMENTOS" ): ?>
+                        <img alt="Midone - HTML Admin Template" class="centro1" src="{{ asset('dist/images/contrato.png') }}">
                         <p class="block font-medium mt-4 text-center truncate" name="nombre">{{ $a }}</p>
                         <?php endif; ?>
                 </div>  

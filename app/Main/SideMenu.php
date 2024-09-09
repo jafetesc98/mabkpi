@@ -55,18 +55,19 @@ class SideMenu
                 'route_name' => 'presupuesto',
                 'params' => [
                     'layout' => 'side-menu',
-                    'permiso' => 'todos'
+                    'permiso' => 'soperacion'
                 ],
                 'title' => 'Presupuesto'
             ],
+            
             'ventas' => [
                 'icon' => 'file-text',
                 'route_name' => 'ventas',
                 'params' => [
                     'layout' => 'side-menu',
-                    'permiso' => 'todos'
+                    'permiso' => 'soperacion'
                 ],
-                'title' => 'Ventas'
+                'title' => 'Ventas x art'
             ],
             'avance' => [
                 'icon' => 'signal',
@@ -94,6 +95,24 @@ class SideMenu
                     'permiso' => 'operacion'
                 ],
                 'title' => 'RESULTADOS DE EVALUACION'
+            ],
+            'comisiones' => [
+                 'icon' => 'edit',
+                'route_name' => 'comisioneshdr',
+                'params' => [
+                    'layout' => 'side-menu',
+                    'permiso' => 'ventas'
+                ],
+                'title' => 'COMISIONES'
+            ],
+            'documentos' => [
+                'icon' => 'file-text',
+                'route_name' => 'documentos',
+                'params' => [
+                    'layout' => 'side-menu',
+                    'permiso' => 'todos'
+                ],
+                'title' => 'DOCUMENTOS'
             ],
             /*icon-signal
             'file-manager' => [

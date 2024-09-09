@@ -21,7 +21,7 @@
                                
                                 </div>
                                 <div class="intro-y flex items-center col-span-6 ">
-                                <a href="pdfglobal?f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank""><button class="btn btn-danger mb-2">
+                                <a href="pdfglobal?f_ini={{$fechas['f_ini']}}&f_fin={{$fechas['f_fin']}}" target="_blank"><button class="btn btn-danger mb-2">
                                 Exportar PDF
                                 </button></a>
                             </div>

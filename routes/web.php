@@ -6,6 +6,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\FormatosController;
+use App\Http\Controllers\FilesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,14 @@ Route::middleware('auth')->group(function() {
 
         Route::get('/imprimepdf', [App\Http\Controllers\FormatosController::class, 'imprimepdf'])->name('imprimepdf');
         Route::get('/pdfglobal', [App\Http\Controllers\FormatosController::class, 'pdfglobal'])->name('pdfglobal');
-       
+        Route::get('/documentos', [App\Http\Controllers\FormatosController::class, 'documentos'])->name('documentos');
+
+        Route::get('/versucursales', [App\Http\Controllers\PageController::class, 'versucursales'])->name('versucursales');
+        Route::post('/actdistritos', [App\Http\Controllers\PageController::class, 'actdistritos'])->name('actdistritos');
+        Route::post('/eliminadistritos', [App\Http\Controllers\PageController::class, 'eliminadistritos'])->name('eliminadistritos');
+        Route::post('/agregadistrito', [App\Http\Controllers\PageController::class, 'agregadistrito'])->name('agregadistrito');
+        Route::get('/buscadistrito', [App\Http\Controllers\PageController::class, 'buscadistrito'])->name('buscadistrito');
+
+        Route::post('/subearchivo', [App\Http\Controllers\FilesController::class, 'storeFile'])->name('subearchivo');
     });
 });

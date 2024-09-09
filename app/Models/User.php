@@ -44,7 +44,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $appends = ['photo'];
+    
 
     /**
      * The getter that return accessible URL for user photo.

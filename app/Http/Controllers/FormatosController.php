@@ -8,6 +8,10 @@ use App\Models\Preguntas;
 use App\Models\Preghdr;
 use App\Models\Pregdet;
 use App\Models\Comentarios;
+use Illuminate\Support\Facades\Storage;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use RegexIterator;
 
 class FormatosController extends Controller
 {
@@ -504,5 +508,48 @@ class FormatosController extends Controller
             return view('pages/resultadosglobales')->with("array",$resfinal)->with('dis1',$dis1)->with('dis2',$dis2)->with('dis3',$dis3)->with('dis4',$dis4)->with('dis5',$dis5)
             ->with('dis6',$dis6)/* ->with('dis7',$dis7) */->with('dis8',$dis8)->with('dis9',$dis9)->with('dis10',$dis10)->with('jefesup',$dis11ev0)->with('fechas',$fechas);
     }
+
+ public function rsearch($folder, $regPattern) {
+    $dir = new RecursiveDirectoryIterator($folder);
+    $ite = new RecursiveIteratorIterator($dir);
+    $files = new RegexIterator($ite, $regPattern, RegexIterator::GET_MATCH);
+    $fileList = array();
+    foreach($files as $file) {
+        $fileList = array_merge($fileList, $file);
+    }
+    return $fileList;
+}
+    public function documentos(){
+         $files=[];
+         /*
+        foreach(Storage::disk($this->disk)->files() as $file){
+            $name = str_replace("$this->disk/","",$file);
+            $picture = "";
+            $type = Storage::disk($this->disk)->mimeType($name);
+            
+            if(strpos($type, "image")!== false){
+                $picture = asset(Storage::disk($this->disk)->
+                url($name));
+            }
+            $downloadLink = route("download",$name);
+            $files[] = [
+                "picture" =>$picture,
+                "name"    => $name,
+                "link"    => $downloadLink,
+                "size"    => Storage::disk($this->disk)->size($name)
+
+            ];
+        } */
+         //return view('pages/descargaFormatos',["files"=>$files]);
+         
+         //$result = rsearch('uploads/live', '/.*.pdf/');
+         $result = $this->rsearch('public/dist/doc', '/.*./');
+         return view('pages/descargaFormatos',["files"=>$result]);
+        //print_r($result);
+    }
+
+   
+
+
 
 }

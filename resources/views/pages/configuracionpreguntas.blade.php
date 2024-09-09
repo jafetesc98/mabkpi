@@ -36,6 +36,9 @@
                             <a href="verpregunta"><button class="ml-3 btn box flex items-center text-slate-600 dark:text-slate-300">
                                 <i data-lucide="file-text" class="hidden sm:block w-4 h-4 mr-2"></i> Agregar Pregunta
                             </button></a>
+                            <a href="versucursales"><button class="ml-3 btn box flex items-center text-slate-600 dark:text-slate-300">
+                                <i data-lucide="file-text" class="hidden sm:block w-4 h-4 mr-2"></i> Agregar Suc. a Distrito
+                            </button></a>
                         </div>
                     </div>
                     <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">

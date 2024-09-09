@@ -11,6 +11,10 @@ use App\Models\Preghdr;
 use App\Models\Pregdet;
 use App\Models\Supervisor;
 use App\Models\Comentarios;
+use App\Models\Sucursales;
+use App\Models\ZonaDistritos;
+use Illuminate\Support\Facades\Auth;
+
 
 class PageController extends Controller
 {
@@ -43,6 +47,7 @@ class PageController extends Controller
         'evaluacion' =>"EVALUACION A SUCURSALES",
         'resultadosevaluacion' =>"RESULTADOS DE EVALUACION",
         'comisioneshdr' =>"COMISIONES",
+        'documentos' =>"DOCUMENTOS",
         );
 
         return view('pages/tablero')->with('array', $array);
@@ -376,13 +381,16 @@ public function evaluacion(Request $request)
 
         $puesto = $request->input("puesto");
         $nombre = $request->input("nombre");
+        //return $nombre;
         if($puesto == 'SUBOPERACI' || $puesto == 'DIRECCION'){
             
             $fecha3 = date("Ym")."01";
             $fecha4 = date("Ym")."05"; //aqui va hasta el 5 de cada mes 
 
-        $busqueda2 = DB::select("SET NOCOUNT ON; select Suc,NomSuc from distritos a where Supervisor='".$nombre."' and Suc not in(select Suc from ResultPreghdr 
-        where id_supervisor=a.ID and f_alt>='".$fecha3. "' and f_alt<='".$fecha4."'  and evaluacion=0) order by Suc asc");
+        //$busqueda2 = DB::select("SET NOCOUNT ON; select Suc,NomSuc from distritos a where Supervisor='".$nombre."' and Suc not in(select Suc from ResultPreghdr 
+        //where id_supervisor=a.ID and f_alt>='".$fecha3. "' and f_alt<='".$fecha4."'  and evaluacion=0) order by Suc asc");
+
+        $busqueda2 = DB::select("SET NOCOUNT ON;EXEC sp_busca_supervisor '".$nombre."', '".$fecha3."', '".$fecha4."'");
 
         $array2 = json_decode(json_encode($busqueda2), true); 
         //return $array2;
@@ -465,7 +473,7 @@ public function evaluacion(Request $request)
         //return $puesto;
         $preguntas = Preguntas::where('status',1)
         ->select('id','desPreg','tipo')->get()->toArray();
-        $idsup = Distritos::where('Supervisor',$nombre)->select('ID')->get()->first()->toArray();
+        $idsup = Supervisor::where('nombre',$nombre)->select('ID')->get()->first()->toArray();
         //return (int)$idsup['ID'];
 
         $cont=count($preguntas);
@@ -489,7 +497,13 @@ public function evaluacion(Request $request)
 
         $preghdr = new Preghdr;
         $preghdr->suc = $suc;
-        $preghdr->id_supervisor =(int)$idsup['ID'];
+        if($idsup['ID']==11 || $idsup['ID']==12){
+            $preghdr->id_supervisor =0;
+        }else{
+            $preghdr->id_supervisor =(int)$idsup['ID'];
+        }
+       
+        
         $preghdr->f_alt = date("Ymd");
         $preghdr->h_alt = date("His");
 
@@ -1128,8 +1142,8 @@ public function evaluacion(Request $request)
          ->where('id_supervisor',$nombre)
          ->select('Suc')->get()->toArray();
 
-         $resultado3 = Preghdr::where('ResultPreghdr.id_supervisor',11)
-         ->orwhere('ResultPreghdr.id_supervisor',12)
+         $resultado3 = Preghdr::where('ResultPreghdr.id_supervisor',0)
+         ->orwhere('ResultPreghdr.id_supervisor',0)
          ->whereIn('ResultPreghdr.Suc', $sucursales)
          ->where('ResultPreghdr.f_alt', '>=',$mes3.'01')
          ->where('ResultPreghdr.f_alt','<=',$mes3.'05')
@@ -1523,10 +1537,13 @@ public function evaluacion(Request $request)
     }
 
     public function asignasup(){
-        $sup = Supervisor::where('id','!=',11)
-        ->where('id','!=',12)->select('id','nombre')->get()->toArray();
+        /* $sup = Supervisor::where('id','!=',11)
+        ->where('id','!=',12)->select('id','nombre')->get()->toArray();*/
         $dis = Distritos::where('ID','!=',11)
-        ->where('ID','!=',12)->where('id','!=',0)->select('ID','Supervisor','id_supervisor')->distinct()->get()->toArray();
+        ->where('ID','!=',12)->where('id','!=',0)->select('ID','Supervisor','id_supervisor')->distinct()->get()->toArray(); 
+
+        $sup = Supervisor::where('status',1)->select('id','nombre')->get()->toArray();
+        //$dis = ZonaDistritos::where('status',1)->select('distrito')->get()->toArray();
 
         //return $dis;
         return view('pages/asignasup')->with('supervisor',$sup)->with('distritos',$dis);
@@ -1559,4 +1576,168 @@ public function evaluacion(Request $request)
         return redirect('asignasup');
     }
 
+    public function versucursales(){
+        $dis = ZonaDistritos::where('status','1')->select('distrito as id')->distinct('distrito')->get()->toArray();
+        $sucursales = Sucursales::where('Region','!=','')->where('suc_num','!=','')->whereNotIn('suc',Distritos::whereNotIn('ID',['11','12'])->select('suc')->distinct('suc')->get()->toArray())->select('suc','des')->get()->toArray();
+        $distritos = Distritos::whereNotIn('ID',[0,11,12])->select('ID','suc','NomSuc')->orderBy('ID')->get()->toArray();
+        //return $distritos;
+        return view('pages/asignasuchdr')->with('dis',$dis)->with('sucursales',$sucursales)->with('tdistritos',$distritos);
+    }
+    
+    public function actdistritos(Request $request){
+        $user = Auth::user();
+       $usuario = $user->nom_cto;
+        date_default_timezone_set('America/Mexico_City');
+        $fecha = date('Ymd');
+        $hora = date('hms');
+       
+        $suc = $request->distrito;
+
+        $cont = count($suc);
+        $id = $request->dis;
+
+        $supervisor = Supervisor::where('id',$id)->select('id','nombre')->get()->toArray();
+        $sup = count($supervisor);
+        
+        if($sup==0){
+            DB::beginTransaction();
+                $s = new Supervisor;
+                $s->nombre= "SUPERVISOR DISTRITO ".$id;
+                $s->f_alt=$fecha;
+                $s->h_alt=$hora;
+                $s->u_alt=$usuario;
+                $s->f_mod=$fecha;
+                $s->h_mod=$hora;
+                $s->u_mod=$usuario;
+                try{
+                    $s->save();
+                }catch(Throwable $e){
+                    DB::rollBack();
+                    return response()->json(array(
+                        'code'      =>  421,
+                        'message'   =>  'Error al guardar el distrito',
+                        'error'     =>  'Error al guardar el distrito',
+                    ), 421);
+                }
+                DB::commit();
+        }
+//return $suc;
+        for($i=0; $i<$cont;$i++){
+            $distrito = Distritos::where('ID',$id)->where('Suc',$suc[$i])->select('ID','Suc')->get()->toArray();
+             $sucursal = Sucursales::where('suc',$suc[$i])->select('des')->get()->toArray();
+            $supervisor = Supervisor::where('id',$id)->select('id','nombre')->get()->toArray();
+            //return $distrito[$i]['Suc'];
+            if(count($distrito)==0){
+               DB::beginTransaction();
+                $d = new Distritos;
+                $d->ID = $id;
+                $d->Distrito= "Dtto".$id;
+                $d->Suc=$suc[$i];
+                $d->NomSuc=$sucursal[0]['des'];
+                $d->id_supervisor=$supervisor[0]['id'];
+                $d->Supervisor=$supervisor[0]['nombre'];
+                
+                try{
+                    $d->save();
+                }catch(Throwable $e){
+                    DB::rollBack();
+                    return response()->json(array(
+                        'code'      =>  421,
+                        'message'   =>  'Error al guardar el distrito',
+                        'error'     =>  'Error al guardar el distrito',
+                    ), 421);
+                }
+                DB::commit();
+                
+            }
+           
+
+        }
+        Distritos::where('ID', $id)->whereNotIn('Suc',$suc)->delete();
+        return redirect('versucursales'); 
+    }
+
+    public function eliminadistritos(Request $request){
+       $user = Auth::user();
+       $usuario = $user->nom_cto;
+        $dist = $request->zona;
+        $dis = ZonaDistritos::where('distrito',$dist)->first();
+        DB::beginTransaction();
+
+        $dis->status = 0;
+        $dis->user_alt=$usuario;
+        try{
+            $dis->save();
+            Distritos::where('ID', $dist)->delete();
+        }catch(Throwable $e){
+            DB::rollBack();
+            return response()->json(array(
+                'code'      =>  421,
+                'message'   =>  'Error al eliminar el distrito',
+                'error'     =>  'Error al eliminar el distrito',
+            ), 421);
+        }
+         DB::commit();
+        return redirect('versucursales');
+    }
+
+    public function agregadistrito(Request $request){
+        $user = Auth::user();
+        $usuario = $user->nom_cto;
+        $distrito = $request->distr;
+        $dis = ZonaDistritos::where('distrito',$distrito)->get()->toArray();
+ //return $dis;
+        if(count($dis)==0){
+        DB::beginTransaction();
+        $d = new ZonaDistritos;
+        $d->distrito = $distrito;
+        $d->des_distrito= "Dtto".$distrito;
+        $d->status=1;
+        $d->user_alt=$usuario;
+        try{
+            $d->save();
+        }catch(Throwable $e){
+            DB::rollBack();
+            return response()->json(array(
+                'code'      =>  421,
+                'message'   =>  'Error al guardar el distrito',
+                'error'     =>  'Error al guardar el distrito',
+            ), 421);
+        }
+         DB::commit();
+        return redirect('versucursales');
+        }else{
+        $dis = ZonaDistritos::where('distrito',$distrito)->where('status',0)->first();
+        DB::beginTransaction();
+
+        $dis->status = 1;
+        $dis->user_alt=$usuario;
+        try{
+            $dis->save();
+        }catch(Throwable $e){
+            DB::rollBack();
+            return response()->json(array(
+                'code'      =>  421,
+                'message'   =>  'Error al eliminar el distrito',
+                'error'     =>  'Error al eliminar el distrito',
+            ), 421);
+        }
+         DB::commit();
+        return redirect('versucursales');
+        }
+        //if($dis->status==0)
+
+        
+       
+    }
+
+    public function buscadistrito(Request $request){
+        $distrito = $request->distrito;
+
+        $dis = ZonaDistritos::where('distrito',$distrito)->where('status',1)->first();
+
+        return $dis;
+    }
+
 }
+
