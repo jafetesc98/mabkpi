@@ -15,8 +15,7 @@
 @endsection
 
 @section('subhead')
-    <title>Dashboard </title>
-   
+    <title>Dashboard </title>   
     
 @endsection
 
@@ -136,7 +135,18 @@
         @endforeach
     </div>
 
-    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 <style>
         .card{

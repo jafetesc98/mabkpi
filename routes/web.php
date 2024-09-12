@@ -81,5 +81,9 @@ Route::middleware('auth')->group(function() {
         Route::get('/buscadistrito', [App\Http\Controllers\PageController::class, 'buscadistrito'])->name('buscadistrito');
 
         Route::post('/subearchivo', [App\Http\Controllers\FilesController::class, 'storeFile'])->name('subearchivo');
+        Route::get('/deleteFiles', [App\Http\Controllers\FilesController::class, 'deleteFiles'])->name('deleteFiles');
+        Route::post('/guardadireccion', [App\Http\Controllers\FilesController::class, 'guardadireccion'])->name('guardadireccion');
+        Route::get('/buscadoc', [App\Http\Controllers\FormatosController::class, 'buscadoc'])->name('buscadoc');
+        Route::post('/eliminacarpeta', [App\Http\Controllers\FilesController::class, 'eliminacarpeta'])->name('eliminacarpeta');
     });
 });

@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Storage;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use RegexIterator;
+use App\Models\UbicacionArc;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FormatosController extends Controller
 {
@@ -520,32 +523,23 @@ class FormatosController extends Controller
     return $fileList;
 }
     public function documentos(){
-         $files=[];
-         /*
-        foreach(Storage::disk($this->disk)->files() as $file){
-            $name = str_replace("$this->disk/","",$file);
-            $picture = "";
-            $type = Storage::disk($this->disk)->mimeType($name);
-            
-            if(strpos($type, "image")!== false){
-                $picture = asset(Storage::disk($this->disk)->
-                url($name));
-            }
-            $downloadLink = route("download",$name);
-            $files[] = [
-                "picture" =>$picture,
-                "name"    => $name,
-                "link"    => $downloadLink,
-                "size"    => Storage::disk($this->disk)->size($name)
-
-            ];
-        } */
-         //return view('pages/descargaFormatos',["files"=>$files]);
+         $buscaSeccion = UbicacionArc::where('status',1) ->select('id',trim('nombre'),trim('ubicacion'),trim('carpeta'))->orderBy('id','asc')->get()->toArray();
          
-         //$result = rsearch('uploads/live', '/.*.pdf/');
-         $result = $this->rsearch('public/dist/doc', '/.*./');
-         return view('pages/descargaFormatos',["files"=>$result]);
+         //return $result;
+         //return view('pages/descargaFormatos',["files"=>$result])->with("secciones", $buscaSeccion);
+         return view('pages/descargaFormatos')->with("secciones", $buscaSeccion);
         //print_r($result);
+    }
+    public function buscadoc(Request $request){
+        //return $request->input('ruta');
+        //return $request;
+        $ruta=$request->input('ruta');
+         $files=[];
+         
+         $result = $this->rsearch($ruta, '/.*./');
+         //return ["files",$result];
+         return $result;
+
     }
 
    

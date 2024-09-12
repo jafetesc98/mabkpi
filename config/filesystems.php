@@ -43,7 +43,7 @@ return [
         ],
         'private' => [
             'driver' => 'local',
-            'root' => public_path('dist/doc'),
+            'root' => public_path('dist/docs'),
             
         ],
 
