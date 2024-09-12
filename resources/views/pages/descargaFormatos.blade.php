@@ -227,7 +227,7 @@
                                             var extension = archivos[k].substring(archivos[k].lastIndexOf(".")+1);
                                             var ruta =  archivos[k]
                                             var doc = archivos[k].substring(archivos[k].lastIndexOf("\\")+1);
-                                            //console.log(doc)
+                                            console.log(doc)
                                            var div ='<div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">'+
                                                     '<div class="file box rounded-md px-5 pt-8 pb-5 px-3 sm:px-5 relative zoom-in">'+
                                                     '<a href="'+ruta+'" target="_blank" class="w-3/5 file__icon file__icon--file mx-auto">'+
