@@ -32,6 +32,7 @@ class FilesController extends Controller
     public function deleteFiles(Request $request){
             $nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '\\')+1);
             $dir = substr($request->input('nombre'), 16,strrpos($request->input('nombre'),  '\\'));
+            
             //return $dir;
              Storage::disk('private')->delete($dir);
             

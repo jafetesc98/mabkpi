@@ -90,7 +90,8 @@
                                 
                                 @endforeach
                             </div>
-                            <div class="border-t border-slate-200 dark:border-darkmode-400 mt-4 pt-4">
+                            <?php if (  Auth::user()->puesto =="SUBOPERACI" || Auth::user()->puesto =="OPERACION" || Auth::user()->puesto =="DIRECCION" ): ?>
+                                <div class="border-t border-slate-200 dark:border-darkmode-400 mt-4 pt-4">
                                 <div class=" fghf w-full sm:w-auto relative mr-auto mt-3 sm:mt-0">
                                     <div class="flex items-center px-3 py-2 mt-2 rounded-md">
                                          Agrega nueva sección
@@ -146,8 +147,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php endif; ?>
+
                         </div>
-                        <!-- END: File Manager Menu -->
                     </div>
                     <div class="col-span-12 lg:col-span-9 2xl:col-span-10">
                         <div class="intro-y flex flex-col-reverse sm:flex-row items-center">
