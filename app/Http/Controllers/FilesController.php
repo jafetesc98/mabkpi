@@ -80,6 +80,13 @@ class FilesController extends Controller
             //return $carp;
             $carpeta = UbicacionArc::where('carpeta',$carp)->select('nombre','ubicacion','carpeta')->get()->toArray();
             $dir = $carpeta[0]['ubicacion'];
+
+            $files = glob($dir.'/*'); //obtenemos todos los nombres de los ficheros
+            foreach($files as $file){
+                if(is_file($file))
+                unlink($file); //elimino el fichero
+            }
+
             //return $dir;
             rmdir($dir);
             
