@@ -72,18 +72,18 @@
                         <div class="intro-y box p-5 mt-6">
                             <div class="mt-1">
                                 @foreach ($secciones as $key=>$ubi)
-                                    @if($ubi['id']==1)
+                                    @if($key==0)
                                     <button id="btn{{$ubi['id']}}" value="{{$ubi['id']}}" onclick="checkbtn('{{$ubi['id']}}')" name="btn{{$ubi['id']}}" class="selected flex items-center px-3 py-2 rounded-md bg-primary text-white font-medium modal-content"> 
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="file" class="lucide lucide-file w-4 h-4 mr-2" data-lucide="file">
                                             <path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"></path>
                                             <polyline points="14 2 14 8 20 8"></polyline>
                                         </svg>{{$ubi['nombre']}} </button>
                                     @endif
-                                    @if($ubi['id']!=1)
-                                    <button id="btn{{$ubi['id']}}" value="{{$ubi['id']}}" onclick="checkbtn('{{$ubi['id']}}')"  name="btn{{$ubi['id']}}" class="flex items-center px-3 py-2 mt-2 rounded-md modal-content"> 
+                                    @if($key!=0)
+                                    <button id="btn{{$ubi['id']}}"  value="{{$ubi['id']}}" onclick="checkbtn('{{$ubi['id']}}')"  name="btn{{$ubi['id']}}" class="flex items-center px-3 py-2 mt-2 rounded-md modal-content"> 
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="file" class="lucide lucide-file w-4 h-4 mr-2" data-lucide="file">
                                             <path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"></path>
-                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                            <polyline points="14 2 14 8 20 8"></polyline> 
                                         </svg> {{$ubi['nombre']}} 
                                     </button> 
                                     @endif
