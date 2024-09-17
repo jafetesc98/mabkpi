@@ -59,7 +59,7 @@ header("Pragma: no-cache");
         </div> 
         <?php endif; ?>
         <?php if ( Auth::user()->puesto !="DIRECCION" && $a=="VENTAS X ART" && Auth::user()->puesto !="VENTAS" && Auth::user()->puesto !="GTEOPE"): ?>
-        <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2">
+        <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2 ">
             <a href="{{$key}}"   >
                 <div id="{{$key}}" class="file box rounded-md relative zoom-in p-2">  
                     <?php if ( $a=="VENTAS X ART" ): ?>
@@ -84,7 +84,7 @@ header("Pragma: no-cache");
         </div> 
         <?php endif; ?>  
         <?php if (  Auth::user()->puesto =="SOPERACION" && $a=="EVALUACION A SUCURSALES" ): ?>
-        <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2">
+        <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2 ">
             <a href="{{$key}}?nombre={{ Auth::user()->nombre_lar }} " >
                 <div id="{{$key}}" class="file box rounded-md relative zoom-in p-2">  
                     <?php if ( $a=="EVALUACION A SUCURSALES" ): ?>
@@ -107,7 +107,7 @@ header("Pragma: no-cache");
             </a>
         </div> 
         <?php endif; ?>      
-        <?php if (  Auth::user()->puesto =="SUBOPERACI" && $a=="RESULTADOS DE EVALUACION" || Auth::user()->puesto =="OPERACION" ): ?>
+        <?php if (  Auth::user()->puesto =="SUBOPERACI" || Auth::user()->puesto =="OPERACION" && $a=="RESULTADOS DE EVALUACION"  ): ?>
         <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2">
             <a href="{{$key}}" >
                 <div id="{{$key}}" class="file box rounded-md relative zoom-in p-2">  
