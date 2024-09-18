@@ -107,7 +107,19 @@ header("Pragma: no-cache");
             </a>
         </div> 
         <?php endif; ?>      
-        <?php if (  Auth::user()->puesto =="SUBOPERACI" || Auth::user()->puesto =="OPERACION" && $a=="RESULTADOS DE EVALUACION"  ): ?>
+        <?php if (  Auth::user()->puesto =="SUBOPERACI" && $a=="RESULTADOS DE EVALUACION" ): ?>
+        <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2 ">
+            <a href="{{$key}}" >
+                <div id="{{$key}}" class="file box rounded-md relative zoom-in p-2">  
+                    <?php if ( $a=="RESULTADOS DE EVALUACION" ): ?>
+                        <img alt="Midone - HTML Admin Template" class="centro1" src="{{ asset('dist/images/resultado.png') }}">
+                        <p class="block font-medium mt-4 text-center truncate" name="nombre">{{ $a }}</p>
+                        <?php endif; ?>
+                </div>  
+            </a>
+        </div> 
+        <?php endif; ?>     
+        <?php if ( Auth::user()->puesto =="OPERACION" && $a=="RESULTADOS DE EVALUACION"  ): ?>
         <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2">
             <a href="{{$key}}" >
                 <div id="{{$key}}" class="file box rounded-md relative zoom-in p-2">  
