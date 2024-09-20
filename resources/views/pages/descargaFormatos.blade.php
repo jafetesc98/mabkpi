@@ -90,7 +90,7 @@
                                 
                                 @endforeach
                             </div>
-                            <?php if (  Auth::user()->puesto =="SUBOPERACI" || Auth::user()->puesto =="OPERACION" || Auth::user()->puesto =="DIRECCION" ): ?>
+                            <?php if (  Auth::user()->puesto =="SUBOPERACI" || Auth::user()->puesto =="OPERACION" || Auth::user()->puesto =="DIRECCION" || Auth::user()->puesto =="SISTEMAS" ): ?>
                                 <div class="border-t border-slate-200 dark:border-darkmode-400 mt-4 pt-4">
                                 <div class=" fghf w-full sm:w-auto relative mr-auto mt-3 sm:mt-0">
                                     <div class="flex items-center px-3 py-2 mt-2 rounded-md">
@@ -156,7 +156,7 @@
                             
                             <div class="w-full sm:w-auto flex">
                                <!-- BEGIN: Modal Toggle -->
-                                <?php if (Auth::user()->puesto =="DIRECCION"  || Auth::user()->puesto =="SUBOPERACI" || Auth::user()->puesto=="OPERACION"): ?>
+                                <?php if (Auth::user()->puesto =="DIRECCION"  || Auth::user()->puesto =="SUBOPERACI" || Auth::user()->puesto=="OPERACION" || Auth::user()->puesto =="SISTEMAS"): ?>
                                 <div class="text-center"> <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-primary">Subir archivo</a> </div> 
                                 <?php endif; ?>
                                 <!-- END: Modal Toggle -->
@@ -236,7 +236,7 @@
                                                     '<div class="file__icon__file-name">'+extension+'</div>'+
                                                     '</a>'+
                                                     '<a href="'+ruta+'" target="_blank" class="block font-medium mt-4 text-center truncate">'+doc+'</a>'
-                                                    if(puesto=='DIRECCION' || puesto =='SUBOPERACI' || puesto=='OPERACION'){
+                                                    if(puesto=='DIRECCION' || puesto =='SUBOPERACI' || puesto=='OPERACION' || puesto=='SISTEMAS'){
                                                         //console.log(puesto)
                                                     div =div+'<div class="absolute top-0 right-0 mr-2 mt-3 dropdown ml-auto">'+
                                                                 '<a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown">'+
