@@ -58,7 +58,7 @@ header("Pragma: no-cache");
             </a>
         </div> 
         <?php endif; ?>
-        <?php if ( Auth::user()->puesto !="DIRECCION" && $a=="VENTAS X ART" && Auth::user()->puesto !="VENTAS" && Auth::user()->puesto !="GTEOPE"): ?>
+        <?php if ( Auth::user()->puesto !="DIRECCION" && $a=="VENTAS X ART" && Auth::user()->puesto !="VENTAS" && Auth::user()->puesto !="GTEOPE" && Auth::user()->puesto !="GERENTE"): ?>
         <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2 ">
             <a href="{{$key}}"   >
                 <div id="{{$key}}" class="file box rounded-md relative zoom-in p-2">  
@@ -71,7 +71,7 @@ header("Pragma: no-cache");
             </a>
         </div> 
         <?php endif; ?>   
-        <?php if ( Auth::user()->puesto !="DIRECCION" && $a=="PRESUPUESTO" && Auth::user()->puesto !="VENTAS" && Auth::user()->puesto !="GTEOPE"): ?>
+        <?php if ( Auth::user()->puesto !="DIRECCION" && $a=="PRESUPUESTO" && Auth::user()->puesto !="VENTAS" && Auth::user()->puesto !="GTEOPE" && Auth::user()->puesto !="GERENTE"): ?>
         <div class="intro-y col-span-6 sm:col-span-2 md:col-span-3 2xl:col-span-2">
             <a href="{{$key}}"   >
                 <div id="{{$key}}" class="file box rounded-md relative zoom-in p-2">  
