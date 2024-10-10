@@ -813,9 +813,15 @@ public function evaluacion(Request $request)
 
         if($mes2>=10){
             $mes3=$anio.$mes2+1;
-        }else{
-            $mes3=$anio.'0'.$mes2+1;
+        }if($mes2<10){
+            if($mes2 == "09"){
+                $mes3=$anio.''.$mes2+1;
+            }else{
+                $mes3=$anio.'0'.$mes2+1;
+            }
+            
         }
+        //return $mes3;
         
         if($nombre==0){
             $todo = Preghdr::where('ResultPreghdr.f_alt', '>=',$mes.'15')

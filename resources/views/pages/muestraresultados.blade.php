@@ -138,7 +138,7 @@
 
             
 <script type="text/javascript">
-                var array = {{Js::from($array)}};
+            var array = {{Js::from($array)}};
 
             window.addEventListener("load", function(){
             
