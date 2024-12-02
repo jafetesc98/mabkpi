@@ -74,11 +74,20 @@ class FilesController extends Controller
     }
 
     public function deleteFiles(Request $request){
-            $nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/')+1);
-            $dir = substr($request->input('nombre'), 16,strrpos($request->input('nombre'),  '/'));
-            
-            //return $dir;
-             Storage::disk('private')->delete($nombre);
+            $nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/') + 1);
+            $dir = substr($request->input('nombre'), 0, strrpos($request->input('nombre'), '/'));
+
+            // Construir la ruta completa
+            $fullPath = $dir . '/' . $nombre;
+
+            // Eliminar el archivo usando la ruta completa
+            if (Storage::disk('private')->exists($fullPath)) {
+                Storage::disk('private')->delete($fullPath);
+                echo "El archivo ha sido eliminado.";
+            } else {
+                echo "El archivo no existe.";
+            }
+
             
         return redirect('documentos');
 
