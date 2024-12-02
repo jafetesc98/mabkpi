@@ -78,7 +78,7 @@ class FilesController extends Controller
             $dir = substr($request->input('nombre'), 16,strrpos($request->input('nombre'),  '/'));
             
             //return $dir;
-             Storage::disk('private')->delete($dir);
+             Storage::disk('private')->delete($nombre);
             
         return redirect('documentos');
 
