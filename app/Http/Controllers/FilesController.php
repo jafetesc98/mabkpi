@@ -75,12 +75,12 @@ class FilesController extends Controller
     }
 
     public function deleteFiles(Request $request){
-            /* $nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/')+1);
-            $dir = substr($request->input('nombre'), 16,strrpos($request->input('nombre'),  '/'));
+            $nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/')+1);
+            $dir = substr($request->input('nombre') ,strrpos($request->input('nombre'),  '/'));
             
             //return $dir;
-             Storage::disk('private')->delete($nombre); */
-            $nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/') + 1);
+            Storage::disk('private')->delete($dir); 
+            /* $nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/') + 1);
             $dir = substr($request->input('nombre'), 0, strrpos($request->input('nombre'), '/'));
 
             // Construir la ruta completa
@@ -101,7 +101,7 @@ class FilesController extends Controller
             } else {
                 Log::warning('El archivo no existe en la ruta: ' . $fullPath);
                 echo "El archivo no existe.";
-            }
+            } */
 
             return redirect('documentos');
 
