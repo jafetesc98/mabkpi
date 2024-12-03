@@ -78,7 +78,7 @@ class FilesController extends Controller
             $nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/')+1);
             $dir = substr($request->input('nombre') ,strrpos($request->input('nombre'),  '/'));
             
-            //return $dir;
+            return "direccion 1 ".$dir ." Nombre ->".$nombre;
             Storage::disk('private')->delete($dir); 
             /* $nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/') + 1);
             $dir = substr($request->input('nombre'), 0, strrpos($request->input('nombre'), '/'));
