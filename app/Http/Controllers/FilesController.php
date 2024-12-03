@@ -85,11 +85,9 @@ class FilesController extends Controller
             $firstPos = strpos($inputString, '/');
             $secondPos = strpos($inputString, '/', $firstPos + 1);
             $thirdPos = strpos($inputString, '/', $secondPos + 1);
-            $fourthPos = strpos($inputString, '/', $thirdPos + 1);
-            $substring = substr($inputString, $thirdPos + 1);
+            $substring = substr($inputString, $thirdPos);
                
-            return "tercara posicion ".$thirdPos. "cuarta posicion ".$fourthPos." final ". $substring;
-            Storage::disk('private')->delete($dir); 
+            Storage::disk('private')->delete($substring); 
             
             return redirect('documentos');
 
