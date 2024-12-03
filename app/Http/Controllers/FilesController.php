@@ -75,42 +75,22 @@ class FilesController extends Controller
     }
 
     public function deleteFiles(Request $request){
-            $nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/')+1);
-            $dir = substr($request->input('nombre') ,strrpos($request->input('nombre'),  '/'));
+            //$nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/')+1);
+            //$dir = substr($request->input('nombre') ,strrpos($request->input('nombre'),  '/'));
 
-            // Cadena de ejemplo 
-            $inputString = $request->input('nombre'); 
-            // Encontrar la posición del tercer '/' 
-            $firstPos = strpos($inputString, '/'); 
-            $secondPos = strpos($inputString, '/', $firstPos + 1); 
-            $thirdPos = strpos($inputString, '/', $secondPos);
-            $substring = substr($inputString, $thirdPos + 1);
+            // Cadena de ejemplo
+            $inputString = $request->input('nombre');
+
+            // Encontrar la posición del cuarto '/'
+            $firstPos = strpos($inputString, '/');
+            $secondPos = strpos($inputString, '/', $firstPos + 1);
+            $thirdPos = strpos($inputString, '/', $secondPos + 1);
+            $fourthPos = strpos($inputString, '/', $thirdPos + 1);
+            $substring = substr($inputString, $fourthPos + 1);
+               
             return $substring;
-            return "direccion 1 ".$dir ." Nombre ->".$nombre;
             Storage::disk('private')->delete($dir); 
-            /* $nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/') + 1);
-            $dir = substr($request->input('nombre'), 0, strrpos($request->input('nombre'), '/'));
-
-            // Construir la ruta completa
-            $fullPath = $dir . '/' . $nombre;
-
-            // Log para depuración
-            Log::info('Ruta completa del archivo: ' . $fullPath);
-
-            if (Storage::disk('private')->exists($fullPath)) {
-                try {
-                    Storage::disk('private')->delete($fullPath);
-                    Log::info('El archivo ha sido eliminado.');
-                    echo "El archivo ha sido eliminado.";
-                } catch (Exception $e) {
-                    Log::error('Error al intentar eliminar el archivo: ' . $e->getMessage());
-                    echo "Ocurrió un error al intentar eliminar el archivo: " . $e->getMessage();
-                }
-            } else {
-                Log::warning('El archivo no existe en la ruta: ' . $fullPath);
-                echo "El archivo no existe.";
-            } */
-
+            
             return redirect('documentos');
 
 
