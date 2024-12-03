@@ -77,7 +77,15 @@ class FilesController extends Controller
     public function deleteFiles(Request $request){
             $nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/')+1);
             $dir = substr($request->input('nombre') ,strrpos($request->input('nombre'),  '/'));
-            
+
+            // Cadena de ejemplo 
+            $inputString = $request->input('nombre'); 
+            // Encontrar la posición del tercer '/' 
+            $firstPos = strpos($inputString, '/'); 
+            $secondPos = strpos($inputString, '/', $firstPos + 1); 
+            $thirdPos = strpos($inputString, '/', $secondPos);
+            $substring = substr($inputString, $thirdPos + 1);
+            return $substring;
             return "direccion 1 ".$dir ." Nombre ->".$nombre;
             Storage::disk('private')->delete($dir); 
             /* $nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/') + 1);
