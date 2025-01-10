@@ -2,7 +2,7 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Presupuesto de sucursales </title>
+    <title>Documentos</title>
  
     <script src="dist/js/busqueda.js"></script>
 @endsection
