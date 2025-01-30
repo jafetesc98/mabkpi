@@ -70,6 +70,13 @@ class FilesController extends Controller
             $name = $request->input('nombre');
             $carpeta = $request->input('carpeta');
 
+            // Obtener el nombre completo del archivo
+            $nombreCompleto = $file->getClientOriginalName();
+
+            $pos = strrpos($nombreCompleto, '.') + 1; // Encuentra la posición del último punto y añade 1
+            $extension = substr($nombreCompleto, $pos); // Corta la cadena desde la posición del punto hasta el final
+
+            // Procesar el nombre ingresado por el usuario
             $nombre = strtr($name, " ", "_");
             $nombre = $this->eliminar_acentos($nombre);
 
@@ -79,14 +86,13 @@ class FilesController extends Controller
             }
 
             // Almacena el archivo
-            $filePath = $carpeta."/".trim($nombre).".".$file->getClientOriginalExtension();
+            $filePath = $carpeta."/".trim($nombre).".".$extension;
             $file->storeAs('', $filePath, $this->disk);
 
             return redirect('documentos')->with('message', 'Archivo subido exitosamente!');
         }
         return redirect('documentos');
     }
-
 
 
     public function deleteFiles(Request $request){
