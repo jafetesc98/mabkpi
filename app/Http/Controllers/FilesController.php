@@ -59,11 +59,14 @@ class FilesController extends Controller
 	}
     public function storeFile(Request $request){
         if($request->isMethod('POST')){
-            $file = $request->file('file');
-            if(!$file){
-                return back()->withErrors(['file' => 'No se ha subido ningún archivo.']);
-            }
+            // Validación del archivo
+            $request->validate([
+                'file' => 'required|file',
+                'nombre' => 'required|string',
+                'carpeta' => 'required|string'
+            ]);
 
+            $file = $request->file('file');
             $name = $request->input('nombre');
             $carpeta = $request->input('carpeta');
 
@@ -76,13 +79,14 @@ class FilesController extends Controller
             }
 
             // Almacena el archivo
-            $filePath = $carpeta."/".trim($nombre).".".$file->extension();
+            $filePath = $carpeta."/".trim($nombre).".".$file->getClientOriginalExtension();
             $file->storeAs('', $filePath, $this->disk);
 
             return redirect('documentos')->with('message', 'Archivo subido exitosamente!');
         }
         return redirect('documentos');
     }
+
 
 
     public function deleteFiles(Request $request){
