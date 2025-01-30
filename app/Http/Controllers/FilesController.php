@@ -57,42 +57,59 @@ class FilesController extends Controller
 		
 		return $cadena;
 	}
+
     public function storeFile(Request $request){
-        if($request->isMethod('POST')){
-            // Validación del archivo
-            $request->validate([
-                'file' => 'required|file',
-                'nombre' => 'required|string',
-                'carpeta' => 'required|string'
-            ]);
+    if($request->isMethod('POST')){
+        // Validación del archivo
+        $request->validate([
+            'file' => 'required|file',
+            'nombre' => 'required|string',
+            'carpeta' => 'required|string'
+        ]);
 
-            $file = $request->file('file');
-            $name = $request->input('nombre');
-            $carpeta = $request->input('carpeta');
+        $file = $request->file('file');
+        $name = $request->input('nombre');
+        $carpeta = $request->input('carpeta');
 
-            // Obtener el nombre completo del archivo
-            $nombreCompleto = $file->getClientOriginalName();
+        // Obtener el nombre completo del archivo
+        $nombreCompleto = $file->getClientOriginalName();
 
-            $pos = strrpos($nombreCompleto, '.') + 1; // Encuentra la posición del último punto y añade 1
-            $extension = substr($nombreCompleto, $pos); // Corta la cadena desde la posición del punto hasta el final
+        // Depurar el nombre completo del archivo
+        \Log::info('Nombre completo del archivo: ' . $nombreCompleto);
 
-            // Procesar el nombre ingresado por el usuario
-            $nombre = strtr($name, " ", "_");
-            $nombre = $this->eliminar_acentos($nombre);
+        $pos = strrpos($nombreCompleto, '.') + 1; // Encuentra la posición del último punto y añade 1
+        $extension = substr($nombreCompleto, $pos); // Corta la cadena desde la posición del punto hasta el final
 
-            // Verifica si la carpeta existe y si no, créala
-            if (!Storage::disk($this->disk)->exists($carpeta)) {
-                Storage::disk($this->disk)->makeDirectory($carpeta);
-            }
+        // Depurar la extensión del archivo
+        \Log::info('Extensión del archivo: ' . $extension);
 
-            // Almacena el archivo
-            $filePath = $carpeta."/".trim($nombre).".".$extension;
-            $file->storeAs('', $filePath, $this->disk);
+        // Procesar el nombre ingresado por el usuario
+        $nombre = strtr($name, " ", "_");
+        $nombre = $this->eliminar_acentos($nombre);
 
-            return redirect('documentos')->with('message', 'Archivo subido exitosamente!');
+        // Verifica si la carpeta existe y si no, créala
+        if (!Storage::disk($this->disk)->exists($carpeta)) {
+            Storage::disk($this->disk)->makeDirectory($carpeta);
         }
-        return redirect('documentos');
+
+        // Depurar la ruta del archivo
+        $filePath = $carpeta."/".trim($nombre).".".$extension;
+        \Log::info('Ruta de almacenamiento del archivo: ' . $filePath);
+
+        // Almacena el archivo
+        try {
+            $file->storeAs('', $filePath, $this->disk);
+            \Log::info('Archivo guardado exitosamente.');
+        } catch (\Exception $e) {
+            \Log::error('Error al guardar el archivo: ' . $e->getMessage());
+            return back()->withErrors(['file' => 'Error al guardar el archivo.']);
+        }
+
+        return redirect('documentos')->with('message', 'Archivo subido exitosamente!');
     }
+    return redirect('documentos');
+}
+
 
 
     public function deleteFiles(Request $request){
