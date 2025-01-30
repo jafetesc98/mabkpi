@@ -66,9 +66,13 @@ class FilesController extends Controller
             $carpeta = $request->input('carpeta'); 
             $nombre = strtr($name, " ", "_"); 
             $nombre = $this->eliminar_acentos($nombre); 
-            return $file->getClientOriginalName(); 
-            return "nombre --->".$nombre." carpeta ----->".$carpeta." file ----->".$file->extension();
-            $file->storeAs(null,$carpeta."/".trim($nombre).".".$file->extension(),$this->disk); 
+            $nombre_arc = $file->getClientOriginalName(); 
+            $pos = strrpos($nombre_arc, '.') + 1; // Encuentra la posición del último punto y añade 1
+            $extension = substr($nombre_arc, $pos); // Corta la cadena desde la posición del punto hasta el final
+
+
+            return "nombre --->".$nombre." carpeta ----->".$carpeta." file ----->".$extension;
+            $file->storeAs(null,$carpeta."/".trim($nombre).".".$extension,$this->disk); 
         } 
         return redirect('documentos'); 
     }
