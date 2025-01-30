@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
+use Illuminate\Http\UploadedFile;
 use App\Models\UbicacionArc;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -65,7 +66,7 @@ class FilesController extends Controller
             $carpeta = $request->input('carpeta'); 
             $nombre = strtr($name, " ", "_"); 
             $nombre = $this->eliminar_acentos($nombre); 
-            return $file->extension(); 
+            return $file->getClientOriginalName(); 
             return "nombre --->".$nombre." carpeta ----->".$carpeta." file ----->".$file->extension();
             $file->storeAs(null,$carpeta."/".trim($nombre).".".$file->extension(),$this->disk); 
         } 
