@@ -71,7 +71,7 @@ class FilesController extends Controller
             $extension = substr($nombre_arc, $pos); // Corta la cadena desde la posición del punto hasta el final
 
 
-            return "nombre --->".$nombre." carpeta ----->".$carpeta." file ----->".$extension;
+            //return "nombre --->".$nombre." carpeta ----->".$carpeta." file ----->".$extension;
             $file->storeAs(null,$carpeta."/".trim($nombre).".".$extension,$this->disk); 
         } 
         return redirect('documentos'); 
