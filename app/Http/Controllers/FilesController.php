@@ -65,8 +65,8 @@ class FilesController extends Controller
             $carpeta = $request->input('carpeta'); 
             $nombre = strtr($name, " ", "_"); 
             $nombre = $this->eliminar_acentos($nombre); 
-            //return $file->extension(); 
-            return "nomre --->".$nombre." carpeta ----->".$carpeta." file ----->".$file->extension();
+            return $file->extension(); 
+            return "nombre --->".$nombre." carpeta ----->".$carpeta." file ----->".$file->extension();
             $file->storeAs(null,$carpeta."/".trim($nombre).".".$file->extension(),$this->disk); 
         } 
         return redirect('documentos'); 
