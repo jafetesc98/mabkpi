@@ -60,13 +60,13 @@ class FilesController extends Controller
 
     public function storeFile(Request $request){ 
         if($request->isMethod('POST')){ 
-            $file1 = $request->file('file'); 
+            $file = $request->file('file'); 
             $name = $request->input('nombre'); 
             $carpeta = $request->input('carpeta'); 
             $nombre = strtr($name, " ", "_"); 
             $nombre = $this->eliminar_acentos($nombre); 
             //return $file->extension(); 
-            $file->storeAs('',$carpeta."/".trim($nombre).".".$file1->extension(),$this->disk); 
+            $file->storeAs('',$carpeta."/".trim($nombre).".".$file->extension(),$this->disk); 
         } 
         return redirect('documentos'); 
     }
