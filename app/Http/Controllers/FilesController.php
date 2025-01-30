@@ -58,21 +58,32 @@ class FilesController extends Controller
 		return $cadena;
 	}
     public function storeFile(Request $request){
-        
         if($request->isMethod('POST')){
             $file = $request->file('file');
+            if(!$file){
+                return back()->withErrors(['file' => 'No se ha subido ningún archivo.']);
+            }
+
             $name = $request->input('nombre');
             $carpeta = $request->input('carpeta');
 
             $nombre = strtr($name, " ", "_");
             $nombre = $this->eliminar_acentos($nombre);
-            //return $nombre;
 
-            $file->storeAs('',$carpeta."/".trim($nombre).".".$file->extension(),$this->disk);
+            // Verifica si la carpeta existe y si no, créala
+            if (!Storage::disk($this->disk)->exists($carpeta)) {
+                Storage::disk($this->disk)->makeDirectory($carpeta);
+            }
+
+            // Almacena el archivo
+            $filePath = $carpeta."/".trim($nombre).".".$file->extension();
+            $file->storeAs('', $filePath, $this->disk);
+
+            return redirect('documentos')->with('message', 'Archivo subido exitosamente!');
         }
-       return redirect('documentos');
-
+        return redirect('documentos');
     }
+
 
     public function deleteFiles(Request $request){
             //$nombre = substr($request->input('nombre'), strrpos($request->input('nombre'), '/')+1);
