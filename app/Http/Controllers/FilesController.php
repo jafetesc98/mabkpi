@@ -72,7 +72,7 @@ class FilesController extends Controller
 
 
             //return "nombre --->".$nombre." carpeta ----->".$carpeta." file ----->".$extension;
-            $file->storeAs(null,$carpeta."/".trim($nombre).".".$extension,$this->disk); 
+            $file->storeAs('',$carpeta."/".trim($nombre).".".$extension,$this->disk); 
         } 
         return redirect('documentos'); 
     }
