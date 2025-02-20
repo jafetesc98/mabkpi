@@ -386,7 +386,7 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(url);  // Liberar el objeto URL después de la descarga
         }
-       
+       //csambio
     /*var tableToExcel = (function() {
         var uri = 'data:application/vnd.ms-excel;base64,'
             , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" ><head></head><body><table>{table}</table></body></html>'
