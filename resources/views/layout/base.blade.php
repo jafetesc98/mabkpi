@@ -25,6 +25,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" href="dist/css/app.css" />
     <link rel="stylesheet" href="dist/css/color.css" />
     <script src="dist/js/busqueda.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
     
     <!-- END: CSS Assets-->
 </head>

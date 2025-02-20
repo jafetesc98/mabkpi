@@ -163,7 +163,7 @@
     return str.join(".");
 }
 
-const $btnExportar = document.querySelector("#btnExportar"),
+/*const $btnExportar = document.querySelector("#btnExportar"),
         $datos = document.querySelector("#datos");
 
     $btnExportar.addEventListener("click", function() {
@@ -183,11 +183,11 @@ const $btnExportar = document.querySelector("#btnExportar"),
             const a = document.createElement('a');
             const fecha =formatofecha()
             //console.log()
-            a.download = 'presupuesto_suc_'+suc+"_"+fecha+'.xls';
+            a.download = 'presupuesto_suc_'+suc+"_"+fecha+'.xlsx';
             a.href = uri + base64(format(template, ctx));
             a.click();
         }
-    })()
+    })()*/
 
     function formatofecha(){
         let fecha = new Date();
@@ -205,10 +205,43 @@ const $btnExportar = document.querySelector("#btnExportar"),
         const cadena = anio+"-"+mes+"-"+dia;
         return cadena;
     }
+    
+ const $btnExportar = document.querySelector("#btnExportar"),
+              $datos = document.querySelector("#datos");
 
+        $btnExportar.addEventListener("click", function () {
+            const fecha = formatofecha();
+            const filename = 'presupuesto_suc_'+suc+"_"+fecha+'.xlsx';
+            tableToExcel($datos, filename);
+        });
 
+        function tableToExcel(table, filename) {
+            console.log("inicia el metodo");
 
-            </script>
+            var wb = XLSX.utils.table_to_book(table, { sheet: "PresupuestoxSuc" });
+            var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+
+            function s2ab(s) {
+                console.log("entra el segundo metodo");
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+            }
+
+            var blob = new Blob([s2ab(wbout)], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+            var url = URL.createObjectURL(blob);
+
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);  // Liberar el objeto URL después de la descarga
+        }
+
+</script>
 
 @endsection
 

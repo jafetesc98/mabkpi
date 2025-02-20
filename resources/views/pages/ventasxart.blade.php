@@ -334,16 +334,60 @@
     return str.join(".");
 }
 
+        function formatofecha() {
+            let fecha = new Date();
+            let anio = fecha.getFullYear();
+            let mes = fecha.getMonth() + 1;
+            let dia = fecha.getDate();
 
-const $btnExportar = document.querySelector("#btnExportar"),
-        $datos = document.querySelector("#datos");
+            if (mes.toString().length == 1) {
+                mes = "0" + mes.toString();
+            }
+            if (dia.toString().length == 1) {
+                dia = "0" + dia.toString();
+            }
 
-    $btnExportar.addEventListener("click", function() {
-        tableToExcel($datos, 'REPORTE DE VENTAS POR ARTICULO Y PROVEEDOR COMPARATIVO')
-    });
+            const cadena = anio + "-" + mes + "-" + dia;
+            return cadena;
+        }
 
-    
-    var tableToExcel = (function() {
+
+        const $btnExportar = document.querySelector("#btnExportar"),
+              $datos = document.querySelector("#datos");
+
+        $btnExportar.addEventListener("click", function () {
+            const fecha = formatofecha();
+            const filename = 'Ventas_X_Art_' + fecha + '.xlsx';
+            tableToExcel($datos, filename);
+        });
+
+        function tableToExcel(table, filename) {
+            console.log("inicia el metodo");
+
+            var wb = XLSX.utils.table_to_book(table, { sheet: "VentasxArticulo" });
+            var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+
+            function s2ab(s) {
+                console.log("entra el segundo metodo");
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+            }
+
+            var blob = new Blob([s2ab(wbout)], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+            var url = URL.createObjectURL(blob);
+
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);  // Liberar el objeto URL después de la descarga
+        }
+       
+    /*var tableToExcel = (function() {
         var uri = 'data:application/vnd.ms-excel;base64,'
             , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" ><head></head><body><table>{table}</table></body></html>'
             , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
@@ -355,29 +399,13 @@ const $btnExportar = document.querySelector("#btnExportar"),
             const a = document.createElement('a');
             const fecha =formatofecha()
             //console.log()
-            a.download = 'Ventas_X_Art'+"_"+fecha+'.xls';
+            a.download = 'Ventas_X_Art'+"_"+fecha+'.xlsx';
             a.href = uri + base64(format(template, ctx));
             a.click();
         }
-    })()
+    })()*/
 
-    function formatofecha(){
-        let fecha = new Date();
-        let anio = fecha.getFullYear();
-        let mes = fecha.getMonth()+1;
-        let dia = fecha.getDate();
-
-        if(mes.toString().length==1){
-            mes = "0"+mes.toString();
-        }
-        if(dia.toString().length==1){
-            dia = "0"+dia.toString();
-        }
-        
-        const cadena = anio+"-"+mes+"-"+dia;
-        return cadena;
-    }
-
+    
 </script>
         
 @endsection

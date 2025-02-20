@@ -16,6 +16,7 @@ class FilesController extends Controller
     public function loadView(){
 
     }
+    
     function eliminar_acentos($cadena){
 		
 		//Reemplazamos la A y a
